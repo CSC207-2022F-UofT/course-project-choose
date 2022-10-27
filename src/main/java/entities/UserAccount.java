@@ -39,6 +39,11 @@ public class UserAccount {
     private int numOfEmailRequest = 0;
 
     /**
+     * The maximum number of email requests a free user account can request.
+     */
+    public static final int MAX_REQUEST = 5;
+
+    /**
      * Create a user account.
      * @param email login username, also is the account holder's email address.
      * @param password login password
