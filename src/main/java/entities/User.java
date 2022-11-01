@@ -15,7 +15,7 @@ public class User {
     private int age;
 
     /** This user's height in cm */
-    private int height;
+    private float height;
 
     /** This user's program of study. */
     private String programOfStudy;
@@ -70,7 +70,7 @@ public class User {
      * Get this user's height.
      * @return Return the user's height.
      */
-    public int getHeight() {
+    public float getHeight() {
         return height;
     }
 
