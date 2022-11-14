@@ -4,11 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Matcher {
-//    /** This user who requested the match. */
-//    private User matchee;
-//    /** This a list of possible users to be matched with. */
-//    private ArrayList<User> targets;
-////    private HashMap<User, Integer> matchResults = new HashMap<User, Integer>();
+//    private HashMap<User, Integer> matchResults = new HashMap<User, Integer>();
     /** The matched result, arranged by matching score from high to low */
     private ArrayList<User> matches;
 
