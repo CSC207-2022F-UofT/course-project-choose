@@ -1,8 +1,8 @@
 package data_access_storage;
 // use case layer
-import email_request.ConnViaEmailRequestModel;
+
 import email_request.RequestModel;
-import entities.UserAccount;
+import java.util.Map;
 
 public interface UserRepoManager {
     boolean existsByEmail(String email);
@@ -12,5 +12,7 @@ public interface UserRepoManager {
     void save(RequestModel requestModel);
 
     RequestModel getUserAccount(String email);
+
+    Map<String, RequestModel> getAllUserAccount();
 
 }

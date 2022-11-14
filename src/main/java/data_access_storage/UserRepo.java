@@ -1,6 +1,5 @@
 package data_access_storage;
 
-import email_request.ConnViaEmailRequestModel;
 import email_request.RequestModel;
 import entities.Gender;
 import entities.Hobbies;
@@ -9,7 +8,6 @@ import entities.UserAccount;
 
 
 import java.io.*;
-import java.time.LocalDateTime;
 import java.util.*;
 
 public class UserRepo implements UserRepoManager {
@@ -99,6 +97,11 @@ public class UserRepo implements UserRepoManager {
     @Override
     public RequestModel getUserAccount(String email) {
         return accounts.get(email);
+    }
+
+    @Override
+    public Map<String, RequestModel> getAllUserAccount() {
+        return accounts;
     }
 
     private void save() {
