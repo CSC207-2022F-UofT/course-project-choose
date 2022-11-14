@@ -3,6 +3,8 @@ package entities;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class UserAccountTest {
@@ -41,8 +43,17 @@ public class UserAccountTest {
     @Test
     void block() {
         assertEquals(userAccountA.getBlockedAccounts().size(), 0);
-        userAccountA.block(userAccountB);
+        userAccountA.block(userAccountB.getEmail());
         assertEquals(userAccountA.getBlockedAccounts().size(), 1);
+        userAccountA.getBlockedAccounts().remove(0);
+    }
+    @Test
+    void testBlockedAccounts(){
+        assertEquals(userAccountA.getBlockedAccounts().size(), 0);
+        userAccountA.block(userAccountB.getEmail());
+        List<String> blockedList = userAccountA.getBlockedAccounts();
+        assertTrue(blockedList.get(0).equals("david.david@hotmail.com"));
+        userAccountA.getBlockedAccounts().remove(0);
     }
 
     @Test
@@ -58,4 +69,22 @@ public class UserAccountTest {
         userAccountA.setValidEmail();
         assertTrue(userAccountA.getValidEmail());
     }
+
+    @Test
+    void testIncNumOfEmailRequest(){
+        assertEquals(userAccountA.getNumOfEmailRequest(), 0);
+        userAccountA.incNumOfEmailRequest();
+        assertEquals(userAccountA.getNumOfEmailRequest(), 1);
+    }
+
+    @Test
+    void testGetPassword(){
+        assertTrue(userAccountA.getPassword().equals("helloToEmma"));
+    }
+
+    @Test
+    void testGetUser(){
+        assertTrue(userAccountA.getUser().getName().equals("Emma"));
+    }
+
 }
