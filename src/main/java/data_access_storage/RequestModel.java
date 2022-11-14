@@ -1,4 +1,4 @@
-package email_request;
+package data_access_storage;
 
 import entities.UserAccount;
 
@@ -13,7 +13,5 @@ public class RequestModel {
     public UserAccount getUserAccount(){
         return this.userAccount;
     }
-
-
 
 }
