@@ -1,7 +1,6 @@
 package data_access_storage;
 // use case layer
 
-import email_request.RequestModel;
 import java.util.Map;
 
 public interface UserRepoManager {

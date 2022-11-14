@@ -1,6 +1,7 @@
 package email_request;
 
 
+import data_access_storage.RequestModel;
 import data_access_storage.UserRepoManager;
 import entities.UserAccount;
 

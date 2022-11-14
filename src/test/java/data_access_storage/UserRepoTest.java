@@ -1,6 +1,5 @@
 package data_access_storage;
 
-import email_request.RequestModel;
 import entities.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -9,8 +8,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.File;
 import java.io.IOException;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class UserRepoTest {
 
@@ -64,6 +61,9 @@ class UserRepoTest {
         assertFalse(userRepo.existsByEmail("david.david@hotmail.com"));
         assertFalse(userRepo.existsByEmail("emma.emma@mail.utoronto.ca"));
     }
+
+
+
 
 
 

@@ -1,12 +1,9 @@
 package data_access_storage;
 
-import email_request.RequestModel;
 import entities.Gender;
 import entities.Hobbies;
 import entities.User;
 import entities.UserAccount;
-
-
 import java.io.*;
 import java.util.*;
 
@@ -21,6 +18,11 @@ public class UserRepo implements UserRepoManager {
     /** data */
     private final Map<String, RequestModel> accounts = new HashMap<>();
 
+    /**
+     * Create UserRepo for Data Access.
+     * @param csvFile:  the csv file where data are stored.
+     * @throws IOException
+     */
     public UserRepo(File csvFile) throws IOException {
         this.csvFile = csvFile;
         headers.put("email", 0);
@@ -94,16 +96,24 @@ public class UserRepo implements UserRepoManager {
         this.save();
     }
 
+
     @Override
     public RequestModel getUserAccount(String email) {
         return accounts.get(email);
     }
 
+    /**
+     * Get all users' account information
+     * @return all users' account information
+     */
     @Override
     public Map<String, RequestModel> getAllUserAccount() {
         return accounts;
     }
 
+    /**
+     * Save data to a csv file for data storage.
+     */
     private void save() {
         BufferedWriter writer;
         try {
