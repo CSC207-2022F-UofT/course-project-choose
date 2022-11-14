@@ -33,7 +33,7 @@ public class UserAccount {
      * A list of user accounts that this user account blocks.
      * The blocked users are identified by their email address.
      */
-    private List<UserAccount> blockedAccounts = new ArrayList<>();
+    private List<String> blockedAccounts = new ArrayList<>();
 
     /** number of email addresses that this user account already requests. */
     private int numOfEmailRequest = 0;
@@ -83,7 +83,7 @@ public class UserAccount {
      * Blocks a user account.
      * @param otherAccount: a user account whom this user account wants to block
      */
-    public void block(UserAccount otherAccount){
+    public void block(String otherAccount){
         blockedAccounts.add(otherAccount);
     }
 
@@ -91,7 +91,7 @@ public class UserAccount {
      * Get a list of user accounts that are blocked by this user account.
      * @return return a list of user accounts that are blocked by this user account.
      */
-    public List<UserAccount> getBlockedAccounts(){
+    public List<String> getBlockedAccounts(){
         return this.blockedAccounts;
     }
 
@@ -123,5 +123,27 @@ public class UserAccount {
      */
     public boolean getValidEmail(){ return this.validEmail;}
 
+    /**
+     * Return this user account's user information
+     * @return return this user account's user information
+     */
+    public User getUser() {
+        return user;
+    }
 
+    /**
+     * Return this user account's password.
+     * @return return this user account's password.
+     */
+    public String getPassword(){
+        return this.password;
+    }
+
+    /**
+     * Return this user account's number of email requests.
+     * @return return this user account's number of email requests.
+     */
+    public int getNumOfEmailRequest(){
+        return this.numOfEmailRequest;
+    }
 }

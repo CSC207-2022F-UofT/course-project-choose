@@ -41,7 +41,7 @@ public class UserAccountTest {
     @Test
     void block() {
         assertEquals(userAccountA.getBlockedAccounts().size(), 0);
-        userAccountA.block(userAccountB);
+        userAccountA.block(userAccountB.getEmail());
         assertEquals(userAccountA.getBlockedAccounts().size(), 1);
     }
 
