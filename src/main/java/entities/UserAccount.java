@@ -99,7 +99,7 @@ public class UserAccount {
      * This user pays to become a paid user, and set his/her subscription status to be true.
      */
     public void subscribe(){
-       this.subStatus = true;
+        this.subStatus = true;
     }
 
     /**
@@ -146,4 +146,12 @@ public class UserAccount {
     public int getNumOfEmailRequest(){
         return this.numOfEmailRequest;
     }
+
+    /**
+     * Increase this user's number of email request by 1
+     */
+    public void incNumOfEmailRequest(){
+        this.numOfEmailRequest += 1;
+    }
 }
+
