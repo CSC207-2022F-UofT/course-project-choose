@@ -1,17 +1,44 @@
 package data_access_storage;
+import java.util.Map;
 // use case layer
 
-import java.util.Map;
-
+/**
+ * This class decides how to interact with the database.
+ */
 public interface UserRepoManager {
+
+    /**
+     * Check whether a user with an email address email already exists.
+     * @param email user's email address
+     * @return return true if a user already exists with the email address email, and false otherwise.
+     */
     boolean existsByEmail(String email);
 
+    /**
+     * Delete user data.
+     * Call this method only if requestModel exists in our data.
+     * @param requestModel the user data to be deleted.
+     */
     void delete(RequestModel requestModel);
 
+    /**
+     * Save user data
+     * @param requestModel the user data to be saved.
+     */
     void save(RequestModel requestModel);
 
+    /**
+     * Return user data whose email address is email
+     * Call this method only if a user exists with the email address email
+     * @param email the email address of a user
+     * @return return the user data whose email address is email.
+     */
     RequestModel getUserAccount(String email);
 
+    /**
+     * Get all users' account information
+     * @return all users' account information
+     */
     Map<String, RequestModel> getAllUserAccount();
 
 }

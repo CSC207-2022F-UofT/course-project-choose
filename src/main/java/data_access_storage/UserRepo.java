@@ -7,6 +7,9 @@ import entities.UserAccount;
 import java.io.*;
 import java.util.*;
 
+/**
+ * This class provides data access.
+ */
 public class UserRepo implements UserRepoManager {
 
     /** This is our data storage where our data is saved to a csv file. */
@@ -49,7 +52,10 @@ public class UserRepo implements UserRepoManager {
 
             String row;
             while ((row = reader.readLine()) != null) {
+                // split the row by , but ignore the commas in any double quotes.
                 String[] col = row.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
+
+                // retrieve all fields
                 String email = String.valueOf(col[headers.get("email")]);
                 String password = String.valueOf(col[headers.get("password")]);
                 boolean validEmail =  Boolean. parseBoolean(String.valueOf(col[headers.get("validEmail")]));
@@ -71,6 +77,8 @@ public class UserRepo implements UserRepoManager {
                          selfIntro, interestedIn);
                 UserAccount userAccount = new UserAccount(name, email, user);
                 RequestModel requestModel = new RequestModel(userAccount);
+
+                // save data in accounts
                 accounts.put(email, requestModel);
             }
 
@@ -79,24 +87,43 @@ public class UserRepo implements UserRepoManager {
 
     }
 
+    /**
+     * Check whether a user with an email address email already exists.
+     * @param email user's email address
+     * @return return true if a user already exists with the email address email, and false otherwise.
+     */
     @Override
     public boolean existsByEmail(String email) {
         return accounts.containsKey(email);
     }
 
+    /**
+     * Delete user data
+     * Call this method only if requestModel exists in our data.
+     * @param requestModel the user data to be deleted.
+     */
     @Override
     public void delete(RequestModel requestModel) {
         accounts.remove(requestModel.getUserAccount().getEmail());
         this.save();
     }
 
+    /**
+     * Save user data
+     * @param requestModel the user data to be saved.
+     */
     @Override
     public void save(RequestModel requestModel) {
         accounts.put(requestModel.getUserAccount().getEmail(), requestModel);
         this.save();
     }
 
-
+    /**
+     * Return user data whose email address is email
+     * Call this method only if a user exists with the email address email
+     * @param email the email address of a user
+     * @return return the user data whose email address is email.
+     */
     @Override
     public RequestModel getUserAccount(String email) {
         return accounts.get(email);
@@ -146,8 +173,4 @@ public class UserRepo implements UserRepoManager {
             throw new RuntimeException(e);
         }
     }
-
-
-
-
 }

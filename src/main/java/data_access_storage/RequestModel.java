@@ -11,7 +11,7 @@ public class RequestModel {
 
     /***
      * Create a Request Model with the given user account.
-     * @param user user account.
+     * @param user the user account.
      */
     public RequestModel(UserAccount user){
         this.userAccount = user;

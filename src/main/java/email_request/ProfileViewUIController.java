@@ -1,7 +1,10 @@
 package email_request;
 
-import entities.UserAccount;
 
+/**
+ * This class is responsible to response to button clicks on
+ * bundle
+ */
 public class ProfileViewUIController{
     final ProfileViewUIInputBoundary userInput;
 

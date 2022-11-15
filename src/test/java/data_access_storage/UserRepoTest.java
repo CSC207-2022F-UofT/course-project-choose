@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Map;
 
 class UserRepoTest {
 
@@ -61,6 +62,42 @@ class UserRepoTest {
         assertFalse(userRepo.existsByEmail("david.david@hotmail.com"));
         assertFalse(userRepo.existsByEmail("emma.emma@mail.utoronto.ca"));
     }
+
+    @Test
+    void testGetUserAccount(){
+        userRepo.save(rqB);
+        RequestModel rm = userRepo.getUserAccount("david.david@hotmail.com");
+        assertTrue("david.david@hotmail.com".equals(rm.getUserAccount().getEmail()));
+        assertTrue("David".equals(rm.getUserAccount().getUser().getName()));
+        userRepo.delete(rqB);
+    }
+
+    @Test
+    void testGetAllUserAccountEmpty(){
+        Map<String, RequestModel> accounts_empty = userRepo.getAllUserAccount();
+        assertEquals(accounts_empty.size(), 0);
+    }
+
+    @Test
+    void testGetAllUserAccountSize1() {
+        userRepo.save(rqB);
+        Map<String, RequestModel> accounts_size1 = userRepo.getAllUserAccount();
+        assertEquals(accounts_size1.size(), 1);
+        userRepo.delete(rqB);
+    }
+    @Test
+    void testGetAllUserAccountSize2() {
+        userRepo.save(rqB);
+        userRepo.save(rqA);
+        Map<String, RequestModel> accounts_size2 = userRepo.getAllUserAccount();
+        assertEquals(accounts_size2.size(), 2);
+        userRepo.delete(rqB);
+        userRepo.delete(rqA);
+    }
+
+
+
+
 
 
 
