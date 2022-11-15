@@ -29,4 +29,6 @@ class RequestModelTest {
         assertTrue("emma.emma@mail.utoronto.ca".equals(user.getEmail()));
         assertTrue("Emma".equals(user.getUser().getName()));
     }
+
+
 }

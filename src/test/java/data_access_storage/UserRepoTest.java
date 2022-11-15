@@ -15,14 +15,19 @@ class UserRepoTest {
     private static RequestModel rqA;
     private static RequestModel rqB;
 
+    private static File emptyCsvFile;
     private static File csvFile;
 
+    private static UserRepo userRepoEmpty;
     private static UserRepo userRepo;
 
     @BeforeAll
     static void setUp() throws IOException {
-        csvFile = new File("src/main/resources/testFile.csv");
-        userRepo = new UserRepo(csvFile);
+        emptyCsvFile = new File("src/main/resources/emptyTestFile.csv");
+        userRepoEmpty = new UserRepo(emptyCsvFile);
+
+        csvFile = new File("src/main/resources/emptyTestFile.csv");
+
 
         User userA = new User("Emma", Gender.FEMALE, 18,
                 164, "Computer Science", Hobbies.FOOD,
@@ -42,71 +47,65 @@ class UserRepoTest {
 
     @Test
     void testSingleUser(){
-        assertFalse(userRepo.existsByEmail("david.david@hotmail.com"));
-        userRepo.save(rqB);
-        assertTrue(userRepo.existsByEmail("david.david@hotmail.com"));
-        userRepo.delete(rqB);
-        assertFalse(userRepo.existsByEmail("david.david@hotmail.com"));
+        assertFalse(userRepoEmpty.existsByEmail("david.david@hotmail.com"));
+        userRepoEmpty.save(rqB);
+        assertTrue(userRepoEmpty.existsByEmail("david.david@hotmail.com"));
+        userRepoEmpty.delete(rqB);
+        assertFalse(userRepoEmpty.existsByEmail("david.david@hotmail.com"));
     }
 
     @Test
     void testMultiUser(){
-        assertFalse(userRepo.existsByEmail("david.david@hotmail.com"));
-        assertFalse(userRepo.existsByEmail("emma.emma@mail.utoronto.ca"));
-        userRepo.save(rqB);
-        userRepo.save(rqA);
-        assertTrue(userRepo.existsByEmail("david.david@hotmail.com"));
-        assertTrue(userRepo.existsByEmail("emma.emma@mail.utoronto.ca"));
-        userRepo.delete(rqA);
-        userRepo.delete(rqB);
-        assertFalse(userRepo.existsByEmail("david.david@hotmail.com"));
-        assertFalse(userRepo.existsByEmail("emma.emma@mail.utoronto.ca"));
+        assertFalse(userRepoEmpty.existsByEmail("david.david@hotmail.com"));
+        assertFalse(userRepoEmpty.existsByEmail("emma.emma@mail.utoronto.ca"));
+        userRepoEmpty.save(rqB);
+        userRepoEmpty.save(rqA);
+        assertTrue(userRepoEmpty.existsByEmail("david.david@hotmail.com"));
+        assertTrue(userRepoEmpty.existsByEmail("emma.emma@mail.utoronto.ca"));
+        userRepoEmpty.delete(rqA);
+        userRepoEmpty.delete(rqB);
+        assertFalse(userRepoEmpty.existsByEmail("david.david@hotmail.com"));
+        assertFalse(userRepoEmpty.existsByEmail("emma.emma@mail.utoronto.ca"));
     }
 
     @Test
     void testGetUserAccount(){
-        userRepo.save(rqB);
-        RequestModel rm = userRepo.getUserAccount("david.david@hotmail.com");
+        userRepoEmpty.save(rqB);
+        RequestModel rm = userRepoEmpty.getUserAccount("david.david@hotmail.com");
         assertTrue("david.david@hotmail.com".equals(rm.getUserAccount().getEmail()));
         assertTrue("David".equals(rm.getUserAccount().getUser().getName()));
-        userRepo.delete(rqB);
+        userRepoEmpty.delete(rqB);
     }
 
     @Test
     void testGetAllUserAccountEmpty(){
-        Map<String, RequestModel> accounts_empty = userRepo.getAllUserAccount();
+        Map<String, RequestModel> accounts_empty = userRepoEmpty.getAllUserAccount();
         assertEquals(accounts_empty.size(), 0);
     }
 
     @Test
     void testGetAllUserAccountSize1() {
-        userRepo.save(rqB);
-        Map<String, RequestModel> accounts_size1 = userRepo.getAllUserAccount();
+        userRepoEmpty.save(rqB);
+        Map<String, RequestModel> accounts_size1 = userRepoEmpty.getAllUserAccount();
         assertEquals(accounts_size1.size(), 1);
-        userRepo.delete(rqB);
+        userRepoEmpty.delete(rqB);
     }
     @Test
     void testGetAllUserAccountSize2() {
-        userRepo.save(rqB);
-        userRepo.save(rqA);
-        Map<String, RequestModel> accounts_size2 = userRepo.getAllUserAccount();
+        userRepoEmpty.save(rqB);
+        userRepoEmpty.save(rqA);
+        Map<String, RequestModel> accounts_size2 = userRepoEmpty.getAllUserAccount();
         assertEquals(accounts_size2.size(), 2);
-        userRepo.delete(rqB);
-        userRepo.delete(rqA);
+        userRepoEmpty.delete(rqB);
+        userRepoEmpty.delete(rqA);
     }
 
+    @Test
+    void testNonEmptyCsvFile(){
 
 
 
-
-
-
-
-
-
-
-
-
+    }
 
 
 
