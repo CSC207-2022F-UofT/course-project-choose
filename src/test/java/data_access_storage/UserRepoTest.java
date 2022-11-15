@@ -26,9 +26,6 @@ class UserRepoTest {
         emptyCsvFile = new File("src/main/resources/emptyTestFile.csv");
         userRepoEmpty = new UserRepo(emptyCsvFile);
 
-        csvFile = new File("src/main/resources/emptyTestFile.csv");
-
-
         User userA = new User("Emma", Gender.FEMALE, 18,
                 164, "Computer Science", Hobbies.FOOD,
                 "\" Hello, This is Emma \"", Gender.MALE);
@@ -101,12 +98,19 @@ class UserRepoTest {
     }
 
     @Test
-    void testNonEmptyCsvFile(){
-
-
-
+    void testNonEmptyCsvFile() throws IOException {
+        csvFile = new File("src/main/resources/testFile.csv");
+        userRepo = new UserRepo(csvFile);
+        Map<String, RequestModel> accounts = userRepo.getAllUserAccount();
+        assertEquals(accounts.size(), 2);
     }
 
-
+    @Test
+    public void testException(){
+        assertThrows(RuntimeException.class, () -> {
+            csvFile = new File("src/main/resources/exceptionFile.csv");
+            userRepo = new UserRepo(csvFile);
+        });
+    }
 
 }
