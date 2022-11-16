@@ -75,7 +75,7 @@ public class UserRepo implements UserRepoManager {
                 String selfIntro = String.valueOf(col[headers.get("selfIntro")]);
                 User user = new User(name, gender, age, height, programOfStudy, hobbies,
                          selfIntro, interestedIn);
-                UserAccount userAccount = new UserAccount(name, email, user);
+                UserAccount userAccount = new UserAccount(email, password, user);
                 RequestModel requestModel = new RequestModel(userAccount);
 
                 // save data in accounts
@@ -104,7 +104,16 @@ public class UserRepo implements UserRepoManager {
      */
     @Override
     public void delete(RequestModel requestModel) {
-        accounts.remove(requestModel.getUserAccount().getEmail());
+        this.delete(requestModel.getUserAccount().getEmail());
+    }
+
+    /**
+     * Delete user data whose user email address is email.
+     * Call this method only if requestModel exists in our data.
+     * @param email the email address of the user data to be deleted.
+     */
+    public void delete(String email){
+        accounts.remove(email);
         this.save();
     }
 
@@ -116,6 +125,17 @@ public class UserRepo implements UserRepoManager {
     public void save(RequestModel requestModel) {
         accounts.put(requestModel.getUserAccount().getEmail(), requestModel);
         this.save();
+    }
+
+    /**
+     * Update user data whose email address is email.
+     * @param email the email address of the user whose account will be updated.
+     * @param requestModel update user data to be requestModel
+     */
+    @Override
+    public void update(String email, RequestModel requestModel) {
+        this.delete(email);
+        this.save(requestModel);
     }
 
     /**

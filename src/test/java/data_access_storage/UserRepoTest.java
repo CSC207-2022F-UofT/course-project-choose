@@ -113,4 +113,38 @@ class UserRepoTest {
         });
     }
 
+    @Test
+    public void testDeleteByEmail() throws IOException {
+        userRepoEmpty.save(rqB);
+        assertTrue(userRepoEmpty.existsByEmail("david.david@hotmail.com"));
+        userRepoEmpty.delete("david.david@hotmail.com");
+        assertFalse(userRepoEmpty.existsByEmail("david.david@hotmail.com"));
+
+        File csvFileReal = new File("src/main/resources/emptyTestFile.csv");
+        UserRepo userRepoFile = new UserRepo(csvFileReal);
+        assertFalse(userRepoFile.existsByEmail("david.david@hotmail.com"));
+    }
+
+    @Test
+    public void testUpdate() throws IOException {
+        userRepoEmpty.save(rqA);
+
+        User userC = new User("Emma", Gender.FEMALE, 20,
+                164, "Computer Science", Hobbies.FOOD,
+                "\" Hello, This is Emma \"", Gender.MALE);
+        UserAccount userAccountC = new UserAccount("emma.emma@mail.utoronto.ca",
+                "helloToEmma", userC);
+        RequestModel rqC = new RequestModel(userAccountC);
+
+        userRepoEmpty.update("emma.emma@mail.utoronto.ca", rqC);
+
+        assertEquals(20,
+                userRepoEmpty.getUserAccount("emma.emma@mail.utoronto.ca").getUserAccount().getUser().getAge());
+
+        userRepoEmpty.delete(rqC);
+    }
+
+
+
+
 }

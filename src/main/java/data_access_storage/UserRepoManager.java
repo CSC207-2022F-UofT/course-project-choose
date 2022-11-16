@@ -22,10 +22,24 @@ public interface UserRepoManager {
     void delete(RequestModel requestModel);
 
     /**
+     * Delete user data whose user email address is email.
+     * Call this method only if requestModel exists in our data.
+     * @param email the email address of the user data to be deleted.
+     */
+    void delete(String email);
+
+    /**
      * Save user data
      * @param requestModel the user data to be saved.
      */
     void save(RequestModel requestModel);
+
+    /**
+     * Update user data whose email address is email.
+     * @param email the email address of the user whose account will be updated.
+     * @param requestModel update user data to be requestModel
+     */
+    void update(String email, RequestModel requestModel);
 
     /**
      * Return user data whose email address is email
