@@ -58,8 +58,8 @@ public class UserRepo implements UserRepoManager {
                 // retrieve all fields
                 String email = String.valueOf(col[headers.get("email")]);
                 String password = String.valueOf(col[headers.get("password")]);
-                boolean validEmail =  Boolean. parseBoolean(String.valueOf(col[headers.get("validEmail")]));
-                boolean subStatus =  Boolean. parseBoolean(String.valueOf(col[headers.get("subStatus")]));
+                boolean validEmail =  Boolean.parseBoolean(col[headers.get("validEmail")]);
+                boolean subStatus =  Boolean.parseBoolean(col[headers.get("subStatus")]);
                 int numOfReport = Integer.valueOf(headers.get("numOfReport"));
                 String blockedAccountsString = String.valueOf(col[headers.get("blockedAccounts")]);
                 List<String> blockedAccounts = new ArrayList<String>(
@@ -68,7 +68,7 @@ public class UserRepo implements UserRepoManager {
                 String name = String.valueOf(col[headers.get("name")]);
                 Gender gender = Gender.valueOf(col[headers.get("gender")]);
                 int age = Integer.valueOf(headers.get("age"));
-                float height = Float.parseFloat(String.valueOf(headers.get("height")));
+                float height = Float.parseFloat(col[headers.get("height")]);
                 String programOfStudy = String.valueOf(col[headers.get("programOfStudy")]);
                 Hobbies hobbies = Hobbies.valueOf(col[headers.get("hobby")]);
                 Gender interestedIn = Gender.valueOf(col[headers.get("interestedIn")]);
