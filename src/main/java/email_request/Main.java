@@ -1,5 +1,6 @@
 package email_request;
 
+import data_access_storage.RequestModel;
 import data_access_storage.UserRepo;
 import data_access_storage.UserRepoManager;
 
@@ -20,23 +21,22 @@ public class Main {
 
         UserRepoManager users;
         try{
-            File csvFile = new File("src/main/resources/testFile.csv");
+            File csvFile = new File("src/main/resources/connViaEmail.csv");
             users = new UserRepo(csvFile);
         }catch (IOException e) {
             throw new RuntimeException("Could not create file.");
         }
 
-        ConnViaEmailOutputBoundary presenter = new ConnViaEmailPresenter();
-        ProfileViewUIInputBoundary interactor = new ConnViaEmailInteractor(presenter, users);
-        ProfileViewUIController profileViewUIController = new ProfileViewUIController(interactor);
+        MatcherUIOutputBoundary presenter = new MatcherUIPresenter();
+        MatcherUIInputBoundary interactor = new MatcherUIInteractor(presenter, users);
+        MatcherUIController matcherUIController = new MatcherUIController(interactor);
 
-        UITemplate uiTemplate = new UITemplate(profileViewUIController, "david.david@hotmail.com",
+        MatcherUITemplate matcherUiTemplate = new MatcherUITemplate(matcherUIController, "david.david@hotmail.com",
                 "emma.emma@mail.utoronto.ca");
-        screens.add(uiTemplate, "profile page");
+        screens.add(matcherUiTemplate, "profile page");
         cardLayout.show(screens, "profile");
         application.pack();
         application.setVisible(true);
-
     }
 
 

@@ -5,16 +5,16 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class UITemplate extends JPanel implements ActionListener {
+public class MatcherUITemplate extends JPanel implements ActionListener {
 
-    ProfileViewUIController profileViewUIController;
+    MatcherUIController matcherUIController;
     private String requesterEmail;
     private String targetUserEmail;
 
-    public UITemplate(ProfileViewUIController profileViewUIController,
-                      String requesterEmail, String targetUserEmail){
+    public MatcherUITemplate(MatcherUIController matcherUIController,
+                             String requesterEmail, String targetUserEmail){
 
-        this.profileViewUIController = profileViewUIController;
+        this.matcherUIController = matcherUIController;
         this.requesterEmail = requesterEmail;
         this.targetUserEmail = targetUserEmail;
 
@@ -38,9 +38,9 @@ public class UITemplate extends JPanel implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent evt) {
-        ConnViaEmailResponseModel rm =  profileViewUIController.create(requesterEmail, targetUserEmail);
-        ConnViaEmailPresenter rp = new ConnViaEmailPresenter();
-        ConnViaEmailResponseModel prepareView = rp.prepareView(rm);
+        MatcherUIResponseModel rm =  matcherUIController.create(requesterEmail, targetUserEmail);
+        MatcherUIPresenter rp = new MatcherUIPresenter();
+        MatcherUIResponseModel prepareView = rp.prepareView(rm);
 
         if(prepareView.getRequestedEmailAddress() != ""){
             JOptionPane.showMessageDialog(this,

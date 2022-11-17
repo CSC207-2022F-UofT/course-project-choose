@@ -3,7 +3,7 @@ package email_request;
  * This class is Output Data. Presenter will use it to prepare View.
  * Use Case Layer
  */
-public class ConnViaEmailResponseModel {
+public class MatcherUIResponseModel {
 
  /** the resulted email address that a user requested */
  private String requestedEmailAddress;
@@ -12,7 +12,7 @@ public class ConnViaEmailResponseModel {
   * Create Output Data with the resulted email address that a user requested.
   * @param email the resulted email address that a user requested
   */
- public ConnViaEmailResponseModel(String email){
+ public MatcherUIResponseModel(String email){
   this.requestedEmailAddress = email;
  }
 
