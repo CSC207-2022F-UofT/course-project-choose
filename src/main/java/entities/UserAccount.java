@@ -56,6 +56,33 @@ public class UserAccount {
     }
 
     /**
+     * Create a user account when from reading data.
+     * @param email login username, also is the account holder's email address.
+     * @param password login password
+     * @param user the user who owns this account.
+     * @param validEmail true if this user account's email is in a valid format, and false otherwise
+     * @param subStatus The subscription status of this user account.
+     *        If true, this user is a paid user, and false otherwise.
+     *        The default value is false.
+     * @param numOfReport  the number of times that this user account is reported by other users.
+     * @param blockedAccounts A list of user accounts that this user account blocks.
+     *        The blocked users are identified by their email address.
+     * @param numOfEmailRequest number of email addresses that this user account already requests.
+     */
+    public UserAccount(String email, String password, User user, boolean validEmail,
+                       boolean subStatus, int numOfReport, List<String> blockedAccounts,
+                       int numOfEmailRequest){
+        this.email = email;
+        this.password = password;
+        this.user = user;
+        this.validEmail = validEmail;
+        this.subStatus = subStatus;
+        this.numOfReport = numOfReport;
+        this.blockedAccounts = blockedAccounts;
+        this.numOfEmailRequest = numOfEmailRequest;
+    }
+
+    /**
      * Get this user account's login username.
      * @return return this user account's login username, which is the email address.
      */

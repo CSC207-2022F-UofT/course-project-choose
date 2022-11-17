@@ -7,7 +7,6 @@ import entities.Gender;
 import entities.Hobbies;
 import entities.User;
 import entities.UserAccount;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -19,6 +18,9 @@ import static org.junit.jupiter.api.Assertions.*;
 class MatcherUIInteractorTest {
 
     private MatcherUIInteractor interactor;
+    private static final int jimmyNumRequest = 6;
+    private static final int DavidNumRequest = 0;
+
 
     @BeforeEach
     void setUp() throws IOException {
@@ -35,7 +37,7 @@ class MatcherUIInteractorTest {
         MatcherUIResponseModel rq = interactor.create(rm);
         assertEquals( "emma.emma@mail.utoronto.ca",
                 rq.getRequestedEmailAddress());
-        assertEquals(1,
+        assertEquals(DavidNumRequest + 1,
                 interactor.userRepoManager.getUserAccount("david.david@hotmail.com").getUserAccount().getNumOfEmailRequest());
 
         // reset David's data
@@ -46,7 +48,21 @@ class MatcherUIInteractorTest {
                 "david.david", userB);
         RequestModel  rqB = new RequestModel(userAccountB);
         interactor.userRepoManager.update("david.david@hotmail.com", rqB);
+        assertEquals(DavidNumRequest,
+                interactor.userRepoManager.getUserAccount("david.david@hotmail.com").getUserAccount().getNumOfEmailRequest());
     }
+
+    @Test
+    void testCreateFailure() {
+        MatcherUIRequestModel rm = new MatcherUIRequestModel("jimmy.jimmy@hotmail.com",
+                "emma.emma@mail.utoronto.ca");
+        MatcherUIResponseModel rq = interactor.create(rm);
+        assertEquals( "",
+                rq.getRequestedEmailAddress());
+        assertEquals(jimmyNumRequest,
+                interactor.userRepoManager.getUserAccount("jimmy.jimmy@hotmail.com").getUserAccount().getNumOfEmailRequest());
+    }
+
 
 
 

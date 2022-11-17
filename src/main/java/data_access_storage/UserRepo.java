@@ -60,14 +60,14 @@ public class UserRepo implements UserRepoManager {
                 String password = String.valueOf(col[headers.get("password")]);
                 boolean validEmail =  Boolean.parseBoolean(col[headers.get("validEmail")]);
                 boolean subStatus =  Boolean.parseBoolean(col[headers.get("subStatus")]);
-                int numOfReport = Integer.valueOf(headers.get("numOfReport"));
+                int numOfReport = Integer.valueOf(col[headers.get("numOfReport")]);
                 String blockedAccountsString = String.valueOf(col[headers.get("blockedAccounts")]);
                 List<String> blockedAccounts = new ArrayList<String>(
                         Arrays.asList(blockedAccountsString.split("\\|")));
-                int numOfEmailRequest = Integer.valueOf(headers.get("numOfEmailRequest"));
+                int numOfEmailRequest = Integer.valueOf(col[headers.get("numOfEmailRequest")]);
                 String name = String.valueOf(col[headers.get("name")]);
                 Gender gender = Gender.valueOf(col[headers.get("gender")]);
-                int age = Integer.valueOf(headers.get("age"));
+                int age = Integer.valueOf(col[headers.get("age")]);
                 float height = Float.parseFloat(col[headers.get("height")]);
                 String programOfStudy = String.valueOf(col[headers.get("programOfStudy")]);
                 Hobbies hobbies = Hobbies.valueOf(col[headers.get("hobby")]);
@@ -75,7 +75,8 @@ public class UserRepo implements UserRepoManager {
                 String selfIntro = String.valueOf(col[headers.get("selfIntro")]);
                 User user = new User(name, gender, age, height, programOfStudy, hobbies,
                          selfIntro, interestedIn);
-                UserAccount userAccount = new UserAccount(email, password, user);
+                UserAccount userAccount = new UserAccount(email, password, user,validEmail,
+                        subStatus,numOfReport,blockedAccounts,numOfEmailRequest);
                 RequestModel requestModel = new RequestModel(userAccount);
 
                 // save data in accounts
