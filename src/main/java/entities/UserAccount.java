@@ -180,8 +180,5 @@ public class UserAccount {
     public void incNumOfEmailRequest(){
         this.numOfEmailRequest += 1;
     }
-
-
-
 }
 
