@@ -13,8 +13,8 @@ public class MatchManager implements MatcherInputBoundary{
 
     final UserRepoManager userRepoManager;
 
-    public MatchManager(UserAccount user, UserRepoManager userRepoManager){
-        this.user = user;
+    public MatchManager(MatchRequestModel matchRequestModel, UserRepoManager userRepoManager){
+        this.user = userRepoManager.getUserAccount(matchRequestModel.getUserEmail()).getUserAccount();
         this.userRepoManager = userRepoManager;
         ArrayList<UserAccount> userAccountArrayList = new ArrayList<UserAccount>();
         for(RequestModel rm: this.userRepoManager.getAllUserAccount().values()){
@@ -25,7 +25,7 @@ public class MatchManager implements MatcherInputBoundary{
 
     @Override
     public MatchResponseModel create(MatchRequestModel requestModel){
-        ArrayList<UserAccount> matchedUsers = match.getMatches();
+        UserAccount[] matchedUsers = match.getMatches();
         ArrayList<UserData> matchedData = new ArrayList<UserData>();
         for(UserAccount user: matchedUsers){
             matchedData.add(new UserData(user));

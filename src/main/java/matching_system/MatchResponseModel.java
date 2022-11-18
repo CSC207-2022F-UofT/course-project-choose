@@ -1,9 +1,13 @@
 package matching_system;
 
 public class MatchResponseModel {
-    UserData[] matchedData;
+    private UserData[] matchedData;
 
     public MatchResponseModel(UserData[] matchedData){
         this.matchedData = matchedData;
+    }
+
+    public UserData[] getMatchedData() {
+        return matchedData;
     }
 }
