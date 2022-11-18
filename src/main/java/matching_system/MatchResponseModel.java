@@ -1,7 +1,5 @@
 package matching_system;
 
-import entities.UserData;
-
 public class MatchResponseModel {
     UserData[] matchedData;
 

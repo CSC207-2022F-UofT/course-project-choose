@@ -1,25 +1,30 @@
 package matching_system;
 
+import data_access_storage.RequestModel;
+import data_access_storage.UserRepoManager;
 import entities.Matcher;
-import entities.User;
 import entities.UserAccount;
-import entities.UserData;
 
 import java.util.ArrayList;
 
-public class MatchManager{
+public class MatchManager implements MatcherInputBoundary{
     private UserAccount user;
     private Matcher match;
 
     final UserRepoManager userRepoManager;
 
-    public MatchManager(UserAccount user){
+    public MatchManager(UserAccount user, UserRepoManager userRepoManager){
         this.user = user;
-        ArrayList<UserAccount> userAccountArrayList = new ArrayList<UserAccount>(this.userRepoManager.getAllUser().values());
+        this.userRepoManager = userRepoManager;
+        ArrayList<UserAccount> userAccountArrayList = new ArrayList<UserAccount>();
+        for(RequestModel rm: this.userRepoManager.getAllUserAccount().values()){
+            userAccountArrayList.add(rm.getUserAccount());
+        }
         this.match = new Matcher(user,userAccountArrayList);
     }
 
-    public MatchResponseModel getMatch(){
+    @Override
+    public MatchResponseModel create(MatchRequestModel requestModel){
         ArrayList<UserAccount> matchedUsers = match.getMatches();
         ArrayList<UserData> matchedData = new ArrayList<UserData>();
         for(UserAccount user: matchedUsers){

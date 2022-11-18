@@ -1,4 +1,9 @@
-package entities;
+package matching_system;
+
+import entities.Gender;
+import entities.Hobbies;
+import entities.User;
+import entities.UserAccount;
 
 public class UserData {
     /** this user's name */
@@ -26,6 +31,7 @@ public class UserData {
 
     public UserData(UserAccount userAccount){
         User user = userAccount.getUser();
+        this.name = user.getName();
         this.age = user.getAge();
         this.hobby = user.getHobby();
         this.gender = user.getGender();
