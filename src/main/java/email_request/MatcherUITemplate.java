@@ -1,5 +1,9 @@
 package email_request;
 
+import matching_system.MatchResponseModel;
+import matching_system.MatchUserPanel;
+import matching_system.UserData;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -12,24 +16,20 @@ public class MatcherUITemplate extends JPanel implements ActionListener {
     private String targetUserEmail;
 
     public MatcherUITemplate(MatcherUIController matcherUIController,
-                             String requesterEmail, String targetUserEmail){
+                             String requesterEmail, String targetUserEmail,
+                             MatchResponseModel matchResponseModel){
 
         this.matcherUIController = matcherUIController;
         this.requesterEmail = requesterEmail;
         this.targetUserEmail = targetUserEmail;
 
-        JLabel title = new JLabel("Profile");
-        title.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        JButton requestEmail = new JButton("Request Email");
-
-        JPanel buttons = new JPanel();
-        buttons.add(requestEmail);
-
-        requestEmail.addActionListener(this);
+        for(UserData matchResults: matchResponseModel.getMatchedData()){
+            MatchUserPanel matchUserPanel = new MatchUserPanel(matchResults);
+            this.add(matchUserPanel);
+        }
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        this.add(buttons);
+//        this.add(buttons);
     }
 
     /**
