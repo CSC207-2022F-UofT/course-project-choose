@@ -39,6 +39,6 @@ public class MatchManager implements MatcherInputBoundary{
             matchedData.add(new UserData(user));
         }
         final UserData[] matchedDataArr = matchedData.toArray(UserData[]::new);
-        return new MatchResponseModel(matchedDataArr);
+        return new MatchResponseModel(matchedDataArr, requestModel.getUserEmail());
     }
 }
