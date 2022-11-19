@@ -2,7 +2,7 @@ package matching_system;
 
 import data_access_storage.RequestModel;
 import data_access_storage.UserRepoManager;
-import email_request.MatcherUIOutputBoundary;
+//import email_request.MatcherUIOutputBoundary;
 import entities.Matcher;
 import entities.User;
 import entities.UserAccount;
