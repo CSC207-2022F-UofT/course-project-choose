@@ -180,5 +180,20 @@ public class UserAccount {
     public void incNumOfEmailRequest(){
         this.numOfEmailRequest += 1;
     }
+
+    /**
+     * Check whether this user account can see the email address that is requested.
+     * Female accounts and accounts on subscription can always the see requested email.
+     * Male accounts that are not on subscription but whose number of email requests is
+     * less than or equal to the maximum number of email request can
+     * also see the requested email addresses.
+     * @return true if this user account can see the requested email address, and false otherwise.
+     */
+    public boolean seeRequestedEmail(){
+        boolean cond1 = this.user.getGender().equals(Gender.FEMALE);
+        boolean cond2 = this.numOfEmailRequest <= UserAccount.MAX_REQUEST;
+        return cond1 | cond2 | this.subStatus;
+    }
+
 }
 
