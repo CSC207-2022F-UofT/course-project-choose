@@ -13,6 +13,7 @@ public class UserAccountTest {
     private static UserAccount userAccountA;
     private static UserAccount userAccountB;
 
+
     @BeforeAll
     static void setUp(){
         User userA = new User("Emma", Gender.FEMALE, 18,
@@ -27,7 +28,7 @@ public class UserAccountTest {
        List<String> blockedAccounts = new ArrayList<>();
        userAccountB = new UserAccount("david.david@hotmail.com",
                 "david.david", userB, true, true,
-               0, blockedAccounts,1);
+               0, blockedAccounts,7);
     }
 
     @Test
@@ -88,6 +89,59 @@ public class UserAccountTest {
     @Test
     void testGetUser(){
         assertTrue(userAccountA.getUser().getName().equals("Emma"));
+    }
+
+    @Test
+    void testFreeMaleEmailRequestFailure(){
+        User userC = new User("Jimmy", Gender.MALE, 18,
+                174, "Computer Science", Hobbies.FOOD,
+                "Hello, This is Jimmy", Gender.FEMALE);
+        List<String> blockedAccountsC = new ArrayList<>();
+        UserAccount userAccountC = new UserAccount("jimmy.jimmy@hotmail.com",
+                "jimmy.jimmy", userC, true, false,
+                0, blockedAccountsC,7);
+        assertFalse(userAccountC.seeRequestedEmail());
+    }
+
+    @Test
+    void testFreeMaleEmailRequestSuccess(){
+        User userC = new User("Jimmy", Gender.MALE, 18,
+                174, "Computer Science", Hobbies.FOOD,
+                "Hello, This is Jimmy", Gender.FEMALE);
+        List<String> blockedAccountsC = new ArrayList<>();
+        UserAccount userAccountC = new UserAccount("jimmy.jimmy@hotmail.com",
+                "jimmy.jimmy", userC, true, false,
+                0, blockedAccountsC,5);
+        assertTrue(userAccountC.seeRequestedEmail());
+    }
+
+    @Test
+    void testFemaleRequestEmail(){
+        assertTrue(userAccountA.seeRequestedEmail());
+    }
+
+    @Test
+    void testPaidMaleEmailRequestSuccess(){
+        User userC = new User("Jimmy", Gender.MALE, 18,
+                174, "Computer Science", Hobbies.FOOD,
+                "Hello, This is Jimmy", Gender.FEMALE);
+        List<String> blockedAccountsC = new ArrayList<>();
+        UserAccount userAccountC = new UserAccount("jimmy.jimmy@hotmail.com",
+                "jimmy.jimmy", userC, true, true,
+                0, blockedAccountsC,6);
+        assertTrue(userAccountC.seeRequestedEmail());
+    }
+
+    @Test
+    void testPaidMaleEmailRequestSuccessManyRequests(){
+        User userC = new User("Jimmy", Gender.MALE, 18,
+                174, "Computer Science", Hobbies.FOOD,
+                "Hello, This is Jimmy", Gender.FEMALE);
+        List<String> blockedAccountsC = new ArrayList<>();
+        UserAccount userAccountC = new UserAccount("jimmy.jimmy@hotmail.com",
+                "jimmy.jimmy", userC, true, true,
+                0, blockedAccountsC,100);
+        assertTrue(userAccountC.seeRequestedEmail());
     }
 
 }
