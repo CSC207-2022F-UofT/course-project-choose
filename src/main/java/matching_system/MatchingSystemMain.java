@@ -5,7 +5,6 @@ import data_access_storage.UserRepoManager;
 import email_request.*;
 
 import javax.swing.*;
-import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
@@ -25,7 +24,7 @@ public class MatchingSystemMain {
         }
         MatchRequestModel matchRequestModel = new MatchRequestModel("a@mail.utoronto.ca");
         MatchOutputBoundary presenter = new MatchUIPresenter();
-        MatchManager matchManager = new MatchManager(matchRequestModel, users);
+        MatchManager matchManager = new MatchManager(presenter,matchRequestModel, users);
         MatcherUIOutputBoundary presenter1 = new MatcherUIPresenter();
 //        UserData[] results = matchManager.create(matchRequestModel).getMatchedData();
 //        for (UserData result: results){

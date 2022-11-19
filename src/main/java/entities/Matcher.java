@@ -1,24 +1,29 @@
 package entities;
 
-import data_access_storage.UserRepo;
-import data_access_storage.UserRepoManager;
-import email_request.*;
-import matching_system.*;
-
-import javax.swing.*;
-import java.io.File;
-import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Matcher {
-//    private HashMap<User, Integer> matchResults = new HashMap<User, Integer>();
     /** The matched result, arranged by matching score from high to low */
     private final UserAccount[] matches;
 
     public Matcher(UserAccount matchee, ArrayList<UserAccount> targets){
         this.matches = match(matchee,targets);
+    }
+
+    public int getScore(User matchUser, User targetUser){
+        int score = 0;
+        if(targetUser.getGender().equals(matchUser.getInterestedIn())&&
+                matchUser.getGender().equals(targetUser.getInterestedIn())){
+            score +=1;
+            if(targetUser.getHobby().equals(matchUser.getHobby())){
+                score +=1;
+            }
+            if(targetUser.getProgramOfStudy().equals(matchUser.getProgramOfStudy())){
+                score+=1;
+            }
+        }
+        return score;
     }
 
     public UserAccount[] getMatches() {
@@ -32,28 +37,21 @@ public class Matcher {
         HashMap<UserAccount, Integer> matchResults = new HashMap<UserAccount, Integer>();
         User matchUser = matchee.getUser();
         for(UserAccount target :targets){
-            User targetUser = target.getUser();
-            int score = 0;
-            if(targetUser.getGender().equals(matchUser.getInterestedIn())&&
-                    matchUser.getGender().equals(targetUser.getInterestedIn())){
-                score +=1;
-                if(targetUser.getHobby().equals(matchUser.getHobby())){
-                    score +=1;
-                }
-                if(targetUser.getProgramOfStudy().equals(matchUser.getProgramOfStudy())){
-                    score+=1;
-                }
+            if(target.getEmail().equals(matchee.getEmail())){
+                continue;
             }
+            User targetUser = target.getUser();
+            int score = getScore(matchUser,targetUser);
             System.out.println(target.getUser().getName() + score);
             matchResults.put(target,score);
         };
-        return sortByScore(matchResults,5);
+        return sortByScore(matchResults);
     }
 
     /** Helper method to sort an Arraylist according to score
      * @return Sorted ArrayList
      */
-    private UserAccount[] sortByScore(HashMap<UserAccount,Integer> matchResults, int len){
+    private UserAccount[] sortByScore(HashMap<UserAccount,Integer> matchResults){
         ArrayList<UserAccount> matches = new ArrayList<UserAccount>();
         for(UserAccount key :matchResults.keySet()){
             if(matches.size() == 0){
@@ -72,33 +70,15 @@ public class Matcher {
                 }
             }
         }
-        if(matches.size()<=len){
+        if(matches.size()<=5){
             UserAccount[] toReturn = new UserAccount[matches.size()];
             toReturn = matches.toArray(toReturn);
             return toReturn;
         }
         else{
-            UserAccount[] toReturn = new UserAccount[len];
-            toReturn = matches.subList(0,len).toArray(toReturn);
+            UserAccount[] toReturn = new UserAccount[5];
+            toReturn = matches.subList(0,5).toArray(toReturn);
             return toReturn;
         }
-    }
-    public static void main(String[] args) {
-
-        UserRepoManager users;
-        try{
-            File csvFile = new File("src/main/resources/matchingSystemTest.csv");
-            users = new UserRepo(csvFile);
-        }catch (IOException e) {
-            throw new RuntimeException("Could not create file.");
-        }
-        MatchRequestModel matchRequestModel = new MatchRequestModel("a@mail.utoronto.ca");
-        MatchOutputBoundary presenter = new MatchUIPresenter();
-        MatchManager matchManager = new MatchManager(matchRequestModel, users);
-        UserData[] results = matchManager.create(matchRequestModel).getMatchedData();
-        for (UserData result: results){
-            System.out.println(result.name);
-        }
-//        System.out.println(results);
     }
 }
