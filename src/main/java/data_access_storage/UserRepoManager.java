@@ -1,9 +1,9 @@
 package data_access_storage;
 import java.util.Map;
-// use case layer
 
 /**
  * This class decides how to interact with the database.
+ * Layer:  use case
  */
 public interface UserRepoManager {
 
