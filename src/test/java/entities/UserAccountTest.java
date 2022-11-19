@@ -3,6 +3,7 @@ package entities;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -23,8 +24,10 @@ public class UserAccountTest {
         User userB = new User("David", Gender.MALE, 18,
                 174, "Computer Science", Hobbies.FOOD,
                 "Hello, This is Emma", Gender.FEMALE);
+       List<String> blockedAccounts = new ArrayList<>();
        userAccountB = new UserAccount("david.david@hotmail.com",
-                "david.david", userB);
+                "david.david", userB, true, true,
+               0, blockedAccounts,1);
     }
 
     @Test
