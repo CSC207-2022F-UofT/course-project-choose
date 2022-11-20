@@ -25,6 +25,7 @@ public class MatchingSystemMain {
         MatchRequestModel matchRequestModel = new MatchRequestModel("a@mail.utoronto.ca");
         MatchOutputBoundary presenter = new MatchUIPresenter();
         MatchManager matchManager = new MatchManager(presenter,matchRequestModel, users);
+        matchManager.create(matchRequestModel);
         MatcherUIOutputBoundary presenter1 = new MatcherUIPresenter();
 //        UserData[] results = matchManager.create(matchRequestModel).getMatchedData();
 //        for (UserData result: results){
@@ -35,7 +36,7 @@ public class MatchingSystemMain {
         MatcherUIController matcherUIController = new MatcherUIController(interactor);
 
         MatcherUITemplate matcherUiTemplate = new MatcherUITemplate(matcherUIController, "david.david@hotmail.com",
-                "emma.emma@mail.utoronto.ca", matchManager.create(matchRequestModel));
+                "emma.emma@mail.utoronto.ca",presenter);
         application.add(matcherUiTemplate);
 //        application.setLayout(new BoxLayout(application, BoxLayout.Y_AXIS));
         application.pack();

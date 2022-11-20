@@ -3,5 +3,6 @@ package matching_system;
 import email_request.MatcherUIResponseModel;
 
 public interface MatchOutputBoundary {
-    MatchResponseModel prepareView(MatchResponseModel matchResponseModel);
+    void setMatchResponseModel(MatchResponseModel matchResponseModel);
+    MatchResponseModel prepareView();
 }
