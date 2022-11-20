@@ -8,10 +8,10 @@ With the aid of this dating app, single University of Toronto students can conne
 This project implements the following 7 features. The code of each feature is wrapped within a same package. 
 - [1] Login.
 - [2] Registration.
-- [3] App offers users match recommendations (package matching_system).
+- [3] App offers users match recommendations (*package matching_system*).
 - [4] A search feature where users can use the app to find people based on search criteria such as age and academic specializations.
 - [5] Allows users to report or block other users. 
-- [6] In order for users to make connections, users can request other users' email address via app (package email_request). 
+- [6] In order for users to make connections, users can request other users' email address via app (*package email_request*). 
 - [7] Users can upgrade their account by subscribing to be a paid user. A paid user can request unlimited number of email addresses. 
 
 ## Members and Responsilities  
