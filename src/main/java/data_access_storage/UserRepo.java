@@ -43,6 +43,7 @@ public class UserRepo implements UserRepoManager {
         headers.put("hobby", 12);
         headers.put("selfIntro", 13);
         headers.put("interestedIn", 14);
+        headers.put("reported", 15);
 
         if(csvFile.length() == 0){
             save();
@@ -73,10 +74,12 @@ public class UserRepo implements UserRepoManager {
                 Hobbies hobbies = Hobbies.valueOf(col[headers.get("hobby")]);
                 Gender interestedIn = Gender.valueOf(col[headers.get("interestedIn")]);
                 String selfIntro = String.valueOf(col[headers.get("selfIntro")]);
+                int reported = Integer.valueOf(col[headers.get("reported")]);
                 User user = new User(name, gender, age, height, programOfStudy, hobbies,
                         selfIntro, interestedIn);
                 UserAccount userAccount = new UserAccount(email, password, user,validEmail,
                         subStatus,numOfReport,blockedAccounts,numOfEmailRequest);
+                userAccount.setReported(reported);
                 RequestModel requestModel = new RequestModel(userAccount);
 
                 // save data in accounts
@@ -183,7 +186,8 @@ public class UserRepo implements UserRepoManager {
                         String.valueOf(user.getAge()), String.valueOf(user.getHeight()),
                         user.getProgramOfStudy(), String.valueOf(user.getHobby()),
                         String.valueOf(user.getSelfIntro()),
-                        String.valueOf(user.getInterestedIn()));
+                        String.valueOf(user.getInterestedIn()),
+                        String.valueOf(userAccount.getReported()));
                 writer.write(line);
                 writer.newLine();
             }
