@@ -1,9 +1,11 @@
 # Project: Dating App 
 
-Our project domain is in dating apps, which we design specifically for UofT students. The purpose of our online dating app is giving UofT students access to more friends than they would meet in offline social circles. With the aid of this dating app, single University of Toronto students can connect with others in deeper ways. A confirmed official U of T email address is required for users to create personal profiles. Based on the user's registration data, this app offers match recommendations. Users can also use the app to find people based on search criteria such as age and academic specializations. Email contact information of each user is provided in the app for other users to make connections and grow relationships externally. Additional features include blocking or reporting users with inappropriate behaviors. 
+Our project domain is in dating apps, which we design specifically for UofT students. The purpose of our online dating app is giving UofT students access to more friends than they would meet in offline social circles. 
 
-## Members
-- [ ] Yanling Cai
+With the aid of this dating app, single University of Toronto students can connect with others in deeper ways. A confirmed official U of T email address is required for users to create personal profiles. Based on the user's registration data, this app offers match recommendations. Users can also use the app to find people based on search criteria such as age and academic specializations. Email contact information of each user is provided in the app for other users to make connections and grow relationships externally. Additional features include blocking or reporting users with inappropriate behaviors. 
+
+## Members and Responsilities  
+- [ ] Yanling Cai: Implement entities package including User and UserAccount classes; implement the email request feature that allows a user to request other users' email address (pacakge email_request); implement a data access system that allows the program to save information and load the information later (package data_access_storage).
 - [ ] James Wang
 - [ ] Qianyu Fan
 - [ ] Chao Ma
@@ -19,9 +21,7 @@ Our project domain is in dating apps, which we design specifically for UofT stud
 - [ ] Use pull requests to merge finished features into main branch
 - [ ] Conduct code reviews
 
-**If your team has trouble with any of these steps, please ask on Piazza. For example, with how GitHub Classroom works, your team *may* not have permissions to do some of the first few steps, in which case we'll post alternative instructions as needed.**
-
-## Workflow Documents
+## How to Run Our Program 
 
 * Github Workflow: Please refer to the workflow that was introduced in the first lab. You should follow this when working on your code. The following document provides additional details too.
 
