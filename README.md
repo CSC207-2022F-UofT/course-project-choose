@@ -2,6 +2,15 @@
 
 Our project domain is in dating apps, which we design specifically for UofT students. The purpose of our online dating app is giving UofT students access to more friends than they would meet in offline social circles. With the aid of this dating app, single University of Toronto students can connect with others in deeper ways. A confirmed official U of T email address is required for users to create personal profiles. Based on the user's registration data, this app offers match recommendations. Users can also use the app to find people based on search criteria such as age and academic specializations. Email contact information of each user is provided in the app for other users to make connections and grow relationships externally. Additional features include blocking or reporting users with inappropriate behaviors. 
 
+## Members
+- [ ] Yanling Cai
+- [ ] James Wang
+- [ ] Qianyu Fan
+- [ ] Chao Ma
+- [ ] Shuhao Lin
+- [ ] Aria Hu
+- [ ] Nathan Zhu
+
 ## Features
 - [ ] Verify the correct settings for your project repository
 - [ ] Set up Github Projects
