@@ -5,12 +5,13 @@ Our project domain is in dating apps, which we design specifically for UofT stud
 With the aid of this dating app, single University of Toronto students can connect with others in deeper ways. A confirmed official U of T email address is required for users to create personal profiles. Based on the user's registration data, this app offers match recommendations. Users can also use the app to find people based on search criteria such as age and academic specializations. Email contact information of each user is provided in the app for other users to make connections and grow relationships externally. Additional features include blocking or reporting users with inappropriate behaviors. 
 
 ## Features
+This project implements the following 7 features. The code of each feature is wrapped within a same package. 
 - [1] Login.
 - [2] Registration.
-- [3] App offers users match recommendations.
+- [3] App offers users match recommendations (package matching_system).
 - [4] A search feature where users can use the app to find people based on search criteria such as age and academic specializations.
 - [5] Allows users to report or block other users. 
-- [6] In order for users to make connections, users can request other users' email address via app. 
+- [6] In order for users to make connections, users can request other users' email address via app (package email_request). 
 - [7] Users can upgrade their account by subscribing to be a paid user. A paid user can request unlimited number of email addresses. 
 
 ## Members and Responsilities  
