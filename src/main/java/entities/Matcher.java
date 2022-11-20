@@ -1,8 +1,12 @@
 package entities;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 
+// TODO: 2022/11/20 Filter with block list 
+// TODO: 2022/11/20 add randomization
 public class Matcher {
     /** The matched result, arranged by matching score from high to low */
     private final UserAccount[] matches;
@@ -11,6 +15,9 @@ public class Matcher {
         this.matches = match(matchee,targets);
     }
 
+    /** A helper method to get matching score between matchUser and targetUser
+     @return An int value score
+     */
     public int getScore(User matchUser, User targetUser){
         int score = 0;
         if(targetUser.getGender().equals(matchUser.getInterestedIn())&&
@@ -34,16 +41,20 @@ public class Matcher {
       @return Array that stores matched results in form of UserData, sorted by score from high to low
      */
     private UserAccount[] match(UserAccount matchee, ArrayList<UserAccount> targets){
-        HashMap<UserAccount, Integer> matchResults = new HashMap<UserAccount, Integer>();
+        HashMap<Integer, ArrayList<UserAccount>> matchResults = new HashMap<Integer, ArrayList<UserAccount>>();
+        for(int i =0;i<4;i++){
+            matchResults.put(i,new ArrayList<>());
+        }
         User matchUser = matchee.getUser();
         for(UserAccount target :targets){
-            if(target.getEmail().equals(matchee.getEmail())){
+            if(target.getEmail().equals(matchee.getEmail())
+                    || matchee.getBlockedAccounts().contains(target.getEmail())){
                 continue;
             }
             User targetUser = target.getUser();
             int score = getScore(matchUser,targetUser);
             System.out.println(target.getUser().getName() + score);
-            matchResults.put(target,score);
+            matchResults.get(score).add(target);
         };
         return sortByScore(matchResults);
     }
@@ -51,34 +62,14 @@ public class Matcher {
     /** Helper method to sort an Arraylist according to score
      * @return Sorted Array
      */
-    private UserAccount[] sortByScore(HashMap<UserAccount,Integer> matchResults){
+    private UserAccount[] sortByScore(HashMap<Integer, ArrayList<UserAccount>> matchResults){
         ArrayList<UserAccount> matches = new ArrayList<UserAccount>();
-        for(UserAccount key :matchResults.keySet()){
-            if(matches.size() == 0){
-                matches.add(key);
-            } else{
-                boolean added = false;
-                for(int i =0; i<matches.size();i++){
-                    if(matchResults.get(key)>matchResults.get(matches.get(i))){
-                        matches.add(i,key);
-                        added = true;
-                        break;
-                    }
-                }
-                if(!added) {
-                    matches.add(key);
-                }
-            }
+        for(int i =3;i>=0;i--){
+            Collections.shuffle(matchResults.get(i));
+            matches.addAll(matchResults.get(i));
         }
-        if(matches.size()<=5){
-            UserAccount[] toReturn = new UserAccount[matches.size()];
-            toReturn = matches.toArray(toReturn);
-            return toReturn;
-        }
-        else{
-            UserAccount[] toReturn = new UserAccount[5];
-            toReturn = matches.subList(0,5).toArray(toReturn);
-            return toReturn;
-        }
+        UserAccount[] toReturn = new UserAccount[5];
+        toReturn = matches.subList(0,5).toArray(toReturn);
+        return toReturn;
     }
 }
