@@ -99,6 +99,18 @@ public class UserRepo implements UserRepoManager {
     }
 
     /**
+     * Check whether a user's password matches its recorded password
+     * @param email user's email address
+     * @param password user's input password
+     * @return return true if a user input correct password that matches its password record, and false otherwise.
+     */
+    @Override
+    public Boolean matchingPassword(String email, String password) {
+        String record_password = accounts.get(email).toString();
+        return password.equals(record_password);
+    }
+
+    /**
      * Delete user data
      * Call this method only if requestModel exists in our data.
      * @param requestModel the user data to be deleted.
