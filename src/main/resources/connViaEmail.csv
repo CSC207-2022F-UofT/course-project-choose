@@ -1,3 +1,3 @@
-email,password,validEmail,subStatus,numOfReport,blockedAccounts,numOfEmailRequest,name,gender,age,height,programOfStudy,hobby,selfIntro,interestedIn
-emma.emma@mail.utoronto.ca,helloToEmma,false,false,0,,0,Emma,FEMALE,9,10.0,Computer Science,FOOD," Hello, This is Emma ",MALE
-david.david@hotmail.com,david.david,false,false,0,,3,David,MALE,9,10.0,Computer Science,FOOD,"Hello, This is David ",FEMALE
+email,password,validEmail,subStatus,numOfReport,blockedAccounts,numOfEmailRequest,name,gender,age,height,programOfStudy,hobby,selfIntro,interestedIn,reported
+emma.emma@mail.utoronto.ca,helloToEmma,false,false,0,,0,Emma,FEMALE,9,10.0,Computer Science,FOOD," Hello, This is Emma ",MALE,0
+david.david@hotmail.com,david.david,false,false,0,,3,David,MALE,9,10.0,Computer Science,FOOD,"Hello, This is David ",FEMALE,1
