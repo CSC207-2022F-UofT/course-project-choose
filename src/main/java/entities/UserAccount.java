@@ -43,6 +43,16 @@ public class UserAccount {
      */
     public static final int MAX_REQUEST = 5;
 
+    public int reported = 0;
+
+    public int getReported() {
+        return reported;
+    }
+
+    public void setReported(int reported) {
+        this.reported = reported;
+    }
+
     /**
      * Create a user account.
      * @param email login username, also is the account holder's email address.
