@@ -1,15 +1,15 @@
 package data_access_storage;
 
-import email_request.RequestModel;
 import entities.Gender;
 import entities.Hobbies;
 import entities.User;
 import entities.UserAccount;
-
-
 import java.io.*;
 import java.util.*;
 
+/**
+ * This class provides data access.
+ */
 public class UserRepo implements UserRepoManager {
 
     /** This is our data storage where our data is saved to a csv file. */
@@ -21,6 +21,11 @@ public class UserRepo implements UserRepoManager {
     /** data */
     private final Map<String, RequestModel> accounts = new HashMap<>();
 
+    /**
+     * Create UserRepo for Data Access.
+     * @param csvFile:  the csv file where data are stored.
+     * @throws IOException
+     */
     public UserRepo(File csvFile) throws IOException {
         this.csvFile = csvFile;
         headers.put("email", 0);
@@ -47,28 +52,34 @@ public class UserRepo implements UserRepoManager {
 
             String row;
             while ((row = reader.readLine()) != null) {
+                // split the row by , but ignore the commas in any double quotes.
                 String[] col = row.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
+
+                // retrieve all fields
                 String email = String.valueOf(col[headers.get("email")]);
                 String password = String.valueOf(col[headers.get("password")]);
-                boolean validEmail =  Boolean. parseBoolean(String.valueOf(col[headers.get("validEmail")]));
-                boolean subStatus =  Boolean. parseBoolean(String.valueOf(col[headers.get("subStatus")]));
-                int numOfReport = Integer.valueOf(headers.get("numOfReport"));
+                boolean validEmail =  Boolean.parseBoolean(col[headers.get("validEmail")]);
+                boolean subStatus =  Boolean.parseBoolean(col[headers.get("subStatus")]);
+                int numOfReport = Integer.valueOf(col[headers.get("numOfReport")]);
                 String blockedAccountsString = String.valueOf(col[headers.get("blockedAccounts")]);
                 List<String> blockedAccounts = new ArrayList<String>(
                         Arrays.asList(blockedAccountsString.split("\\|")));
-                int numOfEmailRequest = Integer.valueOf(headers.get("numOfEmailRequest"));
+                int numOfEmailRequest = Integer.valueOf(col[headers.get("numOfEmailRequest")]);
                 String name = String.valueOf(col[headers.get("name")]);
                 Gender gender = Gender.valueOf(col[headers.get("gender")]);
-                int age = Integer.valueOf(headers.get("age"));
-                float height = Float.parseFloat(String.valueOf(headers.get("height")));
+                int age = Integer.valueOf(col[headers.get("age")]);
+                float height = Float.parseFloat(col[headers.get("height")]);
                 String programOfStudy = String.valueOf(col[headers.get("programOfStudy")]);
                 Hobbies hobbies = Hobbies.valueOf(col[headers.get("hobby")]);
                 Gender interestedIn = Gender.valueOf(col[headers.get("interestedIn")]);
                 String selfIntro = String.valueOf(col[headers.get("selfIntro")]);
                 User user = new User(name, gender, age, height, programOfStudy, hobbies,
-                         selfIntro, interestedIn);
-                UserAccount userAccount = new UserAccount(name, email, user);
+                        selfIntro, interestedIn);
+                UserAccount userAccount = new UserAccount(email, password, user,validEmail,
+                        subStatus,numOfReport,blockedAccounts,numOfEmailRequest);
                 RequestModel requestModel = new RequestModel(userAccount);
+
+                // save data in accounts
                 accounts.put(email, requestModel);
             }
 
@@ -77,33 +88,80 @@ public class UserRepo implements UserRepoManager {
 
     }
 
+    /**
+     * Check whether a user with an email address email already exists.
+     * @param email user's email address
+     * @return return true if a user already exists with the email address email, and false otherwise.
+     */
     @Override
     public boolean existsByEmail(String email) {
         return accounts.containsKey(email);
     }
 
+    /**
+     * Delete user data
+     * Call this method only if requestModel exists in our data.
+     * @param requestModel the user data to be deleted.
+     */
     @Override
     public void delete(RequestModel requestModel) {
-        accounts.remove(requestModel.getUserAccount().getEmail());
+        this.delete(requestModel.getUserAccount().getEmail());
+    }
+
+    /**
+     * Delete user data whose user email address is email.
+     * Call this method only if requestModel exists in our data.
+     * @param email the email address of the user data to be deleted.
+     */
+    public void delete(String email){
+        accounts.remove(email);
         this.save();
     }
 
+    /**
+     * Save user data
+     * @param requestModel the user data to be saved.
+     */
     @Override
     public void save(RequestModel requestModel) {
         accounts.put(requestModel.getUserAccount().getEmail(), requestModel);
         this.save();
     }
 
+    /**
+     * Update user data whose email address is email.
+     * @param email the email address of the user whose account will be updated.
+     * @param requestModel update user data to be requestModel
+     */
+    @Override
+    public void update(String email, RequestModel requestModel) {
+        this.delete(email);
+        this.save(requestModel);
+    }
+
+    /**
+     * Return user data whose email address is email
+     * Call this method only if a user exists with the email address email
+     * @param email the email address of a user
+     * @return return the user data whose email address is email.
+     */
     @Override
     public RequestModel getUserAccount(String email) {
         return accounts.get(email);
     }
 
+    /**
+     * Get all users' account information
+     * @return all users' account information
+     */
     @Override
     public Map<String, RequestModel> getAllUserAccount() {
         return accounts;
     }
 
+    /**
+     * Save data to a csv file for data storage.
+     */
     private void save() {
         BufferedWriter writer;
         try {
@@ -136,8 +194,5 @@ public class UserRepo implements UserRepoManager {
             throw new RuntimeException(e);
         }
     }
-
-
-
-
 }
+
