@@ -5,7 +5,10 @@ Our project domain is in dating apps, which we design specifically for UofT stud
 With the aid of this dating app, single University of Toronto students can connect with others in deeper ways. A confirmed official U of T email address is required for users to create personal profiles. Based on the user's registration data, this app offers match recommendations. Users can also use the app to find people based on search criteria such as age and academic specializations. Email contact information of each user is provided in the app for other users to make connections and grow relationships externally. Additional features include blocking or reporting users with inappropriate behaviors. 
 
 ## Members and Responsilities  
-- [ ] Yanling Cai: Implement entities package including User and UserAccount classes; implement the email request feature that allows a user to request other users' email address (pacakge email_request); implement a data access system that allows the program to save information and load the information later (package data_access_storage).
+- [ ] Yanling Cai: 
+  * Implement entities package including User and UserAccount classes.
+  * Implement the email request feature that allows a user to request other users' email address (pacakge email_request). 
+  * Implement a data access system that allows the program to save information and load the information later (package data_access_storage).
 - [ ] James Wang
 - [ ] Qianyu Fan
 - [ ] Chao Ma
