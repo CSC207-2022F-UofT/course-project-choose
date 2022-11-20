@@ -46,7 +46,6 @@ public class MatcherUIInteractor implements MatcherUIInputBoundary {
         // whether the number of email requests is less than or equal to the maximum number of requests.
         boolean underMaxRequest = userAccount.getUserAccount().getNumOfEmailRequest() <= UserAccount.MAX_REQUEST;
 
-
         String requestedEmail = "";
         // if the user is a paid user or
         // the number of email requests is less than or equal to the maximum number of requests,
