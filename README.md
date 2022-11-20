@@ -23,6 +23,8 @@ This project implements the following 7 features. The code of each feature is wr
 - [ ] Qianyu Fan
 - [ ] Chao Ma
 - [ ] Shuhao Lin
+  * Implement the login feature that allows a user to login.
+  * Implement HomePageUI
 - [ ] Aria Hu
 - [ ] Nathan Zhu
 
