@@ -34,8 +34,9 @@ public class MatchingSystemMain {
         MatcherUIInputBoundary interactor = new MatcherUIInteractor(presenter1, users);
         MatcherUIController matcherUIController = new MatcherUIController(interactor);
 
-        MatcherUITemplate matcherUiTemplate = new MatcherUITemplate(matcherUIController, "david.david@hotmail.com",
-                "emma.emma@mail.utoronto.ca", matchManager.create(matchRequestModel));
+        MatcherUITemplateJames matcherUiTemplate = new MatcherUITemplateJames(matcherUIController,
+                "j@mail.utoronto.ca",
+                matchManager.create(matchRequestModel));
         application.add(matcherUiTemplate);
 //        application.setLayout(new BoxLayout(application, BoxLayout.Y_AXIS));
         application.pack();

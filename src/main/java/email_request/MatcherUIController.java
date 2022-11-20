@@ -24,7 +24,7 @@ public class MatcherUIController {
      * @param targetUserEmail the email address of the user whose email address is requested.
      * @return a data model for showing the requested email or empty string.
      */
-    MatcherUIResponseModel create(String requesterEmail, String targetUserEmail){
+    public MatcherUIResponseModel create(String requesterEmail, String targetUserEmail){
         MatcherUIRequestModel matcherUIRequestModel = new MatcherUIRequestModel(requesterEmail, targetUserEmail);
         return userInput.create(matcherUIRequestModel);
     }
