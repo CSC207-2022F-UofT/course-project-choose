@@ -31,7 +31,7 @@ public class Matcher {
     }
 
     /** get matched results in a list
-      @return ArrayList that stores matched results, sorted by score from high to low
+      @return Array that stores matched results in form of UserData, sorted by score from high to low
      */
     private UserAccount[] match(UserAccount matchee, ArrayList<UserAccount> targets){
         HashMap<UserAccount, Integer> matchResults = new HashMap<UserAccount, Integer>();
