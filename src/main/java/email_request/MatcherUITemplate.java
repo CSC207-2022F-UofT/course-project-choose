@@ -1,7 +1,5 @@
 package email_request;
 
-import matching_system.*;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -14,20 +12,24 @@ public class MatcherUITemplate extends JPanel implements ActionListener {
     private String targetUserEmail;
 
     public MatcherUITemplate(MatcherUIController matcherUIController,
-                             String requesterEmail, String targetUserEmail,
-                             MatchOutputBoundary matchUIPresenter){
+                             String requesterEmail, String targetUserEmail){
 
         this.matcherUIController = matcherUIController;
         this.requesterEmail = requesterEmail;
         this.targetUserEmail = targetUserEmail;
 
-        for(UserData matchResults: matchUIPresenter.prepareView().getMatchedData()){
-            MatchUserPanel matchUserPanel = new MatchUserPanel(matchResults);
-            this.add(matchUserPanel);
-        }
+        JLabel title = new JLabel("Profile");
+        title.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        JButton requestEmail = new JButton("Request Email");
+
+        JPanel buttons = new JPanel();
+        buttons.add(requestEmail);
+
+        requestEmail.addActionListener(this);
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-//        this.add(buttons);
+        this.add(buttons);
     }
 
     /**
@@ -40,7 +42,7 @@ public class MatcherUITemplate extends JPanel implements ActionListener {
         MatcherUIPresenter rp = new MatcherUIPresenter();
         MatcherUIResponseModel prepareView = rp.prepareView(rm);
 
-        if(prepareView.getRequestedEmailAddress() != ""){
+        if(!prepareView.getRequestedEmailAddress().equals("")){
             JOptionPane.showMessageDialog(this,
                     "The requested email address is " + prepareView.getRequestedEmailAddress());
         }else{
