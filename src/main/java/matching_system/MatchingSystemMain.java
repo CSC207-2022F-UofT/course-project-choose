@@ -12,8 +12,7 @@ public class MatchingSystemMain {
     public static void main(String[] args) {
 
         // Build the main program window
-        JFrame application = new JFrame("View a user's profile page");
-
+        JFrame application = new JFrame("Matching results");
 
         UserRepoManager users;
         try{
@@ -25,12 +24,9 @@ public class MatchingSystemMain {
         MatchRequestModel matchRequestModel = new MatchRequestModel("a@mail.utoronto.ca");
         MatchOutputBoundary presenter = new MatchUIPresenter();
         MatchManager matchManager = new MatchManager(presenter,matchRequestModel, users);
+
+        // create Controller
         MatcherUIOutputBoundary presenter1 = new MatcherUIPresenter();
-//        UserData[] results = matchManager.create(matchRequestModel).getMatchedData();
-//        for (UserData result: results){
-//            System.out.println(result.name);
-//        }
-//        System.out.println(results);
         MatcherUIInputBoundary interactor = new MatcherUIInteractor(presenter1, users);
         MatcherUIController matcherUIController = new MatcherUIController(interactor);
 
@@ -38,7 +34,6 @@ public class MatchingSystemMain {
                 "j@mail.utoronto.ca",
                 matchManager.create(matchRequestModel));
         application.add(matcherUiTemplate);
-//        application.setLayout(new BoxLayout(application, BoxLayout.Y_AXIS));
         application.pack();
         application.setVisible(true);
     }
