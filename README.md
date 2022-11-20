@@ -7,11 +7,11 @@ With the aid of this dating app, single University of Toronto students can conne
 ## Features
 - [1] Login.
 - [2] Registration.
-- [ ] App offers users match recommendations.
-- [ ] A search feature where users can use the app to find people based on search criteria such as age and academic specializations.
-- [ ] Allows users to report or block other users. 
-- [ ] In order for users to make connections, users can request other users' email address via app. 
-- [ ] Users can upgrade their account by subscribing to be a paid user. A paid user can request unlimited number of email addresses. 
+- [3] App offers users match recommendations.
+- [4] A search feature where users can use the app to find people based on search criteria such as age and academic specializations.
+- [5] Allows users to report or block other users. 
+- [6] In order for users to make connections, users can request other users' email address via app. 
+- [7] Users can upgrade their account by subscribing to be a paid user. A paid user can request unlimited number of email addresses. 
 
 ## Members and Responsilities  
 - [ ] Yanling Cai: 
