@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class MatchingSystemMain {
+    /** A example of how matched result will be shown */
     public static void main(String[] args) {
 
         // Build the main program window

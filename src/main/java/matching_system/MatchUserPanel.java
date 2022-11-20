@@ -9,6 +9,10 @@ import java.awt.*;
 public class MatchUserPanel extends JPanel {
     MatcherUIController matcherUIController;
 
+    /**
+     * Create a Panel present information stored in the UserData user.
+     * @param user the data stored that we would like to show
+     */
     public MatchUserPanel(UserData user){
 
 //        this.matcherUIController = matcherUIController;

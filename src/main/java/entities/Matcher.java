@@ -49,7 +49,7 @@ public class Matcher {
     }
 
     /** Helper method to sort an Arraylist according to score
-     * @return Sorted ArrayList
+     * @return Sorted Array
      */
     private UserAccount[] sortByScore(HashMap<UserAccount,Integer> matchResults){
         ArrayList<UserAccount> matches = new ArrayList<UserAccount>();
