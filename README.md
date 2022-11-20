@@ -4,6 +4,15 @@ Our project domain is in dating apps, which we design specifically for UofT stud
 
 With the aid of this dating app, single University of Toronto students can connect with others in deeper ways. A confirmed official U of T email address is required for users to create personal profiles. Based on the user's registration data, this app offers match recommendations. Users can also use the app to find people based on search criteria such as age and academic specializations. Email contact information of each user is provided in the app for other users to make connections and grow relationships externally. Additional features include blocking or reporting users with inappropriate behaviors. 
 
+## Features
+- [1] Login.
+- [2] Registration.
+- [ ] App offers users match recommendations.
+- [ ] A search feature where users can use the app to find people based on search criteria such as age and academic specializations.
+- [ ] Allows users to report or block other users. 
+- [ ] In order for users to make connections, users can request other users' email address via app. 
+- [ ] Users can upgrade their account by subscribing to be a paid user. A paid user can request unlimited number of email addresses. 
+
 ## Members and Responsilities  
 - [ ] Yanling Cai: 
   * Implement entities package including User and UserAccount classes.
@@ -16,13 +25,7 @@ With the aid of this dating app, single University of Toronto students can conne
 - [ ] Aria Hu
 - [ ] Nathan Zhu
 
-## Features
-- [ ] Verify the correct settings for your project repository
-- [ ] Set up Github Projects
-- [ ] Create the implementation plan using issues and Github Projects
-- [ ] Create deveopment branches for your features
-- [ ] Use pull requests to merge finished features into main branch
-- [ ] Conduct code reviews
+ 
 
 ## How to Run Our Program 
 
