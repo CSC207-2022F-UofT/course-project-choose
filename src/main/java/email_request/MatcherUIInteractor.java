@@ -3,7 +3,6 @@ package email_request;
 
 import data_access_storage.RequestModel;
 import data_access_storage.UserRepoManager;
-import entities.UserAccount;
 
 /**
  * This class is responsible to take the inputs/request from users, interact with
@@ -41,17 +40,11 @@ public class MatcherUIInteractor implements MatcherUIInputBoundary {
 
         // get information from database in order to determine whether the requested email can be shown.
         RequestModel userAccount = this.userRepoManager.getUserAccount(requestModel.getRequester());
-        // whether is a paid user
-        boolean isAPaidUser = userAccount.getUserAccount().getSubStatus();
-        // whether the number of email requests is less than or equal to the maximum number of requests.
-        boolean underMaxRequest = userAccount.getUserAccount().getNumOfEmailRequest() <= UserAccount.MAX_REQUEST;
-
 
         String requestedEmail = "";
-        // if the user is a paid user or
-        // the number of email requests is less than or equal to the maximum number of requests,
-        // update requestedEmail to the requested email address.
-        if(isAPaidUser | underMaxRequest){
+        // If the user can see the requested email address, update requestedEmail to be the
+        // requested email address.
+        if( userAccount.getUserAccount().seeRequestedEmail()){
             requestedEmail = requestModel.getTargetUser();
             // increase the number of email request by 1.
             userAccount.getUserAccount().incNumOfEmailRequest();
@@ -64,3 +57,4 @@ public class MatcherUIInteractor implements MatcherUIInputBoundary {
         return matcherUIOutputBoundary.prepareView(matcherUIResponseModel);
     }
 }
+
