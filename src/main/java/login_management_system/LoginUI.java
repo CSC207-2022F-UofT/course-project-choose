@@ -54,7 +54,8 @@ public class LoginUI extends JFrame {
                     JOptionPane.showMessageDialog(null,"Login Successfully");
                     // If with no Exception, should direct to HomePageUI (have username as input)
                     dispose();
-                    new HomePageUI().setVisible(true);
+                    // HomePageUI
+                    // new HomePageUI().setVisible(true);
                 } catch (LoginFailedException ex){
                     JOptionPane.showMessageDialog(null, ex.getmessage());
                 }
