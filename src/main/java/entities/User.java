@@ -30,7 +30,7 @@ public class User {
     private Gender interestedIn;
 
     public User(String name, Gender gender, int age,
-                int height, String programOfStudy,
+                float height, String programOfStudy,
                 Hobbies hobby, String selfIntro, Gender interestedIn) {
         this.name = name;
         this.gender = gender;
@@ -106,3 +106,4 @@ public class User {
         return interestedIn;
     }
 }
+

@@ -1,20 +1,34 @@
-# Project Template
+# Project: Dating App 
 
-This is a template repository for CSC 207 projects. 
-This repository contains starter code for a gradle project.
-It also contains workflow documents that give instructions on how to manage your Github repository and how to use Github Projects for efficient collaboration.
+Our project domain is in dating apps, which we design specifically for UofT students. The purpose of our online dating app is giving UofT students access to more friends than they would meet in offline social circles. 
 
-## Checklist For Your Project
-- [ ] Verify the correct settings for your project repository
-- [ ] Set up Github Projects
-- [ ] Create the implementation plan using issues and Github Projects
-- [ ] Create deveopment branches for your features
-- [ ] Use pull requests to merge finished features into main branch
-- [ ] Conduct code reviews
+With the aid of this dating app, single University of Toronto students can connect with others in deeper ways. A confirmed official U of T email address is required for users to create personal profiles. Based on the user's registration data, this app offers match recommendations. Users can also use the app to find people based on search criteria such as age and academic specializations. Email contact information of each user is provided in the app for other users to make connections and grow relationships externally. Additional features include blocking or reporting users with inappropriate behaviors. 
 
-**If your team has trouble with any of these steps, please ask on Piazza. For example, with how GitHub Classroom works, your team *may* not have permissions to do some of the first few steps, in which case we'll post alternative instructions as needed.**
+## Features
+This project implements the following 7 features. The code of each feature is wrapped within a same package. 
+- [1] Login.
+- [2] Registration.
+- [3] App offers users match recommendations (*package matching_system*).
+- [4] A search feature where users can use the app to find people based on search criteria such as academic specializations.
+- [5] Allows users to report or block other users. 
+- [6] In order for users to make connections, users can request other users' email address via app (*package email_request*). 
+- [7] Users can upgrade their account by subscribing to be a paid user. A paid user can request unlimited number of email addresses. 
 
-## Workflow Documents
+## Members and Responsilities  
+- [ ] Yanling Cai: 
+  * Implement entities package including User and UserAccount classes.
+  * Implement the email request feature that allows a user to request other users' email address (pacakge email_request). 
+  * Implement a data access system that allows the program to save information and load the information later (package data_access_storage).
+- [ ] James Wang
+- [ ] Qianyu Fan
+- [ ] Chao Ma
+- [ ] Shuhao Lin
+- [ ] Aria Hu
+- [ ] Nathan Zhu
+
+ 
+
+## How to Run Our Program 
 
 * Github Workflow: Please refer to the workflow that was introduced in the first lab. You should follow this when working on your code. The following document provides additional details too.
 
