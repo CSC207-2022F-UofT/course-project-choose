@@ -48,4 +48,9 @@ We are still waiting to connect individual features implemented by each team mem
 The csv files and their data are all temporary. We'll prepare a final csv file when all features are merged into one cohesive dating app. 
 
 ## Test Coverage 
-Up to Milestone 4, the test classes for Package data_access_storate, email_request, and entities are ready. Please see the test coverage below. 
+Up to Milestone 4, the test classes for Package data_access_storate and email_request are ready. Please see the test coverage below. Please notice that Main.java and MatcherUITemplate.java are created termporarily for checking features and will be removed. 
+<img width="1162" alt="Screen Shot 2022-11-21 at 6 48 25 PM" src="https://user-images.githubusercontent.com/113075282/203180810-18feaac0-8aa1-4e23-810e-6ab3f03b2179.png">
+<img width="1162" alt="Screen Shot 2022-11-21 at 6 48 25 PM" src="https://user-images.githubusercontent.com/113075282/203180826-3f96ca3a-580c-4387-a47d-e44a279baa1a.png">
+
+
+
