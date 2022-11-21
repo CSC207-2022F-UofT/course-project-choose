@@ -13,7 +13,7 @@ public class SearchingSystemMain {
     public static void main(String[] args) {
 
         // Build the main program window
-        JFrame application = new JFrame("Searching results");
+        JFrame application = new JFrame("Search results");
 
         UserRepoManager users;
         try{
