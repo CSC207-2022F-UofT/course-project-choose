@@ -16,7 +16,9 @@ public class Matcher {
     }
 
     /** A helper method to get matching score between matchUser and targetUser
-     @return An int value score
+     * @param matchUser the user who requested the match
+     * @param targetUser the user to compare to
+     * @return An int value score
      */
     public int getScore(User matchUser, User targetUser){
         int score = 0;
@@ -38,7 +40,9 @@ public class Matcher {
     }
 
     /** get matched results in a list
-      @return Array that stores matched results in form of UserData, sorted by score from high to low
+     * @param matchee the UserAccount of the match requester
+     * @param targets an ArrayList of all the users to be matched
+     * @return Array that stores matched results in form of UserData, sorted by score from high to low
      */
     private UserAccount[] match(UserAccount matchee, ArrayList<UserAccount> targets){
         HashMap<Integer, ArrayList<UserAccount>> matchResults = new HashMap<Integer, ArrayList<UserAccount>>();
@@ -59,6 +63,7 @@ public class Matcher {
     }
 
     /** Helper method to sort an Arraylist according to score
+     * @param matchResults a HashMap that map score as key and list of UserAccount that have the correspounding score
      * @return Sorted Array
      */
     private UserAccount[] sortByScore(HashMap<Integer, ArrayList<UserAccount>> matchResults){

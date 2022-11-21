@@ -30,7 +30,10 @@ public class MatchManager implements MatcherInputBoundary{
         this.match = new Matcher(user,userAccountArrayList);
         create(matchRequestModel);
     }
-    /** Create MatchResponseModel and return it, also saving it into the MatchOutputBoundary we have*/
+    /** Create MatchResponseModel and return it, also saving it into the MatchOutputBoundary we have
+     * @param requestModel request model that includes all needed information of the requester
+     * @return matchResponseModel that included all matched information
+     * */
     @Override
     public MatchResponseModel create(MatchRequestModel requestModel){
         UserAccount[] matchedUsers = match.getMatches();
