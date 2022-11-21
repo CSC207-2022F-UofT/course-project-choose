@@ -22,6 +22,9 @@ This project implements the following 7 features. The code of each feature is wr
 - [ ] James Wang
 - [ ] Qianyu Fan
 - [ ] Chao Ma
+  * Implement Register System
+  * Implement RegisterUI Page
+  * Implement Register Features
 - [ ] Shuhao Lin
 - [ ] Aria Hu
 - [ ] Nathan Zhu
