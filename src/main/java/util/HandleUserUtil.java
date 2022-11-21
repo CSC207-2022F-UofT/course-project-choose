@@ -55,7 +55,7 @@ public class HandleUserUtil {
                     UserAccount userAccount = requestModel.getUserAccount();
                     String email1 = userAccount.getEmail();
                     if(email1.equals(reportedEmail)){
-                        userAccount.setReported(1);
+                        userAccount.isReported();
                         users.save(requestModel);
                     }
                 }
