@@ -22,6 +22,22 @@ public class Searcher {
 
     }
 
+    public Searcher(String program, String keyword, List<UserAccount> searches) {
+
+        ArrayList<UserAccount> searchResult = new ArrayList<>();
+        for (UserAccount user: searches){
+            if (user.getUser().getProgramOfStudy().equals(program)){
+                if (user.getUser().getName().contains(keyword)){
+                    searchResult.add(user);
+                }
+                else if ((user.getUser().getSelfIntro().contains(keyword))){
+                    searchResult.add(user);
+                }
+            }
+        }
+        this.searches = searchResult;
+    }
+
     public ArrayList<UserAccount> getSearches() {
         return searches;
     }
