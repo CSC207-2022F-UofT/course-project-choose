@@ -26,6 +26,8 @@ This project implements the following 7 features. The code of each feature is wr
   * Implement Login System
   * Implement HomePageUI
 - [ ] Aria Hu
+  * Implement entities package Searcher class.
+  * Implement Searching System feature.
 - [ ] Nathan Zhu
 
  
