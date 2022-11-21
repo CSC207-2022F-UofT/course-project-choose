@@ -9,6 +9,8 @@ import java.io.File;
 import java.io.IOException;
 
 public class MatchingSystemMain {
+    /** Here is an example of how MatchingSystem work
+     */
     public static void main(String[] args) {
 
         // Build the main program window
@@ -32,7 +34,7 @@ public class MatchingSystemMain {
 
         MatcherUITemplateJames matcherUiTemplate = new MatcherUITemplateJames(matcherUIController,
                 "j@mail.utoronto.ca",
-                matchManager.create(matchRequestModel));
+                presenter);
         application.add(matcherUiTemplate);
         application.pack();
         application.setVisible(true);

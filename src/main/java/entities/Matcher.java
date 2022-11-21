@@ -53,7 +53,6 @@ public class Matcher {
             }
             User targetUser = target.getUser();
             int score = getScore(matchUser,targetUser);
-            System.out.println(target.getUser().getName() + score);
             matchResults.get(score).add(target);
         };
         return sortByScore(matchResults);
@@ -68,8 +67,15 @@ public class Matcher {
             Collections.shuffle(matchResults.get(i));
             matches.addAll(matchResults.get(i));
         }
-        UserAccount[] toReturn = new UserAccount[5];
-        toReturn = matches.subList(0,5).toArray(toReturn);
-        return toReturn;
+        if(matches.size()>=5){
+            UserAccount[] toReturn = new UserAccount[5];
+            toReturn = matches.subList(0,5).toArray(toReturn);
+            return toReturn;
+        }
+        else {
+            UserAccount[] toReturn = new UserAccount[matches.size()];
+            toReturn = matches.toArray(toReturn);
+            return toReturn;
+        }
     }
 }
