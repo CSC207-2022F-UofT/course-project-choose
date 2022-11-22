@@ -48,7 +48,8 @@ The csv files and their data are all temporary. We'll prepare a final csv file w
 ## Test Coverage 
 Up to Milestone 4, the test classes for Package data_access_storate and email_request are ready. Please see the test coverage below. Please notice that Main.java and MatcherUITemplate.java in Package email_request are created termporarily for checking features and will be removed. 
 <img width="1162" alt="Screen Shot 2022-11-21 at 6 48 25 PM" src="https://user-images.githubusercontent.com/113075282/203180810-18feaac0-8aa1-4e23-810e-6ab3f03b2179.png">
-<img width="1162" alt="Screen Shot 2022-11-21 at 6 48 25 PM" src="https://user-images.githubusercontent.com/113075282/203180826-3f96ca3a-580c-4387-a47d-e44a279baa1a.png">
+<img width="1157" alt="Screen Shot 2022-11-21 at 6 48 14 PM" src="https://user-images.githubusercontent.com/113075282/203188069-02c31f7b-894a-40cf-bb0f-f999a19a2e90.png">
+
 
 ## Our Design
 We have implemented our feature following clean architecture. In addition, we identified one design pattern: strategy design pattern. This pattern is implemented in our entities package. Our app verifies whether a user email is valid. We define a user email to be valid if the email ends with "@mail.utoronto.ca". However, we may want to change our definition of being a valid email later. Thus, we created an interface called EmailVerifier with a public method called verify that takes a email address String as parameter and returns true if the email address is valid, and false otherwise. The class UofTStudentEmailVerifier implements this interface and verfies whether a email address ends with "@mail.utoronto.ca". In the future, if we would like to verify a email address by other definitions, then we can have other classes to implment the interface EmailVerifier. 
