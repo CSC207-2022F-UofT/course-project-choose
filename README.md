@@ -12,7 +12,7 @@ This project implements the following 7 features. The code of each feature is wr
 - [4] A search feature where users can use the app to find people based on search criteria such as academic specializations.
 - [5] Allows users to report or block other users. 
 - [6] In order for users to make connections, users can request other users' email address via app (*package email_request*). 
-- [7] Users can upgrade their account by subscribing to be a paid user. A paid user can request unlimited number of email addresses. 
+- [7] Male Users can upgrade their account by subscribing to be a paid user. A paid male user can request unlimited number of email addresses. Notice female users can requested unlimited number of email addresses. 
 
 ## Members and Responsilities  
 - [ ] Yanling Cai: 
@@ -51,4 +51,5 @@ Up to Milestone 4, the test classes for Package data_access_storate and email_re
 <img width="1162" alt="Screen Shot 2022-11-21 at 6 48 25 PM" src="https://user-images.githubusercontent.com/113075282/203180826-3f96ca3a-580c-4387-a47d-e44a279baa1a.png">
 
 ## Our Design
-We have implemented our feature following clean architecture. So far, we identified one design pattern: strategy design pattern. 
+We have implemented our feature following clean architecture. In addition, we identified one design pattern: strategy design pattern. This pattern is implemented in our entities package. Our app verifies whether a user email is valid. We define a user email to be valid if the email ends with "@mail.utoronto.ca". However, we may want to change our definition of being a valid email later. Thus, we created an interface called EmailVerifier with a public method called verify that takes a email address String as parameter and returns true if the email address is valid, and false otherwise. The class UofTStudentEmailVerifier implements this interface and verfies whether a email address ends with "@mail.utoronto.ca". In the future, if we would like to verify a email address by other definitions, then we can have other classes to implment the interface EmailVerifier. 
+
