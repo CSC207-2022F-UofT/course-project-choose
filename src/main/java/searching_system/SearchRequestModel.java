@@ -12,6 +12,7 @@ public class SearchRequestModel {
         this.keyword = keyword;
     }
 
+
     public String getKeyword(){
         return this.keyword;
     }
