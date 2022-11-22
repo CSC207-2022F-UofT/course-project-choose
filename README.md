@@ -34,9 +34,7 @@ This project implements the following 7 features. The code of each feature is wr
 
 ## How to Run Our Program 
 
-We are still waiting to connect individual features implemented by each team member. Up to Milestone 4, Two feature implementations "match recommendations" and "email request" are reviewed and merged to the main branch. 
-
-- Please run the java class MatchingSystemMain.java under Package matching_system to see a demo for these two features working simultanously. 
+We are still waiting to connect individual features implemented by each team member. Up to Milestone 4, Two feature implementations "match recommendations" and "email request" are reviewed and merged to the main branch. Please run the java class MatchingSystemMain.java under Package matching_system to see a demo for these two features working simultanously. 
 <img width="1278" alt="how_to_run_program" src="https://user-images.githubusercontent.com/113075282/203178684-0777ad48-e755-48a5-ac73-4f337deeb96b.png">
 
 - After running MatchingSystemMain.java, the following window will pop up. 
