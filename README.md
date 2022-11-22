@@ -38,7 +38,7 @@ We are still waiting to connect individual features implemented by each team mem
 <img width="1278" alt="how_to_run_program" src="https://user-images.githubusercontent.com/113075282/203178684-0777ad48-e755-48a5-ac73-4f337deeb96b.png">
 
 - After running MatchingSystemMain.java, the following window will pop up. 
-<img width="629" alt="Screen Shot 2022-11-21 at 6 32 39 PM" src="https://user-images.githubusercontent.com/113075282/203179077-a37973cf-56a6-4ac6-bc64-4282f4469c53.png">
+<img width="636" alt="Screen Shot 2022-11-21 at 6 35 18 PM" src="https://user-images.githubusercontent.com/113075282/203194309-63d7a947-aaec-48a1-b8cd-e4a46af66a3f.png">
 
 - Click on "Request Email". If the user can see the requested email, then a window with the requested email address will pop up. Click "OK" to close the message window. Please notice that this action of requesting email address will update the csv file "matchingSystemTest.csv". The demo user has an email address of a@mail.utoronto.ca. Her number of email requests, the numOfEmailRequest column in "matchingSystemTest.csv", will be incremented by 1 for each email request. 
 <img width="636" alt="Screen Shot 2022-11-21 at 6 35 18 PM" src="https://user-images.githubusercontent.com/113075282/203179277-02d24072-5a63-44b2-a3fe-fce978103fe3.png">
