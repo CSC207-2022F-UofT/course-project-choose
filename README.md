@@ -21,6 +21,8 @@ This project implements the following 7 features. The code of each feature is wr
   * Implement a data access system that allows the program to save information and load the information later (package data_access_storage).
 - [ ] James Wang
 - [ ] Qianyu Fan
+  * Implement upgrading feature to allow male users request unlimited number of emails as they upgrade accounts as paid users (package upgrade).
+  * Implement UpgradeUI and link to MatcherUI.
 - [ ] Chao Ma
 - [ ] Shuhao Lin
   * Implement Login System
