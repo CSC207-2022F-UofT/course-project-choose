@@ -1,5 +1,6 @@
 package login_management_system;
 
+
 import data_access_storage.UserRepoManager;
 public class LoginInteractor implements LoginInputBoundary {
 

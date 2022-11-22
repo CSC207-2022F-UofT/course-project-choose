@@ -1,4 +1,5 @@
 package login_management_system;
+
 /**
  * This class is the abstraction that allows LoginInteractor to pass to LoginPresenter
  * Layer: Use Case Layer
