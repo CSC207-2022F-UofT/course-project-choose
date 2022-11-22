@@ -7,7 +7,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
-
 public class LoginMain {
     public static void main(String[] args) {
         JFrame application = new JFrame("login");
@@ -17,7 +16,7 @@ public class LoginMain {
         UserRepoManager userGatewayImp;
 
         try {
-            File csvFile = new File("src/main/resources/connViaEmail.csv");
+            File csvFile = new File("src/main/resources/matchingSystemTest.csv");
             userGatewayImp = new UserRepo(csvFile);
         } catch (IOException ex) {
             throw new RuntimeException("Could not create file.");
@@ -28,5 +27,8 @@ public class LoginMain {
 
         LoginUI loginUI = new LoginUI(LoginController);
         screens.add(loginUI, "login");
+        cardLayout.show(screens, "login");
+        application.pack();
+        application.setVisible(true);
     }
 }

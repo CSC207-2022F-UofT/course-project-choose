@@ -1,5 +1,4 @@
 package login_management_system;
-
 public class LoginRequestModel {
     private String username;
     private String password;

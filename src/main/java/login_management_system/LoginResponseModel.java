@@ -1,5 +1,4 @@
 package login_management_system;
-
 public class LoginResponseModel {
 
     String username;

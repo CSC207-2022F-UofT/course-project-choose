@@ -50,7 +50,7 @@ public class LoginUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try{
-                    LoginController.checkValidLogin(userInput.getText(), String.valueOf(passwordInput.getPassword()));
+                    loginController.checkValidLogin(userInput.getText(), String.valueOf(passwordInput.getPassword()));
                     JOptionPane.showMessageDialog(null,"Login Successfully");
                     // If with no Exception, should direct to HomePageUI (have username as input)
                     dispose();
