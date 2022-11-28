@@ -1,5 +1,5 @@
 package upgrade;
 
 public interface UpgradeOutputBoundary {
-    void onUpgrade(String email);
+    void onUpgrade(UpgradeResponseModel responseModel);
 }

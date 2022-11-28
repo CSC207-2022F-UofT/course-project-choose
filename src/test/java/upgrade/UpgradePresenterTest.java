@@ -11,7 +11,7 @@ public class UpgradePresenterTest {
 
         String mockEmail = "terry.tan@mail.utoronto.ca";
         UpgradePresenter upgradePresenter = new UpgradePresenter(mockEmail);
-        upgradePresenter.onUpgrade("");
+        upgradePresenter.onUpgrade(new UpgradeResponseModel(""));
         UpgradePresenterViewModel viewModel = upgradePresenter.prepareView();
 
         String expectedInitialHint = "<html>Your number of email requests has exceed request limit.<br>" +
@@ -23,7 +23,7 @@ public class UpgradePresenterTest {
         assertEquals(expectedInitialTitle, viewModel.getTitle());
         assertEquals(expectedInitialNeedUpgrade, viewModel.getNeedUpgrade());
 
-        upgradePresenter.onUpgrade(mockEmail);
+        upgradePresenter.onUpgrade(new UpgradeResponseModel(mockEmail));
         viewModel = upgradePresenter.prepareView();
         String expectedUpgradeHint = "You now have unlimited access to email addresses.";
         String expectedUpgradeTitle = "Hello terry.tan@mail.utoronto.ca";

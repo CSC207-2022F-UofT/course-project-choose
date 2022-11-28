@@ -11,6 +11,24 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class UpgradeManagerTest {
 
+    private class MockUpgradeOutputBoundary implements UpgradeOutputBoundary {
+        public String receivedEmail = "";
+
+        @Override
+        public void onUpgrade(UpgradeResponseModel responseModel) {
+            receivedEmail = responseModel.getEmail();
+        }
+    }
+
+    private class MockUpgradeInputBoundary implements UpgradeInputBoundary {
+        public String receivedEmail = "";
+
+        @Override
+        public void upgrade(UpgradeRequestModel requestModel) {
+            receivedEmail = requestModel.getEmail();
+        }
+    }
+
     @Test
     void testUpgradeSuccess() {
         UserRepoManager mockUsers;
@@ -20,9 +38,14 @@ public class UpgradeManagerTest {
         }catch (IOException e) {
             throw new RuntimeException("Could not create file.");
         }
-        UpgradeManager.instance().setUserRepoManager(mockUsers);
+
+        MockUpgradeOutputBoundary outputBoundary = new MockUpgradeOutputBoundary();
+        UpgradeManager upgradeManager = new UpgradeManager(mockUsers, outputBoundary);
+
         String mockEmail = "terry.tan@mail.utoronto.ca";
-        UpgradeManager.instance().upgrade(mockEmail);
+
+        upgradeManager.upgrade(new UpgradeRequestModel(mockEmail));
+        assertEquals(outputBoundary.receivedEmail, mockEmail);
         assertEquals(true, mockUsers.getUserAccount("terry.tan@mail.utoronto.ca").getUserAccount().getSubStatus());
     }
 }

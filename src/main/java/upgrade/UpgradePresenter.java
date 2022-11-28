@@ -11,8 +11,8 @@ public class UpgradePresenter implements UpgradeOutputBoundary {
     }
 
     @Override
-    public void onUpgrade(String email) {
-        if (email == currentEmail)
+    public void onUpgrade(UpgradeResponseModel responseModel) {
+        if (responseModel.getEmail() == currentEmail)
             finishSubscribed = true;
     }
 

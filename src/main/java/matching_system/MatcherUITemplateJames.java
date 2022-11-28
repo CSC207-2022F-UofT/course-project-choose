@@ -16,6 +16,7 @@ public class MatcherUITemplateJames extends JPanel implements ActionListener {
     MatcherUIController matcherUIController;
     private String requesterEmail;
     private Map<Integer, String> targetUserEmails = new HashMap<>();
+    private JFrame upgradeFrame;
 
     public MatcherUITemplateJames(MatcherUIController matcherUIController,
                              String requesterEmail,
@@ -76,6 +77,10 @@ public class MatcherUITemplateJames extends JPanel implements ActionListener {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
     }
 
+    public void addUpgradeFrame(JFrame upgradeFrame) {
+        this.upgradeFrame = upgradeFrame;
+    }
+
     /**
      * React to a button click that results in evt.
      * @param evt the event to be processed
@@ -105,7 +110,9 @@ public class MatcherUITemplateJames extends JPanel implements ActionListener {
             JOptionPane.showMessageDialog(this,
                     "The requested email address is " + prepareView.getRequestedEmailAddress());
         }else{
-            // upgrade page
+            if (upgradeFrame != null) {
+                upgradeFrame.setVisible(true);
+            }
         }
 
     }

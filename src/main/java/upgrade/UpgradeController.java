@@ -9,6 +9,6 @@ public class UpgradeController {
     }
 
     public void upgrade(String email) {
-        this.upgradeInputBoundary.upgrade(email);
+        this.upgradeInputBoundary.upgrade(new UpgradeRequestModel(email));
     }
 }

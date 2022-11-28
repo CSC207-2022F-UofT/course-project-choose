@@ -10,8 +10,8 @@ public class UpgradeControllerTest {
         public String receivedEmail = "";
 
         @Override
-        public void upgrade(String email) {
-            receivedEmail = email;
+        public void upgrade(UpgradeRequestModel requestModel) {
+            receivedEmail = requestModel.getEmail();
         }
     }
 

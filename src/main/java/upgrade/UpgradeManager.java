@@ -3,28 +3,23 @@ package upgrade;
 import data_access_storage.RequestModel;
 import data_access_storage.UserRepoManager;
 
-public class UpgradeManager {
-    private UserRepoManager userRepoManager;
-    private static UpgradeManager instance;
+public class UpgradeManager implements UpgradeInputBoundary{
 
-    public static UpgradeManager instance() {
-        synchronized (UpgradeManager.class) {
-            if (instance == null) {
-                instance = new UpgradeManager();
-            }
-        }
-        return instance;
-    }
+    UserRepoManager userRepoManager;
+    UpgradeOutputBoundary upgradeOutputBoundary;
 
-    public void setUserRepoManager(UserRepoManager userRepoManager) {
+    public UpgradeManager(UserRepoManager userRepoManager,
+                          UpgradeOutputBoundary upgradeOutputBoundary) {
         this.userRepoManager = userRepoManager;
+        this.upgradeOutputBoundary = upgradeOutputBoundary;
     }
 
-    public void upgrade(String email) {
-        if (this.userRepoManager != null) {
-            RequestModel requestModel = userRepoManager.getUserAccount(email);
-            requestModel.getUserAccount().subscribe();
-            userRepoManager.save(requestModel);
-        }
+    @Override
+    public void upgrade(UpgradeRequestModel upgradeRequestModel) {
+        String email = upgradeRequestModel.getEmail();
+        RequestModel requestModel = userRepoManager.getUserAccount(email);
+        requestModel.getUserAccount().subscribe();
+        userRepoManager.save(requestModel);
+        this.upgradeOutputBoundary.onUpgrade(new UpgradeResponseModel(email));
     }
 }
