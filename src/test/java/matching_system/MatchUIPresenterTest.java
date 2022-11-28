@@ -1,25 +1,25 @@
 package matching_system;
 
-import data_access_storage.RequestModel;
 import data_access_storage.UserRepo;
 import data_access_storage.UserRepoManager;
-import entities.Matcher;
 import entities.UserAccount;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class MatchManagerTest {
+public class MatchUIPresenterTest {
+
     MatchManager matchManager;
     MatchOutputBoundary presenter;
     MatchRequestModel matchRequestModel;
     UserRepoManager repoManager;
     private ArrayList<UserAccount> targets = new ArrayList<UserAccount>();
+
     /** Setup basic codes for all future tests*/
     @BeforeEach
     void setUp() throws IOException {
@@ -29,17 +29,12 @@ public class MatchManagerTest {
         presenter = new MatchUIPresenter();
         matchManager = new MatchManager(presenter,matchRequestModel, repoManager);
     }
-    /** Test whether Create method works as intended*/
-    @Test
-    public void testCreate(){
-        MatchResponseModel matchResponseModel = matchManager.create(matchRequestModel);
-        ArrayList<String> names = new ArrayList<String>();
-        for(UserData userData:matchResponseModel.getMatchedData()){
-            names.add(userData.name);
-        }
-        assertEquals(5, matchManager.create(matchRequestModel).getMatchedData().length);
-        assertTrue(names.contains("b")&&names.contains("c")
-                &&names.contains("d")&&names.contains("e")&&names.contains("f"));
-    }
 
+    /** Test whether setMatchResponseModel method work as intended*/
+    @Test
+    public void testSetMatchResponseModel(){
+        MatchResponseModel matchResponseModel = matchManager.create(matchRequestModel);
+        presenter.setMatchResponseModel(matchResponseModel);
+        assertEquals(presenter.prepareView(), matchResponseModel);
+    }
 }

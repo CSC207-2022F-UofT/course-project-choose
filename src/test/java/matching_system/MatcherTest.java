@@ -22,6 +22,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class MatcherTest {
     private UserAccount matchee;
     private ArrayList<UserAccount> targets = new ArrayList<UserAccount>();
+    /** Setup basic codes for all future tests*/
     @BeforeEach
     void setUp() throws IOException {
         File csvFile = new File("src/main/resources/matchingSystemTest.csv");
@@ -31,12 +32,13 @@ public class MatcherTest {
             targets.add(requestModel.getUserAccount());
         }
     }
+    /** Test whether the return size from Matcher is correct*/
     @Test
     public void testReturnSize(){
         Matcher matcher = new Matcher(matchee, targets);
         assertEquals(5,matcher.getMatches().length);
     }
-
+    /** Test whether the content returned from Matcher is correct*/
     @Test
     public void testCorrectness(){
         Matcher matcher = new Matcher(matchee, targets);
