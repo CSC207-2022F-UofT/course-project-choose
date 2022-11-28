@@ -24,7 +24,7 @@ public class MatchingSystemMain {
             throw new RuntimeException("Could not create file.");
         }
         MatchRequestModel matchRequestModel = new MatchRequestModel("a@mail.utoronto.ca");
-        MatchOutputBoundary presenter = new MatchUIPresenter();
+        MatchUIPresenter presenter = new MatchUIPresenter();
         MatchManager matchManager = new MatchManager(presenter,matchRequestModel, users);
 
         // create Controller

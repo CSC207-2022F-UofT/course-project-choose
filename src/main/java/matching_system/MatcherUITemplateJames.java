@@ -24,7 +24,7 @@ public class MatcherUITemplateJames extends JPanel implements ActionListener {
      * */
     public MatcherUITemplateJames(MatcherUIController matcherUIController,
                              String requesterEmail,
-                             MatchOutputBoundary matchUIPresenter){
+                                  MatchUIPresenter matchUIPresenter){
 
         this.matcherUIController = matcherUIController;
         this.requesterEmail = requesterEmail;
