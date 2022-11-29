@@ -24,7 +24,7 @@ public class LoginPresenterTest {
 
     @Test
     void prepareSuccessView() {
-        User user = userRepoManager.getUserAccount("david.david@hotmail.com").getUserAccount().getUser();
+        User user = userRepoManager.getUserAccount("h@hotmail.com").getUserAccount().getUser();
         LoginResponseModel rm  = new LoginResponseModel(user);
         LoginResponseModel result =  lp.prepareSuccessView(rm);
         assertEquals(result, rm);
@@ -34,11 +34,11 @@ public class LoginPresenterTest {
     void prepareFailedView() {
         String actualMessage = null;
         try{
-            lp.prepareFailView("User doesn't exists.");
+            lp.prepareFailView("You have entered an invalid username.");
         } catch (LoginFailedException ex){
             actualMessage = ex.getmessage();
         }
-        String expectedMessage = "User doesn't exists.";
+        String expectedMessage = "You have entered an invalid username.";
         assertEquals(expectedMessage, actualMessage);
     }
 }

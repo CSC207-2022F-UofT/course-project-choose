@@ -33,11 +33,11 @@ public class LoginInteractor implements LoginInputBoundary {
     public LoginResponseModel checkValidLogin(LoginRequestModel requestModel){
         // get information from database in order to determine whether the user exists.
         if (!userRepoManager.existsByEmail(requestModel.getName())){
-            return loginOutputBoundary.prepareFailView("User doesn't exists.");
+            return loginOutputBoundary.prepareFailView("You have entered an invalid username.");
         }
         // get information from database to determine if the password in record matches user's input.
         else if (!userRepoManager.matchingPassword(requestModel.getName(), requestModel.getPassword())) {
-            return loginOutputBoundary.prepareFailView("Password doesn't match username.");
+            return loginOutputBoundary.prepareFailView("You have entered an invalid password.");
         }
         // else, the username exist and the input password matches its result.
         User user = userRepoManager.getUserAccount(requestModel.getName()).getUserAccount().getUser();

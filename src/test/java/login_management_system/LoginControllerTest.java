@@ -41,7 +41,7 @@ public class LoginControllerTest {
         } catch (LoginFailedException ex){
             actualMessage = ex.getmessage();
         }
-        String expectedMessage = "User doesn't exists.";
+        String expectedMessage = "You have entered an invalid username.";
         assertEquals(expectedMessage, actualMessage);
     }
 
@@ -54,7 +54,7 @@ public class LoginControllerTest {
         } catch (LoginFailedException ex){
             actualMessage = ex.getmessage();
         }
-        String expectedMessage = "Password doesn't match username.";
+        String expectedMessage = "You have entered an invalid password.";
         assertEquals(expectedMessage, actualMessage);
     }
 
