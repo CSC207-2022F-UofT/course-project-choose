@@ -10,4 +10,7 @@ public enum Hobbies {
         this.value = value;
     }
 
+    // ?
+    public String getHobby(){return this.value; }
+
 }

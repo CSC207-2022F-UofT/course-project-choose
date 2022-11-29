@@ -17,8 +17,8 @@ public class Main {
         CardLayout cardLayout = new CardLayout();
         JPanel screens = new JPanel(cardLayout);
         application.add(screens);
-
         UserRepoManager users;
+
         try{
             File csvFile = new File("src/main/resources/ConnViaEmail.csv");
             users = new UserRepo(csvFile);
