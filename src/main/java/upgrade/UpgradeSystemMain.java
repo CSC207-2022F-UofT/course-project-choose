@@ -12,9 +12,12 @@ import java.io.IOException;
 public class UpgradeSystemMain {
 
     public static void main(String[] args) {
+
+        // Build the main program window, link UpgradeUI and MatcherUI
         String currentEmail = "terry.tan@mail.utoronto.ca";
         JFrame application = new JFrame("Matching results");
 
+        // Create the parts to plug into the Use Case+Entities engine
         UserRepoManager users;
         try{
             File csvFile = new File("src/main/resources/matchingSystemTest.csv");
@@ -26,7 +29,7 @@ public class UpgradeSystemMain {
         MatchOutputBoundary presenter = new MatchUIPresenter();
         MatchManager matchManager = new MatchManager(presenter,matchRequestModel, users);
 
-        // create Controller
+
         MatcherUIOutputBoundary presenter1 = new MatcherUIPresenter();
         MatcherUIInputBoundary interactor = new MatcherUIInteractor(presenter1, users);
         MatcherUIController matcherUIController = new MatcherUIController(interactor);
