@@ -15,13 +15,26 @@ import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MatcherUIInteractorTest {
+/**
+ * This class tests methods in MatcherUIInteractor.
+ */
 
+class MatcherUIInteractorTest {
     private MatcherUIInteractor interactor;
+    /** User Jimmy in our data file requests 6 email addresses already */
     private static final int jimmyNumRequest = 6;
+
+    /** User David in our data file requests 0 email addresses */
     private static final int DavidNumRequest = 0;
 
-
+    /**
+     * Set up data access and interator for each test
+     * The csv file has data for 3 users.
+     * David: a free male user who requested 0 number of email addresses.
+     * Jimmy: a free male user who already requests 6 email addresses that are more than the request limit.
+     * Emma: a female user
+     * @throws IOException throws IOException when the csv file path or the inquired user data is not found.
+     */
     @BeforeEach
     void setUp() throws IOException {
         File csvFile = new File("src/main/resources/interactorTestFile.csv");
@@ -30,6 +43,13 @@ class MatcherUIInteractorTest {
         interactor = new MatcherUIInteractor(output, repo);
     }
 
+    /**
+     * Test the following case that requests an email address successfully.
+     * David, a free male user, requests 0 email addresses and should
+     * request Emma's email address successfully.
+     * Thus, Emma's email address should be contained in the response model.
+     * After requesting an email address, David's number of email requests should be increased by 1.
+     */
     @Test
     void testCreateSuccess(){
         MatcherUIRequestModel rm = new MatcherUIRequestModel("david.david@hotmail.com",
@@ -52,6 +72,13 @@ class MatcherUIInteractorTest {
                 interactor.userRepoManager.getUserAccount("david.david@hotmail.com").getUserAccount().getNumOfEmailRequest());
     }
 
+    /**
+     * Test the following case that fails to request an email address.
+     * Jimmy, a free male user, requests 6 email addresses that is more than the maximum limit.
+     * Thus, Jimmy should fail to request Emma's email address.
+     * Thus, the response model does not have Emma's email address, and contains "".
+     * Since Jimmy fails to request an email address, Jimmy's number of email requests stays the same.
+     */
     @Test
     void testCreateFailure() {
         MatcherUIRequestModel rm = new MatcherUIRequestModel("jimmy.jimmy@hotmail.com",
@@ -62,8 +89,6 @@ class MatcherUIInteractorTest {
         assertEquals(jimmyNumRequest,
                 interactor.userRepoManager.getUserAccount("jimmy.jimmy@hotmail.com").getUserAccount().getNumOfEmailRequest());
     }
-
-
 
 
 }
