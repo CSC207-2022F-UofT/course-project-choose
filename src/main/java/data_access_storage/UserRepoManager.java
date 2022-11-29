@@ -57,10 +57,10 @@ public interface UserRepoManager {
 
     /**
      * Check whether a user's password matches its recorded password
-     * @param email user's email address
+     * @param username user's email address
      * @param password user's input password
      * @return return true if a user input correct password that matches its password record, and false otherwise.
      */
-    Boolean matchingPassword(String email, String password);
+    Boolean matchingPassword(String username, String password);
 
 }

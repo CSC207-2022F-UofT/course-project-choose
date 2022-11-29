@@ -107,8 +107,8 @@ public class UserRepo implements UserRepoManager {
     @Override
     public Boolean matchingPassword(String email, String password) {
         UserAccount userAccount = accounts.get(email).getUserAccount();
-        String record_password = userAccount.getPassword();
-        return password.equals(record_password);
+        String password_on_record = userAccount.getPassword();
+        return password.equals(password_on_record);
     }
 
     /**
