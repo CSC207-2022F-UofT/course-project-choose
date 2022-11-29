@@ -1,7 +1,5 @@
 package upgrade;
 
-import email_request.MatcherUIResponseModel;
-
 /**
  * This class is the abstraction that allows UpgradeManager to pass upgrading request
  * to UpgradePresenter without violating Dependency Rules of Clean Architecture\
