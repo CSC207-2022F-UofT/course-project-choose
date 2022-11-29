@@ -4,8 +4,14 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * This class tests methods in UpgradeRequestModel
+ */
 public class UpgradeRequestModelTest {
 
+    /**
+     * Test to make sure that getEmail returns the email of the user who requests upgrade
+     */
     @Test
     void testGetEmail() {
         String mockEmail = "terry.tan@mail.utoronto.ca";

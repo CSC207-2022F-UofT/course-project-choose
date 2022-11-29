@@ -9,6 +9,9 @@ import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * This class tests methods in UpgradeManager
+ */
 public class UpgradeManagerTest {
 
     private class MockUpgradeOutputBoundary implements UpgradeOutputBoundary {
@@ -29,6 +32,13 @@ public class UpgradeManagerTest {
         }
     }
 
+    /**
+     * Test the following case that requests upgrade successfully.
+     * Terry Tan, a free male user, requests sixth email address and should
+     * upgrade successfully.
+     * Thus, the upgrade subscription status should be updated as True
+     * and Terry's number of email requests should be stayed at 5 after requesting upgrade
+     */
     @Test
     void testUpgradeSuccess() {
         UserRepoManager mockUsers;

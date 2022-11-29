@@ -4,8 +4,16 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * This class tests methods in UpgradePresenter
+ */
 public class UpgradePresenterTest {
 
+    /**
+     * Test the following case that requests upgrade successfully
+     * shows the correct sentences including title and presented sentences
+     * and tell if upgrade needed
+     */
     @Test
     void testUpgradeSuccess() {
 

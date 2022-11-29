@@ -4,6 +4,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * This class test methods in UpgradeController
+ */
 public class UpgradeControllerTest {
 
     private class MockUpgradeInputBoundary implements UpgradeInputBoundary {
@@ -15,6 +18,10 @@ public class UpgradeControllerTest {
         }
     }
 
+    /**
+     * A free male user whose number of email requests has exceeded request limit should
+     * upgrade successfully.
+     */
     @Test
     void testUpgradeSuccess() {
         String mockEmail = "terry.tan@mail.utoronto.ca";

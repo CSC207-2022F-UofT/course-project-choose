@@ -4,8 +4,14 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * This class tests method in UpgradePresenterViewModel
+ */
 public class UpgradePresenterViewModelTest {
 
+    /**
+     * Test to make sure view model returns the title, presented sentences, and if upgrade needed
+     */
     @Test
     void testGetSuccess() {
         String expectedHint = "You now have unlimited access to email addresses.";
