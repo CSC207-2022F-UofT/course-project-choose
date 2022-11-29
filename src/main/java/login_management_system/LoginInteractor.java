@@ -1,7 +1,8 @@
 package login_management_system;
 
-
 import data_access_storage.UserRepoManager;
+import entities.User;
+
 public class LoginInteractor implements LoginInputBoundary {
 
     final UserRepoManager userRepoManager;
@@ -39,7 +40,8 @@ public class LoginInteractor implements LoginInputBoundary {
             return loginOutputBoundary.prepareFailView("Password doesn't match username.");
         }
         // else, the username exist and the input password matches its result.
-        LoginResponseModel responseModel = new LoginResponseModel(requestModel.getName());
+        User user = userRepoManager.getUserAccount(requestModel.getName()).getUserAccount().getUser();
+        LoginResponseModel responseModel = new LoginResponseModel(user);
         return loginOutputBoundary.prepareSuccessView(responseModel);
     }
 }

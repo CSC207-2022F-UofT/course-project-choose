@@ -1,16 +1,20 @@
 package login_management_system;
 
+import entities.User;
+
 public class LoginResponseModel {
 
-    String username;
-    Boolean loginStatus;
+    final User user;
+    Boolean loginStatus = false;
 
-    public LoginResponseModel(String email) {
-        this.username = email;
+    public LoginResponseModel(User user) {
+        this.user = user;
     }
 
+    public User getUser() {
+        return user;
+    }
     public Boolean getLoginStatus(){return this.loginStatus;}
-
     public void setLoginStatus() {this.loginStatus = true; }
 
 }

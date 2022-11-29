@@ -2,14 +2,9 @@ package login_management_system;
 
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import static javax.swing.JOptionPane.showMessageDialog;
-
-
-public class LoginUI extends JFrame {
+public class LoginUI extends JPanel {
 
     private final JTextField userInput;
     private final JPasswordField passwordInput;
@@ -17,9 +12,6 @@ public class LoginUI extends JFrame {
 
     public LoginUI(LoginController loginController) {
         this.loginController = loginController;
-
-        JLabel title = new JLabel("Login Screen");
-        title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         JFrame frame = new JFrame();
         JPanel panel = new JPanel();
@@ -47,36 +39,31 @@ public class LoginUI extends JFrame {
         // button field
         JButton loginButton = new JButton("Login");
         loginButton.setBounds(50, 80, 100, 25);
-        loginButton.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try{
-                    loginController.checkValidLogin(userInput.getText(), String.valueOf(passwordInput.getPassword()));
-                    JOptionPane.showMessageDialog(null,"Login Successfully");
-                    // If with no Exception, should direct to HomePageUI (have username as input)
-                    dispose();
-                    // HomePageUI
-                    // new HomePageUI().setVisible(true);
-                } catch (LoginFailedException ex){
-                    JOptionPane.showMessageDialog(null, ex.getmessage());
-                }
+        loginButton.addActionListener((ActionEvent e) -> {
+            try{
+                loginController.checkValidLogin(userInput.getText(), String.valueOf(passwordInput.getPassword()));
+                // If with no Exception, should direct to HomePageUI (have username as input)
+                // HomePageUI
+                LoginResponseModel profile_info = loginController.checkValidLogin(userInput.getText(),
+                            String.valueOf(passwordInput.getPassword()));
+                frame.dispose();
+                new HomePageUI(profile_info).setVisible(true);
+            } catch (LoginFailedException ex){
+                JOptionPane.showMessageDialog(null, ex.getmessage());
             }
         });
         panel.add(loginButton);
 
+
+
         JButton registerButton = new JButton("Register");
         registerButton.setBounds(180, 80, 100, 25);
-        registerButton.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e)
-            {// Turn to RegisterUI
-                dispose();
-            }
+        registerButton.addActionListener((ActionEvent e) -> {
+            // Turn to RegisterUI
         });
         panel.add(registerButton);
 
         frame.setVisible(true);
-
     }
 
 }

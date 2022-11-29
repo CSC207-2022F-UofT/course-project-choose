@@ -11,7 +11,6 @@ public class LoginPresenter implements LoginOutputBoundary {
     public LoginResponseModel prepareSuccessView(LoginResponseModel responseModel) {
         responseModel.setLoginStatus();
         return responseModel;
-        // direct to HomePageUI here?
     }
 
     @Override

@@ -6,7 +6,6 @@ package login_management_system;
  * login and bundle the request data.
  * Layer: Interface Adapters
  */
-
 public class LoginController {
     final LoginInputBoundary userInput;
 
@@ -14,7 +13,6 @@ public class LoginController {
      * Create a controller that responses to button clicks on login request and bundle the request data.
      * @param userInput The abstraction layer between LoginController and LoginInteractor
      */
-
     public LoginController(LoginInputBoundary userInput) {
         this.userInput = userInput;
     }

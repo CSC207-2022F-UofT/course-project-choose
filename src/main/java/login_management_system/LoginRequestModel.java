@@ -1,8 +1,8 @@
 package login_management_system;
 
 public class LoginRequestModel {
-    private String username;
-    private String password;
+    final String username;
+    final String password;
 
     public LoginRequestModel(String username, String password) {
         this.username = username;
@@ -13,16 +13,8 @@ public class LoginRequestModel {
         return username;
     }
 
-    void setName(String name) {
-        this.username = name;
-    }
-
     String getPassword() {
         return password;
-    }
-
-    void setPassword(String password) {
-        this.password = password;
     }
 
 }
