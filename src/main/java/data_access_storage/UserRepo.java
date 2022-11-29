@@ -105,7 +105,7 @@ public class UserRepo implements UserRepoManager {
      * @return return true if a user input correct password that matches its password record, and false otherwise.
      */
     @Override
-    public Boolean matchingPassword(String email, String password) {
+    public boolean matchingPassword(String email, String password) {
         UserAccount userAccount = accounts.get(email).getUserAccount();
         String password_on_record = userAccount.getPassword();
         return password.equals(password_on_record);

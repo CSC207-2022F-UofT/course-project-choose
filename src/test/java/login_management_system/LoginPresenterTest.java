@@ -36,7 +36,7 @@ public class LoginPresenterTest {
         try{
             lp.prepareFailView("You have entered an invalid username.");
         } catch (LoginFailedException ex){
-            actualMessage = ex.getmessage();
+            actualMessage = ex.getMessage();
         }
         String expectedMessage = "You have entered an invalid username.";
         assertEquals(expectedMessage, actualMessage);

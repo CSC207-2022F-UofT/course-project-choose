@@ -61,6 +61,6 @@ public interface UserRepoManager {
      * @param password user's input password
      * @return return true if a user input correct password that matches its password record, and false otherwise.
      */
-    Boolean matchingPassword(String username, String password);
+    boolean matchingPassword(String username, String password);
 
 }

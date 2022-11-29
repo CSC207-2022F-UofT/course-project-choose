@@ -39,7 +39,7 @@ public class LoginControllerTest {
             controller.checkValidLogin("h.com",
                     "david");
         } catch (LoginFailedException ex){
-            actualMessage = ex.getmessage();
+            actualMessage = ex.getMessage();
         }
         String expectedMessage = "You have entered an invalid username.";
         assertEquals(expectedMessage, actualMessage);
@@ -52,7 +52,7 @@ public class LoginControllerTest {
             controller.checkValidLogin("h@hotmail.com",
                     "david");
         } catch (LoginFailedException ex){
-            actualMessage = ex.getmessage();
+            actualMessage = ex.getMessage();
         }
         String expectedMessage = "You have entered an invalid password.";
         assertEquals(expectedMessage, actualMessage);

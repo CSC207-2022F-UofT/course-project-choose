@@ -7,7 +7,7 @@ public class LoginFailedException extends RuntimeException{
         this.error = error;
     }
 
-    public String getmessage() {
+    public String getMessage() {
         return this.error;
     }
 }

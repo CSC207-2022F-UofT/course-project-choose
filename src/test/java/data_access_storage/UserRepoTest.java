@@ -69,8 +69,8 @@ class UserRepoTest {
     void testGetUserAccount(){
         userRepoEmpty.save(rqB);
         RequestModel rm = userRepoEmpty.getUserAccount("david.david@hotmail.com");
-        assertTrue("david.david@hotmail.com".equals(rm.getUserAccount().getEmail()));
-        assertTrue("David".equals(rm.getUserAccount().getUser().getName()));
+        assertEquals("david.david@hotmail.com", rm.getUserAccount().getEmail());
+        assertEquals("David", rm.getUserAccount().getUser().getName());
         userRepoEmpty.delete(rqB);
     }
 
@@ -144,6 +144,39 @@ class UserRepoTest {
         userRepoEmpty.delete(rqC);
     }
 
+    @Test
+    public void testMatchingPassword() throws IOException {
+        csvFile = new File("src/main/resources/testFile.csv");
+        userRepo = new UserRepo(csvFile);
+        boolean result = userRepo.matchingPassword("emma.emma@mail.utoronto.ca",
+                "helloToEmma");
+        assertTrue(result);
+    }
+
+    @Test
+    public void testUnmatchingPassword() throws IOException {
+        csvFile = new File("src/main/resources/testFile.csv");
+        userRepo = new UserRepo(csvFile);
+        boolean result = userRepo.matchingPassword("emma.emma@mail.utoronto.ca",
+                "helloEmma");
+        assertFalse(result);
+    }
+
+    @Test
+    public void testExistsByEmail() throws IOException {
+        csvFile = new File("src/main/resources/testFile.csv");
+        userRepo = new UserRepo(csvFile);
+        boolean result = userRepo.existsByEmail("emma.emma@mail.utoronto.ca");
+        assertTrue(result);
+    }
+
+    @Test
+    public void testNotExistsByEmail() throws IOException {
+        csvFile = new File("src/main/resources/testFile.csv");
+        userRepo = new UserRepo(csvFile);
+        boolean result = userRepo.existsByEmail("emma@mail.utoronto.ca");
+        assertFalse(result);
+    }
 
 
 

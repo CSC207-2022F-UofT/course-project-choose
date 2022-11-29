@@ -49,7 +49,7 @@ public class LoginUI extends JPanel {
                 frame.dispose();
                 new HomePageUI(profile_info).setVisible(true);
             } catch (LoginFailedException ex){
-                JOptionPane.showMessageDialog(null, ex.getmessage());
+                JOptionPane.showMessageDialog(null, ex.getMessage());
             }
         });
         panel.add(loginButton);

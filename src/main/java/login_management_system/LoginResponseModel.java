@@ -5,7 +5,7 @@ import entities.User;
 public class LoginResponseModel {
 
     final User user;
-    Boolean loginStatus = false;
+    boolean loginStatus;
 
     public LoginResponseModel(User user) {
         this.user = user;
