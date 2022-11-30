@@ -22,7 +22,7 @@ public class UpgradePresenterTest {
         upgradePresenter.onUpgrade(new UpgradeResponseModel(""));
         UpgradePresenterViewModel viewModel = upgradePresenter.prepareView();
 
-        String expectedInitialHint = "<html>Your number of email requests has exceed request limit.<br>" +
+        String expectedInitialHint = "<html>Your number of email requests has exceeded request limit.<br>" +
                 "Please EMT $50 to \"unlimited.access@mail.utoronto.ca\" and click \"Upgrade\" to subscribe.</html>";
         String expectedInitialTitle = "Hello terry.tan@mail.utoronto.ca";
         boolean expectedInitialNeedUpgrade = true;
