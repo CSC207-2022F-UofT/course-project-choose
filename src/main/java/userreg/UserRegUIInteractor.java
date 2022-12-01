@@ -1,4 +1,4 @@
-package userReg;
+package userreg;
 
 import data_access_storage.RequestModel;
 import data_access_storage.UserRepoManager;
@@ -32,7 +32,6 @@ public class UserRegUIInteractor implements UserRegUIInputBoundary{
      * @return a data model for showing whether register is succeed or not.
      */
 
-
     @Override
     public UserRegUIResponseModel create(UserRegUIRequestModel requestModel) {
         UserRegUIResponseModel userRegUIResponseModel=null;
@@ -42,22 +41,19 @@ public class UserRegUIInteractor implements UserRegUIInputBoundary{
         UofTStudentEmailVerifier ev=new UofTStudentEmailVerifier();
         // Case register fail, reason: email invalid
         if (!ev.verify(email)){
-            userRegUIResponseModel=new UserRegUIResponseModel("Email Invalid");
+            userRegUIResponseModel=new UserRegUIResponseModel("ERR001");
             return this.userRegUIOutputBoundary.prepareView(userRegUIResponseModel);
         }
-
         // Case register fail, reason: email existed
         if (this.userRepoManager.existsByEmail(email)){
-            userRegUIResponseModel=new UserRegUIResponseModel("Email Existed");
+            userRegUIResponseModel=new UserRegUIResponseModel("ERR002");
             return this.userRegUIOutputBoundary.prepareView(userRegUIResponseModel);
         }
-
-        // Case register success
         RequestModel rm=new RequestModel(ua);
 
         this.userRepoManager.save(rm);
-
-        userRegUIResponseModel=new UserRegUIResponseModel("user Register Success!");
+        // Case register success
+        userRegUIResponseModel=new UserRegUIResponseModel("SUCCESS");
 
 
         return this.userRegUIOutputBoundary.prepareView(userRegUIResponseModel);

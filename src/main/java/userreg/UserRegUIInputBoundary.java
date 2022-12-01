@@ -1,4 +1,4 @@
-package userReg;
+package userreg;
 
 import entities.UserAccount;
 /**

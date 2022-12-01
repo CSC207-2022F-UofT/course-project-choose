@@ -1,19 +1,15 @@
-package userReg;
+package userreg;
 
-import data_access_storage.UserRepo;
 import data_access_storage.UserRepoManager;
 import entities.*;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.io.File;
-import java.io.IOException;
 
-public class UserRegUI extends JFrame {
-
-
-// UserRegUIController userRegUIController;
+// Set UI Frame.
+public class UserRegUITemplate extends JPanel{
+    UserRegUIController userRegUIController;
 
     public static String padLeft(String origin, int length, char ch) {
         while (origin.length() < length) {
@@ -21,84 +17,71 @@ public class UserRegUI extends JFrame {
         }
         return origin;
     }
-    // Set UI Frame.
-    public UserRegUI( UserRepoManager users){
-
-        JFrame frame = new JFrame("User Register");
-        frame.setBounds(500,100,400,550);
-        frame.setLayout(null);
-
+    public UserRegUITemplate( UserRepoManager users,UserRegUIController userRegUIController){
+        this.userRegUIController=userRegUIController;
+        this.setLayout(null);
         //Takes Email
         JLabel eMailStr = new JLabel(padLeft("EMAIL:",15,' '));
         eMailStr.setBounds(20, 25, 80, 25);
-        frame.add(eMailStr);
-
+        this.add(eMailStr);
         //Takes Password
         JLabel passwordStr = new JLabel(padLeft("PASSWORD:",15,' '));
         passwordStr.setBounds(20, 50, 100, 25);
-        frame.add(passwordStr);
-
+        this.add(passwordStr);
         //Takes Name
         JLabel nameStr = new JLabel(padLeft("NAME:",15,' '));
         nameStr.setBounds(20, 75, 100, 25);
-        frame.add(nameStr);
-
+        this.add(nameStr);
         //Takes Gender
         JLabel genderStr = new JLabel(padLeft("GENDER:",15,' '));
         genderStr.setBounds(20, 100, 100, 25);
-        frame.add(genderStr);
-
+        this.add(genderStr);
         //Takes Age
         JLabel ageStr = new JLabel(padLeft("AGE:",15,' '));
         ageStr.setBounds(20, 125, 100, 30);
-        frame.add(ageStr);
-
+        this.add(ageStr);
         //Takes Height
         JLabel heightStr = new JLabel(padLeft("HEIGHT:",15,' '));
         heightStr.setBounds(20, 150, 100, 30);
-        frame.add(heightStr);
-
+        this.add(heightStr);
         //Takes Program
         JLabel programOfStudyStr = new JLabel(padLeft("PROGRAM:",15,' '));
         programOfStudyStr.setBounds(20, 175, 100, 30);
-        frame.add(programOfStudyStr);
-
+        this.add(programOfStudyStr);
         //Takes Hobby
         JLabel hobbyStr = new JLabel(padLeft("HOBBY:",15,' '));
         hobbyStr.setBounds(20, 200, 100, 30);
-        frame.add(hobbyStr);
-
-        //Takes interests
+        this.add(hobbyStr);
+        //Takes Interests
         JLabel interestedInStr = new JLabel(padLeft("INTERESTS:",15,' '));
         interestedInStr.setBounds(20, 225, 100, 30);
-        frame.add(interestedInStr);
-
-        //Takes Self-introduction
-        JLabel selfIntroStr = new JLabel(padLeft("S-INTRO:",15,' '));
+        this.add(interestedInStr);
+        //Takes Self-Introduction
+        JLabel selfIntroStr = new JLabel(padLeft("Intro:",15,' '));
         selfIntroStr.setBounds(20, 250, 100, 30);
-        frame.add(selfIntroStr);
+        this.add(selfIntroStr);
 
-        //Add email in frame
+        //Add Email in frame
         JTextField eMail = new JTextField();
         eMail.setBounds(140, 25, 180, 25);
-        frame.add(eMail);
+        this.add(eMail);
 
-        //Add password in frame
+        //Add Password
         JTextField password = new JPasswordField();
         password.setBounds(140, 50, 180, 25);
-        frame.add(password);
+        this.add(password);
 
-        //Add name in frame
+        //Add Name
         JTextField name = new JTextField();
         name.setBounds(140, 75, 180, 25);
-        frame.add(name);
+        this.add(name);
 
-        //Add gender in frame
+        //Add Gender
         JTextField genderText= new JTextField();
         genderText.setText(Gender.MALE.toString());
         JRadioButton mrb=new JRadioButton(Gender.MALE.toString(),true);
         mrb.setBounds(140,100,90,30);
-        frame.add(mrb);
+        this.add(mrb);
         mrb.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -108,7 +91,7 @@ public class UserRegUI extends JFrame {
         });
         JRadioButton frb=new JRadioButton(Gender.FEMALE.toString(),false);
         frb.setBounds(210,100,90,30);
-        frame.add(frb);
+        this.add(frb);
         frb.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -119,38 +102,38 @@ public class UserRegUI extends JFrame {
         genderBg.add(mrb);
         genderBg.add(frb);
 
-        //Add age in frame
+        // Add Age
         JTextField age = new JTextField();
         age.setBounds(140, 130, 180, 25);
-        frame.add(age);
+        this.add(age);
 
-        //Add height in frame
+        //Add height
         JTextField height = new JTextField();
         height.setBounds(140, 155, 180, 25);
-        frame.add(height);
+        this.add(height);
 
-        //Add program in frame
+        //Add program
         JTextField programOfStudy = new JTextField();
         programOfStudy.setBounds(140, 180, 180, 25);
-        frame.add(programOfStudy);
+        this.add(programOfStudy);
 
-        //Add hobby in frame
+        // Add hobby
         JComboBox hobby=new JComboBox();
-        //Create sub-item.
-        hobby.addItem("-----SELECT-----");
+        //Create Sub
+        hobby.addItem("----SELECT----");
         for (Hobbies hb : Hobbies.values()){
             hobby.addItem(hb);
 
         }
         hobby.setBounds(140, 205, 180, 25);
-        frame.add(hobby);
+        this.add(hobby);
 
-        // Add interests in frame
+        // Add interests
         JTextField interestedIn = new JTextField();
         interestedIn.setText(Gender.MALE.toString());
         JRadioButton mrb1=new JRadioButton(Gender.MALE.toString(),true);
         mrb1.setBounds(140,230,90,30);
-        frame.add(mrb1);
+        this.add(mrb1);
         mrb1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -159,7 +142,7 @@ public class UserRegUI extends JFrame {
         });
         JRadioButton frb1=new JRadioButton(Gender.FEMALE.toString(),false);
         frb1.setBounds(210,230,90,30);
-        frame.add(frb1);
+        this.add(frb1);
         frb.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -170,16 +153,16 @@ public class UserRegUI extends JFrame {
         genderBg1.add(mrb1);
         genderBg1.add(frb1);
 
+        //Add self-introduction
         JTextArea selfIntro = new JTextArea(12,34);
         selfIntro.setBounds(140, 260, 180, 125);
-        frame.add(selfIntro);
-
-        //Set submit button
+        this.add(selfIntro);
+        // Set submit button
         JButton buttonregister = new JButton("Submit");
         buttonregister.setBounds(160, 450, 100, 25);
-        frame.add(buttonregister);
+        this.add(buttonregister);
 
-        // Set register button and process further action including passing data to UserRegUIController.
+        //Set register button and process further action including passing data to UserRegUIController.
         buttonregister.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -187,7 +170,7 @@ public class UserRegUI extends JFrame {
                 String name_v=name.getText();
                 String eMail_v = new String(eMail.getText());
                 String password_v = new String(password.getText());
-                System.out.println(genderText.getText());
+//                System.out.println(genderText.getText());
                 Gender gender= Gender.valueOf(genderText.getText());
                 int age_v=Integer.valueOf(("".equals(age.getText())?"0":age.getText()));
                 float height_v=Float.valueOf("".equals(height.getText())?"0":height.getText());
@@ -195,43 +178,25 @@ public class UserRegUI extends JFrame {
                 Hobbies hobby_v=Hobbies.valueOf(hobby.getSelectedItem().toString());
                 String selfIntro_v=selfIntro.getText();
                 Gender interestedIn_v=Gender.valueOf(interestedIn.getText());
-                // Initialize
-                User user=new User(name_v, gender, age_v, height_v, programOfStudy_v,
-                        hobby_v, selfIntro_v, interestedIn_v);
-                UserAccount ua= new UserAccount(eMail_v,password_v,user);
+
                 UserRegUIOutputBoundary presenter = new UserRegUIPresenter();
                 UserRegUIInputBoundary interactor = new UserRegUIInteractor(presenter, users);
                 UserRegUIController userRegUIController=new UserRegUIController(interactor);
-                UserRegUIResponseModel userRegUIResponseModel=userRegUIController.userProfileCreate(ua);
+                UserRegUIResponseModel userRegUIResponseModel=userRegUIController.userProfileCreate(eMail_v,password_v,name_v, gender, age_v, height_v, programOfStudy_v,
+                        hobby_v, selfIntro_v, interestedIn_v);
                 UserRegUIResponseModel  prepareView=presenter.prepareView(userRegUIResponseModel);
-                if (prepareView.getRegMessage()!=""){
-                    JOptionPane.showMessageDialog(frame,userRegUIResponseModel.getRegMessage());
+
+                if ("ERR001".equals(prepareView.getRegMessage())){
+                    JOptionPane.showMessageDialog(null,"email invalid");
+                }else if("ERR002".equals(prepareView.getRegMessage())){
+                    JOptionPane.showMessageDialog(null,"email existed");
+                }else{
+
+                    // For future connection
+                    JOptionPane.showMessageDialog(null,"Success registered");
+
                 }
-
-
             }
         });
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
-
-    }
-
-    public static void main(String[] args) {
-
-        UserRepoManager users;
-        try{
-            File csvFile = new File("src/main/resources/userReg.csv");
-            users = new UserRepo(csvFile);
-        }catch (IOException e) {
-            throw new RuntimeException("Could not create file.");
-        }
-
-        UserRegUIOutputBoundary presenter = new UserRegUIPresenter();
-        UserRegUIInputBoundary interactor = new UserRegUIInteractor(presenter, users);
-        UserRegUIController userRegUIController = new UserRegUIController(interactor);
-
-        UserRegUI ur=new UserRegUI( users);
-
-
     }
 }
