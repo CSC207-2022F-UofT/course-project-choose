@@ -44,7 +44,7 @@ public class MatcherUIInteractor implements MatcherUIInputBoundary {
         String requestedEmail = "";
         // If the user can see the requested email address, update requestedEmail to be the
         // requested email address.
-        if( userAccount.getUserAccount().seeRequestedEmail()){
+        if(userAccount.getUserAccount().seeRequestedEmail()){
             requestedEmail = requestModel.getTargetUser();
             // increase the number of email request by 1.
             userAccount.getUserAccount().incNumOfEmailRequest();
