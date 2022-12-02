@@ -26,7 +26,7 @@ public class UpgradeSystemMain {
             throw new RuntimeException("Could not create file.");
         }
         MatchRequestModel matchRequestModel = new MatchRequestModel("a@mail.utoronto.ca");
-        MatchOutputBoundary presenter = new MatchUIPresenter();
+        MatchUIPresenter presenter = new MatchUIPresenter();
         MatchManager matchManager = new MatchManager(presenter,matchRequestModel, users);
 
 
@@ -36,7 +36,7 @@ public class UpgradeSystemMain {
 
         MatcherUITemplateJames matcherUiTemplate = new MatcherUITemplateJames(matcherUIController,
                 currentEmail,
-                matchManager.create(matchRequestModel));
+                presenter);
 
         UpgradePresenter upgradePresenter = new UpgradePresenter(currentEmail);
         UpgradeManager upgradeManager = new UpgradeManager(users, upgradePresenter);
