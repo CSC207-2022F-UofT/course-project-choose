@@ -9,6 +9,8 @@ import java.io.File;
 import java.io.IOException;
 
 public class MatchingSystemMain {
+    /** Here is an example of how MatchingSystem work
+     */
     public static void main(String[] args) {
 
         // Build the main program window
@@ -22,7 +24,7 @@ public class MatchingSystemMain {
             throw new RuntimeException("Could not create file.");
         }
         MatchRequestModel matchRequestModel = new MatchRequestModel("a@mail.utoronto.ca");
-        MatchOutputBoundary presenter = new MatchUIPresenter();
+        MatchUIPresenter presenter = new MatchUIPresenter();
         MatchManager matchManager = new MatchManager(presenter,matchRequestModel, users);
 
         // create Controller
@@ -32,7 +34,7 @@ public class MatchingSystemMain {
 
         MatcherUITemplateJames matcherUiTemplate = new MatcherUITemplateJames(matcherUIController,
                 "j@mail.utoronto.ca",
-                matchManager.create(matchRequestModel));
+                presenter);
         application.add(matcherUiTemplate);
         application.pack();
         application.setVisible(true);

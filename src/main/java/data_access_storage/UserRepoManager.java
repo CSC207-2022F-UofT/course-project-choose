@@ -55,12 +55,4 @@ public interface UserRepoManager {
      */
     Map<String, RequestModel> getAllUserAccount();
 
-    /**
-     * Check whether a user's password matches its recorded password
-     * @param username user's email address
-     * @param password user's input password
-     * @return return true if a user input correct password that matches its password record, and false otherwise.
-     */
-    boolean matchingPassword(String username, String password);
-
 }

@@ -2,17 +2,17 @@
 
 Our project domain is in dating apps, which we design specifically for UofT students. The purpose of our online dating app is giving UofT students access to more friends than they would meet in offline social circles. 
 
-With the aid of this dating app, single University of Toronto students can connect with others in deeper ways. A confirmed official U of T email address is required for users to create personal profiles. Based on the user's registration data, this app offers match recommendations. Users can also use the app to find people based on search criteria such as age and academic specializations. Email contact information of each user is provided in the app for other users to make connections and grow relationships externally. Additional features include blocking or reporting users with inappropriate behaviors. 
+With the aid of this dating app, single University of Toronto students can connect with others in deeper ways. A confirmed official U of T email address is required for users to create personal profiles. Based on the user's registration data, this app offers match recommendations. Users can also use the app to find people based on search criteria such as academic specializations. Email contact information of each user is provided in the app for other users to make connections and grow relationships externally. Additional features include blocking or reporting users with inappropriate behaviors. 
 
 ## Features
 This project implements the following 7 features. The code of each feature is wrapped within a same package. 
 - [1] Login.
 - [2] Registration.
 - [3] App offers users match recommendations (*package matching_system*).
-- [4] A search feature where users can use the app to find people based on search criteria such as age and academic specializations.
+- [4] A search feature where users can use the app to find people based on search criteria such as academic specializations.
 - [5] Allows users to report or block other users. 
 - [6] In order for users to make connections, users can request other users' email address via app (*package email_request*). 
-- [7] Users can upgrade their account by subscribing to be a paid user. A paid user can request unlimited number of email addresses. 
+- [7] Male users can upgrade their account by subscribing to be a paid user. A paid male user can request unlimited number of email addresses. Notice female users can requested unlimited number of email addresses. 
 
 ## Members and Responsilities  
 - [ ] Yanling Cai: 
@@ -20,36 +20,45 @@ This project implements the following 7 features. The code of each feature is wr
   * Implement the email request feature that allows a user to request other users' email address (pacakge email_request). 
   * Implement a data access system that allows the program to save information and load the information later (package data_access_storage).
 - [ ] James Wang
+  * Implement entities package including Matcher.
+  * Implement matching_system package to complete the action from requesting match to return match results.
+  * Created Tests for Matcher and MatchManager
 - [ ] Qianyu Fan
+  * Implement upgrading feature to allow male users request unlimited number of emails as they upgrade accounts as paid users (package upgrade).
+  * Implement UpgradeUI and link to MatcherUI.
 - [ ] Chao Ma
 - [ ] Shuhao Lin
-  * Implement the login feature that allows a user to login.
+  * Implement Login System
   * Implement HomePageUI
 - [ ] Aria Hu
+  * Implement entities package Searcher class.
+  * Implement Searching System feature.
 - [ ] Nathan Zhu
 
  
 
 ## How to Run Our Program 
 
-* Github Workflow: Please refer to the workflow that was introduced in the first lab. You should follow this when working on your code. The following document provides additional details too.
+We are still waiting to connect individual features implemented by each team member. Up to Milestone 4, two feature implementations "match recommendations" and "email request" are reviewed and merged to the main branch. Please run the java class MatchingSystemMain.java under Package matching_system to see a demo for these two features working simultanously. 
 
-* [Project Planning and Development Guide](project_plan_dev.md): This document helps you to understand how to create and maintain a project plan for your class project. **This document helps you to complete the Implementation Plan Milestone.**
+- After running MatchingSystemMain.java, the following window will pop up. 
+<img width="629" alt="Screen Shot 2022-11-21 at 6 32 39 PM" src="https://user-images.githubusercontent.com/113075282/203194624-abaa5728-f35f-4177-a77c-9a8b2dc74fa1.png">
 
-## Gradle Project
-Import this project into your Intellij editor. It should automatically recognise this as a gradle repository.
-The starter code was built using SDK version 11.0.1. Ensure that you are using this version for this project. (You can, of course, change the SDK version as per your requirement if your team has all agreed to use a different version)
+- Click on "Request Email". If the user can see the requested email, then a window with the requested email address will pop up. Click "OK" to close the message window. Please notice that this action of requesting email address will update the csv file "matchingSystemTest.csv". The demo user has an email address of a@mail.utoronto.ca. Her number of email requests, the numOfEmailRequest column in "matchingSystemTest.csv", will be incremented by 1 for each email request. 
+<img width="636" alt="Screen Shot 2022-11-21 at 6 35 18 PM" src="https://user-images.githubusercontent.com/113075282/203179277-02d24072-5a63-44b2-a3fe-fce978103fe3.png">
 
-You have been provided with two starter files for demonstration: HelloWorld and HelloWorldTest.
+The csv files and their data are all temporary. We'll prepare a final csv file when all features are merged into one cohesive dating app. 
 
-You will find HelloWorld in `src/main/java/tutorial` directory. Right click on the HelloWorld file and click on `Run HelloWorld.main()`.
-This should run the program and print on your console.
+## Test Coverage 
+Up to Milestone 4, the test classes for Package data_access_storate and email_request are ready. Please see the test coverage below. Please notice that Main.java and MatcherUITemplate.java in Package email_request are created termporarily for checking features and will be removed. 
+<img width="1162" alt="Screen Shot 2022-11-21 at 6 48 25 PM" src="https://user-images.githubusercontent.com/113075282/203180810-18feaac0-8aa1-4e23-810e-6ab3f03b2179.png">
+<img width="1157" alt="Screen Shot 2022-11-21 at 6 48 14 PM" src="https://user-images.githubusercontent.com/113075282/203188069-02c31f7b-894a-40cf-bb0f-f999a19a2e90.png">
 
-You will find HelloWorldTest in `src/test/java/tutorial` directory. Right click on the HelloWorldTest file and click on `Run HelloWorldTest`.
-All tests should pass. Your team can remove this sample of how testing works once you start adding your project code to the repo.
 
-Moving forward, we expect you to maintain this project structure. You *should* use Gradle as the build environment, but it is fine if your team prefers to use something else -- just remove the gradle files and push your preferred project setup. Assuming you stick with Gradle, your source code should go into `src/main/java` (you can keep creating more subdirectories as per your project requirement). Every source class can auto-generate a test file for you. For example, open HelloWorld.java file and click on the `HelloWorld` variable as shown in the image below. You should see an option `Generate` and on clicking this your should see an option `Test`. Clicking on this will generate a JUnit test file for `HelloWorld` class. This was used to generate the `HelloWorldTest`.
+## Our Design
+We have implemented our feature following clean architecture. To help visiualize our code structure, please check out an illustration diagram that we prepare with 
+[Lucidchart](https://lucid.app/lucidchart/d1b31d27-0a5e-46bb-bf2c-2a41ba4217d7/edit?viewport_loc=-794%2C90%2C1737%2C795%2CA4t_9l4I1bNN&invitationId=inv_75bd61a9-cd75-49e0-b6a2-33b9b6565112). For demonstration purpose, this diagram uses the implementation of feature Email Request as an example. 
 
-![image](https://user-images.githubusercontent.com/5333020/196066655-d3c97bf4-fdbd-46b0-b6ae-aeb8dbcf351d.png)
 
-You can create another simple class and try generating a test for this class.
+Further more, we identified one design pattern: strategy design pattern. This pattern is implemented in our entities package. Our app verifies whether a user email is valid. We define a user email to be valid if the email ends with "@mail.utoronto.ca". However, we may want to change our definition of being a valid email later. Thus, we created an interface called EmailVerifier with a public method called verify that takes a email address String as parameter and returns true if the email address is valid, and false otherwise. The class UofTStudentEmailVerifier implements this interface and verfies whether a email address ends with "@mail.utoronto.ca". In the future, if we would like to verify a email address by other definitions, then we can have other classes to implment the interface EmailVerifier. 
+
