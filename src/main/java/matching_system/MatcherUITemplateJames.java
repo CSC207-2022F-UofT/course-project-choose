@@ -18,14 +18,19 @@ public class MatcherUITemplateJames extends JPanel implements ActionListener {
     private Map<Integer, String> targetUserEmails = new HashMap<>();
     private JFrame upgradeFrame;
 
+    /** A preset of UI panel that display 5 user info which are included in the matchResponseModel
+     * @param matcherUIController UIController to response to actions
+     * @param requesterEmail email of the requester
+     * @param matchUIPresenter the presenter that stores matchedRespondModel
+     * */
     public MatcherUITemplateJames(MatcherUIController matcherUIController,
                              String requesterEmail,
-                             MatchResponseModel matchResponseModel){
+                                  MatchUIPresenter matchUIPresenter){
 
         this.matcherUIController = matcherUIController;
         this.requesterEmail = requesterEmail;
         Integer count = 0;
-        for(UserData user: matchResponseModel.getMatchedData()){
+        for(UserData user: matchUIPresenter.prepareView().getMatchedData()){
             // profile information to display
             String userIntro = "<html>Name: " + user.name + "<br>Gender: " +
                     user.gender.getGender() + " age: " + user.age + " height: "
