@@ -2,11 +2,8 @@ package matching_system;
 
 import data_access_storage.RequestModel;
 import data_access_storage.UserRepoManager;
-//import email_request.MatcherUIOutputBoundary;
 import entities.Matcher;
-import entities.User;
 import entities.UserAccount;
-
 import java.util.ArrayList;
 
 public class MatchManager implements MatcherInputBoundary{
@@ -23,7 +20,7 @@ public class MatchManager implements MatcherInputBoundary{
         this.user = userRepoManager.getUserAccount(matchRequestModel.getUserEmail()).getUserAccount();
         this.userRepoManager = userRepoManager;
         this.matchOutputBoundary = matchOutputBoundary;
-        ArrayList<UserAccount> userAccountArrayList = new ArrayList<UserAccount>();
+        ArrayList<UserAccount> userAccountArrayList = new ArrayList<>();
         for(RequestModel rm: this.userRepoManager.getAllUserAccount().values()){
             userAccountArrayList.add(rm.getUserAccount());
         }
@@ -38,7 +35,7 @@ public class MatchManager implements MatcherInputBoundary{
     public MatchResponseModel create(MatchRequestModel requestModel){
         UserAccount[] matchedUsers = match.getMatches();
 
-        ArrayList<UserData> matchedData = new ArrayList<UserData>();
+        ArrayList<UserData> matchedData = new ArrayList<>();
         for(UserAccount user: matchedUsers){
             matchedData.add(new UserData(user));
         }

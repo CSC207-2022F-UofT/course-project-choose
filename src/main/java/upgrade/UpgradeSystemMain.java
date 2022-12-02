@@ -25,26 +25,28 @@ public class UpgradeSystemMain {
         }catch (IOException e) {
             throw new RuntimeException("Could not create file.");
         }
-        MatchRequestModel matchRequestModel = new MatchRequestModel("a@mail.utoronto.ca");
+
+        // create match results
+        MatchRequestModel matchRequestModel = new MatchRequestModel(currentEmail);
         MatchUIPresenter presenter = new MatchUIPresenter();
         MatchManager matchManager = new MatchManager(presenter,matchRequestModel, users);
 
+        // create controller for email requesting
+        EmailConnOutputBoundary emailConnPresenter = new EmailConnPresenter();
+        EmailConnInputBoundary interactor = new EmailConnInteractor(emailConnPresenter, users);
+        EmailConnController emailConnController = new EmailConnController(interactor);
 
-        MatcherUIOutputBoundary presenter1 = new MatcherUIPresenter();
-        MatcherUIInputBoundary interactor = new MatcherUIInteractor(presenter1, users);
-        MatcherUIController matcherUIController = new MatcherUIController(interactor);
-
-        MatcherUITemplateJames matcherUiTemplate = new MatcherUITemplateJames(matcherUIController,
-                currentEmail,
-                presenter);
-
+        // create upgrade controller
         UpgradePresenter upgradePresenter = new UpgradePresenter(currentEmail);
         UpgradeManager upgradeManager = new UpgradeManager(users, upgradePresenter);
         UpgradeController upgradeController = new UpgradeController(upgradeManager);
-        UpgradeUI upgradeUI = new UpgradeUI(currentEmail, upgradeController, upgradePresenter);
-        matcherUiTemplate.addUpgradeFrame(upgradeUI);
 
-        application.add(matcherUiTemplate);
+        // create the view for matching results
+        MatchResultsUI matcherResultsUI = new MatchResultsUI(emailConnController,
+                upgradeController,
+                currentEmail, presenter);
+
+        application.add(matcherResultsUI);
         application.pack();
         application.setVisible(true);
     }

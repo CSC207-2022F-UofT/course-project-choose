@@ -3,13 +3,8 @@ package matching_system;
 import data_access_storage.RequestModel;
 import data_access_storage.UserRepo;
 import data_access_storage.UserRepoManager;
-import email_request.MatcherUIInteractor;
-import email_request.MatcherUIOutputBoundary;
-import email_request.MatcherUIPresenter;
 import entities.Matcher;
-import entities.User;
 import entities.UserAccount;
-import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 
@@ -21,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class MatcherTest {
     private UserAccount matchee;
-    private ArrayList<UserAccount> targets = new ArrayList<UserAccount>();
+    private ArrayList<UserAccount> targets = new ArrayList<>();
     /** Setup basic codes for all future tests*/
     @BeforeEach
     void setUp() throws IOException {
@@ -42,11 +37,12 @@ public class MatcherTest {
     @Test
     public void testCorrectness(){
         Matcher matcher = new Matcher(matchee, targets);
-        ArrayList<String> names = new ArrayList<String>();
+        ArrayList<String> names = new ArrayList<>();
         for(UserAccount userAccount:matcher.getMatches()){
             names.add(userAccount.getUser().getName());
         }
         assertTrue(names.contains("b")&&names.contains("c")
-                &&names.contains("d")&&names.contains("e")&&names.contains("f"));
+                &&names.contains("d")&&names.contains("e"));
+        assertTrue(names.contains("f") | names.contains("Terry"));
     }
 }

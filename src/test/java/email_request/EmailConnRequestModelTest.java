@@ -6,16 +6,16 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * This class tests methods in MatcherUIRequestModel.
+ * This class tests methods in EmailConnRequestModel.
  */
-class MatcherUIRequestModelTest {
+class EmailConnRequestModelTest {
 
-    private MatcherUIRequestModel matcherUIRequestModel;
+    private EmailConnRequestModel emailConnRequestModel;
 
-    /** Set up matcherUIRequestModel for each test */
+    /** Set up emailConnRequestModel for each test */
     @BeforeEach
     void setUp(){
-        matcherUIRequestModel = new MatcherUIRequestModel("david.david@hotmail.com",
+        emailConnRequestModel = new EmailConnRequestModel("david.david@hotmail.com",
                 "emma.emma@mail.utoronto.ca");
     }
 
@@ -24,7 +24,7 @@ class MatcherUIRequestModelTest {
      */
     @Test
     void getRequester() {
-        assertEquals(matcherUIRequestModel.getRequester(), "david.david@hotmail.com");
+        assertEquals(emailConnRequestModel.getRequester(), "david.david@hotmail.com");
     }
 
     /**
@@ -32,7 +32,7 @@ class MatcherUIRequestModelTest {
      */
     @Test
     void getTargetUser() {
-        assertEquals(matcherUIRequestModel.getTargetUser(), "emma.emma@mail.utoronto.ca");
+        assertEquals(emailConnRequestModel.getTargetUser(), "emma.emma@mail.utoronto.ca");
     }
 
 }

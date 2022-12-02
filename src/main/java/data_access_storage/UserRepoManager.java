@@ -54,5 +54,4 @@ public interface UserRepoManager {
      * @return all users' account information
      */
     Map<String, RequestModel> getAllUserAccount();
-
 }
