@@ -1,5 +1,6 @@
 package login_management_system;
 
+
 import entities.User;
 
 public class LoginResponseModel {

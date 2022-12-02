@@ -1,5 +1,6 @@
 package login_management_system;
 
+
 /**
  * This class handles the Login Status returned by LoginManager,
  * and prepare the Login Status for viewing purpose.

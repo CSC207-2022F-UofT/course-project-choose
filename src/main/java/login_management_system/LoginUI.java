@@ -1,6 +1,5 @@
 package login_management_system;
 
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 

@@ -2,7 +2,6 @@ package login_management_system;
 
 import javax.swing.*;
 import java.awt.*;
-
 public class HomePageUI extends JFrame {
     LoginResponseModel profile_info;
     public HomePageUI(LoginResponseModel profile_info){
