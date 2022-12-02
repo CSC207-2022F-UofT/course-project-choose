@@ -3,7 +3,7 @@ g@mail.utoronto.ca,helloToEmma,false,false,0,,0,g,FEMALE,18,164.0,Computer Scien
 d@hotmail.com,david.david,false,false,0,,0,d,MALE,18,174.0,Computer Science,GAMES,"Hello, This is d ",FEMALE
 h@hotmail.com,david.david,false,false,0,,0,h,MALE,18,174.0,Statistics,FOOD,"Hello, This is h ",MALE
 e@mail.utoronto.ca,helloToEmma,false,false,0,,0,e,MALE,18,164.0,Statistics,FOOD," Hello, This is e ",FEMALE
-j@mail.utoronto.ca,helloToEmma,false,false,0,,0,j,FEMALE,18,164.0,Computer Science,FOOD," Hello, This is j ",FEMALE
+j@mail.utoronto.ca,helloToEmma,false,false,0,,5,j,FEMALE,18,164.0,Computer Science,FOOD," Hello, This is j ",FEMALE
 i@hotmail.com,david.david,false,false,0,,0,i,FEMALE,18,174.0,Computer Science,GAMES,"Hello, This is i ",MALE
 a@mail.utoronto.ca,helloToEmma,false,false,0,,0,a,FEMALE,18,164.0,Computer Science,FOOD," Hello, This is a ",MALE
 c@mail.utoronto.ca,helloToEmma,false,false,0,,0,c,MALE,18,164.0,Computer Science,FOOD," Hello, This is c ",FEMALE
