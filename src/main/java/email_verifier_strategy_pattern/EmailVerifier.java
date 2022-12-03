@@ -1,4 +1,4 @@
-package entities;
+package email_verifier_strategy_pattern;
 
 public interface EmailVerifier {
 

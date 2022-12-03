@@ -6,18 +6,18 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * This class tests methods in MatcherUIPresenter.
+ * This class tests methods in EmailConnPresenter.
  */
 class MatcherUIPresenterTest {
 
-    private MatcherUIPresenter mp;
+    private EmailConnPresenter mp;
 
     /**
      * Set up the presenter for each test.
      */
     @BeforeEach
     void setUp(){
-       mp = new MatcherUIPresenter();
+       mp = new EmailConnPresenter();
     }
 
     /**
@@ -27,8 +27,8 @@ class MatcherUIPresenterTest {
      */
     @Test
     void prepareView() {
-        MatcherUIResponseModel rm  = new MatcherUIResponseModel("david.david@hotmail.com");
-        MatcherUIResponseModel result =  mp.prepareView(rm);
+        EmailConnResponseModel rm  = new EmailConnResponseModel("david.david@hotmail.com");
+        EmailConnResponseModel result =  mp.prepareView(rm);
         assertSame(result, rm);
     }
 }

@@ -5,16 +5,16 @@ package email_request;
  * matching results and bundle the request data.
  * Layer: Interface Adapters
  */
-public class MatcherUIController {
+public class EmailConnController {
 
-    final MatcherUIInputBoundary userInput;
+    final EmailConnInputBoundary userInput;
 
     /**
      * Create a controller that responses to button clicks on matching results and bundle the request data.
-     * @param matcherUIInputBoundary The abstraction layer between MatcherUIController and MatcherUIInteractor
+     * @param emailConnInputBoundary The abstraction layer between EmailConnController and EmailConnInteractor
      */
-    public MatcherUIController(MatcherUIInputBoundary matcherUIInputBoundary) {
-        this.userInput = matcherUIInputBoundary;
+    public EmailConnController(EmailConnInputBoundary emailConnInputBoundary) {
+        this.userInput = emailConnInputBoundary;
     }
 
     /**
@@ -24,9 +24,9 @@ public class MatcherUIController {
      * @param targetUserEmail the email address of the user whose email address is requested.
      * @return a data model for showing the requested email or empty string.
      */
-    public MatcherUIResponseModel create(String requesterEmail, String targetUserEmail){
-        MatcherUIRequestModel matcherUIRequestModel = new MatcherUIRequestModel(requesterEmail, targetUserEmail);
-        return userInput.create(matcherUIRequestModel);
+    public EmailConnResponseModel create(String requesterEmail, String targetUserEmail){
+        EmailConnRequestModel emailConnRequestModel = new EmailConnRequestModel(requesterEmail, targetUserEmail);
+        return userInput.create(emailConnRequestModel);
     }
 
 }

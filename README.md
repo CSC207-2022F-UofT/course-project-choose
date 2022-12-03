@@ -20,6 +20,9 @@ This project implements the following 7 features. The code of each feature is wr
   * Implement the email request feature that allows a user to request other users' email address (pacakge email_request). 
   * Implement a data access system that allows the program to save information and load the information later (package data_access_storage).
 - [ ] James Wang
+  * Implement entities package including Matcher.
+  * Implement matching_system package to complete the action from requesting match to return match results.
+  * Created Tests for Matcher and MatchManager
 - [ ] Qianyu Fan
   * Implement upgrading feature to allow male users request unlimited number of emails as they upgrade accounts as paid users (package upgrade).
   * Implement UpgradeUI and link to MatcherUI.
