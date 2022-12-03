@@ -6,26 +6,16 @@ import entities.Matcher;
 import entities.UserAccount;
 import java.util.ArrayList;
 
-public class MatchManager implements MatcherInputBoundary{
-    /** This is the User that requested the match*/
-    private UserAccount user;
-    /** The instance of Matcher which will perform the match action*/
-    private Matcher match;
+public class MatchManager implements MatchInputBoundary {
+
     /** This is an instance of userRepoManager so that we can access UserRepo, our database*/
     final UserRepoManager userRepoManager;
     /** This is an instance of MatchOutputBoundary so that we can pass out result, MatchResponseModel, out*/
     final MatchOutputBoundary matchOutputBoundary;
 
-    public MatchManager(MatchOutputBoundary matchOutputBoundary, MatchRequestModel matchRequestModel, UserRepoManager userRepoManager){
-        this.user = userRepoManager.getUserAccount(matchRequestModel.getUserEmail()).getUserAccount();
+    public MatchManager(MatchOutputBoundary matchOutputBoundary, UserRepoManager userRepoManager){
         this.userRepoManager = userRepoManager;
         this.matchOutputBoundary = matchOutputBoundary;
-        ArrayList<UserAccount> userAccountArrayList = new ArrayList<>();
-        for(RequestModel rm: this.userRepoManager.getAllUserAccount().values()){
-            userAccountArrayList.add(rm.getUserAccount());
-        }
-        this.match = new Matcher(user,userAccountArrayList);
-        create(matchRequestModel);
     }
     /** Create MatchResponseModel and return it, also saving it into the MatchOutputBoundary we have
      * @param requestModel request model that includes all needed information of the requester
@@ -33,6 +23,13 @@ public class MatchManager implements MatcherInputBoundary{
      * */
     @Override
     public MatchResponseModel create(MatchRequestModel requestModel){
+        UserAccount userAccount = userRepoManager.getUserAccount(requestModel.getUserEmail()).getUserAccount();
+        ArrayList<UserAccount> userAccountArrayList = new ArrayList<>();
+        for(RequestModel rm: this.userRepoManager.getAllUserAccount().values()){
+            userAccountArrayList.add(rm.getUserAccount());
+        }
+        Matcher match = new Matcher(userAccount, userAccountArrayList);
+
         UserAccount[] matchedUsers = match.getMatches();
 
         ArrayList<UserData> matchedData = new ArrayList<>();

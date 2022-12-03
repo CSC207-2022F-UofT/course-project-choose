@@ -12,12 +12,15 @@ public class UpgradePresenter implements UpgradeOutputBoundary {
     private String currentEmail;
     private boolean finishSubscribed;
 
+    public UpgradePresenter() {
+        this.finishSubscribed = false;
+    }
+
     /**
      * @param currentEmail bundle upgrade request by passing email
      */
-    public UpgradePresenter(String currentEmail) {
+    public void setCurrentEmail(String currentEmail){
         this.currentEmail = currentEmail;
-        this.finishSubscribed = false;
     }
 
     /**

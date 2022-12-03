@@ -1,5 +1,8 @@
 package login_management_system;
 
+import controller_presenter.BigController;
+import controller_presenter.BigPresenter;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
@@ -7,10 +10,13 @@ public class LoginUI extends JPanel {
 
     private final JTextField userInput;
     private final JPasswordField passwordInput;
-    LoginController loginController;
+    BigPresenter bigPresenter;
 
-    public LoginUI(LoginController loginController) {
-        this.loginController = loginController;
+    BigController bigController;
+
+    public LoginUI(BigController bigController, BigPresenter bigPresenter) {
+        this.bigController = bigController;
+        this.bigPresenter = bigPresenter;
 
         JFrame frame = new JFrame();
         JPanel panel = new JPanel();
@@ -40,20 +46,18 @@ public class LoginUI extends JPanel {
         loginButton.setBounds(50, 80, 100, 25);
         loginButton.addActionListener((ActionEvent e) -> {
             try{
-                loginController.checkValidLogin(userInput.getText(), String.valueOf(passwordInput.getPassword()));
+                this.bigController.getLoginController().checkValidLogin(userInput.getText(), String.valueOf(passwordInput.getPassword()));
                 // If with no Exception, should direct to HomePageUI (have username as input)
                 // HomePageUI
-                LoginResponseModel profile_info = loginController.checkValidLogin(userInput.getText(),
+                LoginResponseModel profile_info = this.bigController.getLoginController().checkValidLogin(userInput.getText(),
                         String.valueOf(passwordInput.getPassword()));
                 frame.dispose();
-                new HomePageUI(profile_info).setVisible(true);
+                new HomePageUI(profile_info, bigController, bigPresenter).setVisible(true);
             } catch (LoginFailedException ex){
                 JOptionPane.showMessageDialog(null, ex.getMessage());
             }
         });
         panel.add(loginButton);
-
-
 
         JButton registerButton = new JButton("Register");
         registerButton.setBounds(180, 80, 100, 25);

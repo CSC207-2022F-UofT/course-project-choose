@@ -11,7 +11,7 @@ public class UpgradeUI extends JFrame {
     private JButton backButton;
     private JLabel titleLabel;
     private JLabel hintLabel;
-    private UpgradePresenter upgradePresenter;
+    private UpgradeOutputBoundary upgradePresenter;
     private UpgradeController upgradeController;
     private String currentEmail;
 
@@ -24,7 +24,7 @@ public class UpgradeUI extends JFrame {
      */
     public UpgradeUI(String email,
                      UpgradeController upgradeController,
-                     UpgradePresenter upgradePresenter) {
+                     UpgradeOutputBoundary upgradePresenter) {
         this.currentEmail = email;
         this.setSize(500, 420);
         this.setLayout(null);

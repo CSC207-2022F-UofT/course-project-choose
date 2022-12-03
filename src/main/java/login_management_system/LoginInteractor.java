@@ -42,7 +42,8 @@ public class LoginInteractor implements LoginInputBoundary {
         }
         // else, the username exist and the input password matches its result.
         User user = userRepoManager.getUserAccount(requestModel.getName()).getUserAccount().getUser();
-        LoginResponseModel responseModel = new LoginResponseModel(user);
+        String email = requestModel.getName();
+        LoginResponseModel responseModel = new LoginResponseModel(user, email);
         return loginOutputBoundary.prepareSuccessView(responseModel);
     }
 }

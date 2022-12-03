@@ -23,7 +23,7 @@ public class LoginPresenterTest {
     @Test
     void prepareSuccessView() {
         User user = userRepoManager.getUserAccount("h@hotmail.com").getUserAccount().getUser();
-        LoginResponseModel rm  = new LoginResponseModel(user);
+        LoginResponseModel rm  = new LoginResponseModel(user, "h@hotmail.com");
         LoginResponseModel result =  lp.prepareSuccessView(rm);
         assertEquals(result, rm);
     }
