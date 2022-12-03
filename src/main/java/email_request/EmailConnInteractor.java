@@ -9,21 +9,21 @@ import data_access_storage.UserRepoManager;
  * entities to fulfil the request and prepare output for users.
  * Layer: Use Case
  */
-public class MatcherUIInteractor implements MatcherUIInputBoundary {
+public class EmailConnInteractor implements EmailConnInputBoundary {
 
-    final MatcherUIOutputBoundary matcherUIOutputBoundary;
+    final EmailConnOutputBoundary emailConnOutputBoundary;
     final UserRepoManager userRepoManager;
 
     /**
-     * Construct a MatcherUIInteractor object.
-     * @param matcherUIOutputBoundary a interface that allows MatcherUIInteractor to call
+     * Construct a EmailConnInteractor object.
+     * @param emailConnOutputBoundary a interface that allows EmailConnInteractor to call
      *                                MatcherUIPrenseter without knowing its existence.
      * @param userRepoManager a data access interface
      */
 
-    public MatcherUIInteractor(MatcherUIOutputBoundary matcherUIOutputBoundary,
+    public EmailConnInteractor(EmailConnOutputBoundary emailConnOutputBoundary,
                                UserRepoManager userRepoManager) {
-        this.matcherUIOutputBoundary = matcherUIOutputBoundary;
+        this.emailConnOutputBoundary = emailConnOutputBoundary;
         this.userRepoManager = userRepoManager;
     }
 
@@ -36,7 +36,7 @@ public class MatcherUIInteractor implements MatcherUIInputBoundary {
      */
 
     @Override
-    public MatcherUIResponseModel create(MatcherUIRequestModel requestModel) {
+    public EmailConnResponseModel create(EmailConnRequestModel requestModel) {
 
         // get information from database in order to determine whether the requested email can be shown.
         RequestModel userAccount = this.userRepoManager.getUserAccount(requestModel.getRequester());
@@ -53,8 +53,8 @@ public class MatcherUIInteractor implements MatcherUIInputBoundary {
         }
 
         // prepare the resulted email address to show to users.
-        MatcherUIResponseModel matcherUIResponseModel = new MatcherUIResponseModel(requestedEmail);
-        return matcherUIOutputBoundary.prepareView(matcherUIResponseModel);
+        EmailConnResponseModel emailConnResponseModel = new EmailConnResponseModel(requestedEmail);
+        return emailConnOutputBoundary.prepareView(emailConnResponseModel);
     }
 }
 

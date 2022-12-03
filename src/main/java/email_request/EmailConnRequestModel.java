@@ -5,14 +5,14 @@ package email_request;
  * It's created, passed in, unpacked by the interactor and discarded.
  * Layer: Use Case Layer
  */
-public class MatcherUIRequestModel {
+public class EmailConnRequestModel {
     /** The email address of the user who requests others' email. */
-    private String requester;
+    private final String requester;
 
     /** The email address that is requested by the user whose email address is requester */
-    private String targetUser;
+    private final String targetUser;
 
-    public MatcherUIRequestModel(String requester, String targetUser){
+    public EmailConnRequestModel(String requester, String targetUser){
         this.requester = requester;
         this.targetUser = targetUser;
     }

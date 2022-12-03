@@ -1,10 +1,8 @@
 package matching_system;
 
-import data_access_storage.RequestModel;
+
 import data_access_storage.UserRepo;
 import data_access_storage.UserRepoManager;
-import entities.Matcher;
-import entities.UserAccount;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 
@@ -19,7 +17,6 @@ public class MatchManagerTest {
     MatchOutputBoundary presenter;
     MatchRequestModel matchRequestModel;
     UserRepoManager repoManager;
-    private ArrayList<UserAccount> targets = new ArrayList<UserAccount>();
     /** Setup basic codes for all future tests*/
     @BeforeEach
     void setUp() throws IOException {
@@ -33,13 +30,14 @@ public class MatchManagerTest {
     @Test
     public void testCreate(){
         MatchResponseModel matchResponseModel = matchManager.create(matchRequestModel);
-        ArrayList<String> names = new ArrayList<String>();
+        ArrayList<String> names = new ArrayList<>();
         for(UserData userData:matchResponseModel.getMatchedData()){
             names.add(userData.name);
         }
         assertEquals(5, matchManager.create(matchRequestModel).getMatchedData().length);
         assertTrue(names.contains("b")&&names.contains("c")
-                &&names.contains("d")&&names.contains("e")&&names.contains("f"));
+                &&names.contains("d")&&names.contains("e"));
+        assertTrue(names.contains("f") | names.contains("Terry"));
     }
 
 }

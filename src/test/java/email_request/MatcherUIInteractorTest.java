@@ -16,11 +16,11 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * This class tests methods in MatcherUIInteractor.
+ * This class tests methods in EmailConnInteractor.
  */
 
 class MatcherUIInteractorTest {
-    private MatcherUIInteractor interactor;
+    private EmailConnInteractor interactor;
     /** User Jimmy in our data file requests 6 email addresses already */
     private static final int jimmyNumRequest = 6;
 
@@ -39,8 +39,8 @@ class MatcherUIInteractorTest {
     void setUp() throws IOException {
         File csvFile = new File("src/main/resources/interactorTestFile.csv");
         UserRepoManager repo = new UserRepo(csvFile);
-        MatcherUIOutputBoundary output = new MatcherUIPresenter();
-        interactor = new MatcherUIInteractor(output, repo);
+        EmailConnOutputBoundary output = new EmailConnPresenter();
+        interactor = new EmailConnInteractor(output, repo);
     }
 
     /**
@@ -52,9 +52,9 @@ class MatcherUIInteractorTest {
      */
     @Test
     void testCreateSuccess(){
-        MatcherUIRequestModel rm = new MatcherUIRequestModel("david.david@hotmail.com",
+        EmailConnRequestModel rm = new EmailConnRequestModel("david.david@hotmail.com",
                 "emma.emma@mail.utoronto.ca");
-        MatcherUIResponseModel rq = interactor.create(rm);
+        EmailConnResponseModel rq = interactor.create(rm);
         assertEquals( "emma.emma@mail.utoronto.ca",
                 rq.getRequestedEmailAddress());
         assertEquals(DavidNumRequest + 1,
@@ -81,9 +81,9 @@ class MatcherUIInteractorTest {
      */
     @Test
     void testCreateFailure() {
-        MatcherUIRequestModel rm = new MatcherUIRequestModel("jimmy.jimmy@hotmail.com",
+        EmailConnRequestModel rm = new EmailConnRequestModel("jimmy.jimmy@hotmail.com",
                 "emma.emma@mail.utoronto.ca");
-        MatcherUIResponseModel rq = interactor.create(rm);
+        EmailConnResponseModel rq = interactor.create(rm);
         assertEquals( "",
                 rq.getRequestedEmailAddress());
         assertEquals(jimmyNumRequest,
