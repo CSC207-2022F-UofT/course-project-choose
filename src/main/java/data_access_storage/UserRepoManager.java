@@ -54,4 +54,7 @@ public interface UserRepoManager {
      * @return all users' account information
      */
     Map<String, RequestModel> getAllUserAccount();
+
+    boolean matchingPassword(String email, String password);
+
 }
