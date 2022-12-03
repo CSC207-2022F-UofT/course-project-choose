@@ -43,7 +43,7 @@ public class UpgradeSystemMain {
 
         // create the view for matching results
         MatchResultsUI matcherResultsUI = new MatchResultsUI(emailConnController,
-                upgradeController,
+                upgradeController, upgradePresenter,
                 currentEmail, presenter);
 
         application.add(matcherResultsUI);

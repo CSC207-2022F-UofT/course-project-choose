@@ -25,6 +25,8 @@ public class MatchResultsUI extends JPanel implements ActionListener {
 
     /** A controller responsible for upgrading requesting */
     UpgradeController upgradeController;
+    /** A presenter that is responsible for preparing the view for upgrading requesting */
+    UpgradePresenter upgradePresenter;
 
     /** The email address of the user who requests to see the match results. */
     private String requesterEmail;
@@ -39,16 +41,18 @@ public class MatchResultsUI extends JPanel implements ActionListener {
     /** A preset of UI panel that display 5 user info which are included in the matchResponseModel
      * @param emailConnController Controller that is responsible to process email request.
      * @param upgradeController  Controller that is responsible to process upgrading request.
+     * @param upgradePresenter Presenter that is responsible to preparing the view for upgrading request
      * @param requesterEmail email of the requester
      * @param matchUIPresenter the presenter that stores matchedRespondModel
      * */
     public MatchResultsUI(EmailConnController emailConnController,
-                          UpgradeController upgradeController,
+                          UpgradeController upgradeController, UpgradePresenter upgradePresenter,
                           String requesterEmail,
                           MatchUIPresenter matchUIPresenter){
 
         this.emailConnController = emailConnController;
         this.upgradeController = upgradeController;
+        this.upgradePresenter = upgradePresenter;
         this.requesterEmail = requesterEmail;
         int count = 0;
         for(UserData user: matchUIPresenter.prepareView().getMatchedData()){
@@ -144,7 +148,6 @@ public class MatchResultsUI extends JPanel implements ActionListener {
             } else {
                 // If requested email is not available, pop up the upgrade UI and asks whether the
                 // user-at-keyboard would like to upgrade his account for unlimited email requests.
-                UpgradePresenter upgradePresenter = new UpgradePresenter(requesterEmail);
                 UpgradeUI upgradeUI = new UpgradeUI(requesterEmail, upgradeController, upgradePresenter);
                 this.addUpgradeFrame(upgradeUI);
                 upgradeFrame.setVisible(true);
