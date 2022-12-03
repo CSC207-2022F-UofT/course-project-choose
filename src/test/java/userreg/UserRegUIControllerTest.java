@@ -30,7 +30,7 @@ class UserRegUIControllerTest {
     }
     @Test
     void testCreatSucess(){
-        UserRegUIResponseModel rm = controller.userProfileCreate("34356789@mail.utoronto.ca","123","David1", Gender.MALE, 18,
+        UserRegUIResponseModel rm = controller.userProfileCreate("jim.jim@mail.utoronto.ca","123","David1", Gender.MALE, 18,
                 174, "Computer Science", Hobbies.FOOD,
                 "\"Hello, This is David \"", Gender.FEMALE);
         assertTrue("SUCCESS".equals(rm.getRegMessage()));

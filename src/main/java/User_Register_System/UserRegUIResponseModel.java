@@ -1,4 +1,4 @@
-package userreg;
+package User_Register_System;
 
 public class UserRegUIResponseModel {
     /**

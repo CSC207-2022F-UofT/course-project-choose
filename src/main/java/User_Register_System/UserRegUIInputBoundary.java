@@ -1,6 +1,5 @@
-package userreg;
+package User_Register_System;
 
-import entities.UserAccount;
 /**
  * This class allows us to decouple UserRegUIcontroller and UserRegUIInteractor.
  * Layer: Use Case Layer

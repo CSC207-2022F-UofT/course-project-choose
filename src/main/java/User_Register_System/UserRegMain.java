@@ -1,4 +1,4 @@
-package userreg;
+package User_Register_System;
 
 import data_access_storage.UserRepo;
 import data_access_storage.UserRepoManager;
@@ -8,7 +8,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class UserRegMain {
-    /** Here is an example of how userRegingSystem work
+    /** Here is an example of how userRegisterSystem work
      */
     public static void main(String[] args) {
 
@@ -22,7 +22,7 @@ public class UserRegMain {
         }catch (IOException e) {
             throw new RuntimeException("Could not create file.");
         }
-        // Create Controller
+        // create Controller
         UserRegUIOutputBoundary presenter1 = new UserRegUIPresenter();
         UserRegUIInputBoundary interactor = new UserRegUIInteractor(presenter1, users);
         UserRegUIController userRegerUIController = new UserRegUIController(interactor);

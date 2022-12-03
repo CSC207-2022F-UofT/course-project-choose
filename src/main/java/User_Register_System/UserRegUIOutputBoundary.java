@@ -1,4 +1,4 @@
-package userreg;
+package User_Register_System;
 /**
  * This class is the abstraction that allows UserRegUIInteractor to pass
  * the compared email address to UserRegUIPresenter without violating Dependency Rules

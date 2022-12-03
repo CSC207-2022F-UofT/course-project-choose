@@ -1,9 +1,7 @@
-package userreg;
+package User_Register_System;
 
 import entities.Gender;
 import entities.Hobbies;
-import entities.User;
-import entities.UserAccount;
 
 public class UserRegUIController {
     /**
@@ -25,11 +23,10 @@ public class UserRegUIController {
      */
     public UserRegUIResponseModel  userProfileCreate(String eMail_v,String password_v,String name_v, Gender gender, int age_v, float height_v, String programOfStudy_v,
                                                      Hobbies hobby_v, String selfIntro_v, Gender interestedIn_v){
-        User user=new User( name_v, gender,  age_v,
-         height_v,  programOfStudy_v,
-                 hobby_v,  selfIntro_v,  interestedIn_v);
-        UserAccount ua=new UserAccount(eMail_v,password_v,user);
-        UserRegUIRequestModel userRegUIRequestModel=new UserRegUIRequestModel(ua);
+
+        UserRegUIRequestModel userRegUIRequestModel=new UserRegUIRequestModel(eMail_v,password_v,name_v,   age_v,
+                height_v,  gender,hobby_v,programOfStudy_v,
+                    selfIntro_v,interestedIn_v);
         return userRegInput.create(userRegUIRequestModel);
 
     }

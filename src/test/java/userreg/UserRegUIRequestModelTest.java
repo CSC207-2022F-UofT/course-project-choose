@@ -1,9 +1,11 @@
 package userreg;
 
+import User_Register_System.UserRegUIRequestModel;
 import entities.Gender;
 import entities.Hobbies;
 import entities.User;
 import entities.UserAccount;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -16,37 +18,26 @@ class UserRegUIRequestModelTest {
     @BeforeEach
     void setUp(){
 
-        User user = new User("David22", Gender.MALE, 18,
-                174, "Computer Science", Hobbies.FOOD,
-                "\"Hello, This is David \"", Gender.FEMALE);
-        UserAccount userAccount = new UserAccount("343567@mail.utoronto.ca",
-                "david.david", user);
-        userRegUIRequestModel = new UserRegUIRequestModel(userAccount);
+        userRegUIRequestModel = new UserRegUIRequestModel("343567@mail.utoronto.ca",
+                "david.david","David22", 18,174,Gender.MALE,Hobbies.FOOD,
+                "Computer Science",
+                "Hello, This is David",Gender.FEMALE);
     }
 
     @Test
-    void getUserAccount() {
-
-        User user = new User("David22", Gender.MALE, 18,
-                174, "Computer Science", Hobbies.FOOD,
-                "\"Hello, This is David \"", Gender.FEMALE);
-        UserAccount userAccount = new UserAccount("343567@mail.utoronto.ca",
-                "david.david", user);
-        assertEquals(userRegUIRequestModel.getUserAccout().getEmail(), userAccount.getEmail());
-        assertEquals(userRegUIRequestModel.getUserAccout().getPassword(), userAccount.getPassword());
-        assertEquals(userRegUIRequestModel.getUserAccout().getUser().getName(), userAccount.getUser().getName());
-        assertEquals(userRegUIRequestModel.getUserAccout().getUser().getAge(), userAccount.getUser().getAge());
-        assertEquals(userRegUIRequestModel.getUserAccout().getUser().getHeight(), userAccount.getUser().getHeight(),5.96e-08);
-        assertEquals(userRegUIRequestModel.getUserAccout().getUser().getHobby(), userAccount.getUser().getHobby());
-        assertEquals(userRegUIRequestModel.getUserAccout().getUser().getGender(), userAccount.getUser().getGender());
-        assertEquals(userRegUIRequestModel.getUserAccout().getUser().getInterestedIn(), userAccount.getUser().getInterestedIn());
-        assertEquals(userRegUIRequestModel.getUserAccout().getUser().getSelfIntro(), userAccount.getUser().getSelfIntro());
-        assertEquals(userRegUIRequestModel.getUserAccout().getUser().getProgramOfStudy(), userAccount.getUser().getProgramOfStudy());
+    void testModel() {
 
 
-
-
-
+        Assertions.assertEquals(userRegUIRequestModel.getEmail(), "343567@mail.utoronto.ca");
+        Assertions.assertEquals(userRegUIRequestModel.getPassword(), "david.david");
+        Assertions.assertEquals(userRegUIRequestModel.getName(), "David22");
+        Assertions.assertEquals(userRegUIRequestModel.getAge(), 18);
+        Assertions.assertEquals(userRegUIRequestModel.getHeight(), 174, 5.96e-08);
+        Assertions.assertEquals(userRegUIRequestModel.getHobbies(), Hobbies.FOOD);
+        Assertions.assertEquals(userRegUIRequestModel.getProgramOfStudy(), "Computer Science");
+        Assertions.assertEquals(userRegUIRequestModel.getSelfIntro(), "Hello, This is David");
+        Assertions.assertEquals(userRegUIRequestModel.getGender(), Gender.MALE);
+        Assertions.assertEquals(userRegUIRequestModel.getInterestedIn(), Gender.FEMALE);
 
     }
 

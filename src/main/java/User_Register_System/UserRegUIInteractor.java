@@ -1,8 +1,9 @@
-package userreg;
+package User_Register_System;
 
 import data_access_storage.RequestModel;
 import data_access_storage.UserRepoManager;
-import entities.UofTStudentEmailVerifier;
+import email_verifier_strategy_pattern.UofTStudentEmailVerifier;
+import entities.User;
 import entities.UserAccount;
 /**
  * This class is responsible to take the inputs/request from users, interact with
@@ -16,14 +17,13 @@ public class UserRegUIInteractor implements UserRegUIInputBoundary{
     /**
      * Construct a MatcherUIInteractor object.
      * @param userRegUIOutputBoundary an interface that allows UserRegUIInteractor to call
-     *                                UserRegUIPrenseter without knowing its existence.
+     *                                UserRegUIPresenter without knowing its existence.
      * @param userRepoManager a data access interface
      */
     public UserRegUIInteractor(UserRegUIOutputBoundary userRegUIOutputBoundary, UserRepoManager userRepoManager){
         this.userRegUIOutputBoundary=userRegUIOutputBoundary;
         this.userRepoManager=userRepoManager;
     }
-
     /**
      * Take the data input from users and decide whether
      * the register is success or not.
@@ -32,19 +32,24 @@ public class UserRegUIInteractor implements UserRegUIInputBoundary{
      * @return a data model for showing whether register is succeed or not.
      */
 
+
     @Override
     public UserRegUIResponseModel create(UserRegUIRequestModel requestModel) {
         UserRegUIResponseModel userRegUIResponseModel=null;
-        UserAccount ua=requestModel.userAccout;
-        String email=ua.getEmail();
+
+        User user=new User(requestModel.getName(),requestModel.getGender(),requestModel.getAge(),requestModel.getHeight(),requestModel.getProgramOfStudy(),requestModel.getHobbies(),requestModel.getSelfIntro(),requestModel.getInterestedIn());
+
+        UserAccount ua=new UserAccount(requestModel.getEmail(),requestModel.getPassword(),user);
+
+        String email=requestModel.getEmail();
 
         UofTStudentEmailVerifier ev=new UofTStudentEmailVerifier();
-        // Case register fail, reason: email invalid
+
         if (!ev.verify(email)){
             userRegUIResponseModel=new UserRegUIResponseModel("ERR001");
             return this.userRegUIOutputBoundary.prepareView(userRegUIResponseModel);
         }
-        // Case register fail, reason: email existed
+
         if (this.userRepoManager.existsByEmail(email)){
             userRegUIResponseModel=new UserRegUIResponseModel("ERR002");
             return this.userRegUIOutputBoundary.prepareView(userRegUIResponseModel);
@@ -52,7 +57,7 @@ public class UserRegUIInteractor implements UserRegUIInputBoundary{
         RequestModel rm=new RequestModel(ua);
 
         this.userRepoManager.save(rm);
-        // Case register success
+
         userRegUIResponseModel=new UserRegUIResponseModel("SUCCESS");
 
 

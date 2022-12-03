@@ -1,4 +1,4 @@
-package userreg;
+package User_Register_System;
 
 import data_access_storage.UserRepoManager;
 import entities.*;
@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-// Set UI Frame.
+
 public class UserRegUITemplate extends JPanel{
     UserRegUIController userRegUIController;
 
@@ -19,64 +19,73 @@ public class UserRegUITemplate extends JPanel{
     }
     public UserRegUITemplate( UserRepoManager users,UserRegUIController userRegUIController){
         this.userRegUIController=userRegUIController;
+        // Set email
         this.setLayout(null);
-        //Takes Email
         JLabel eMailStr = new JLabel(padLeft("EMAIL:",15,' '));
         eMailStr.setBounds(20, 25, 80, 25);
         this.add(eMailStr);
-        //Takes Password
+        // Set password
         JLabel passwordStr = new JLabel(padLeft("PASSWORD:",15,' '));
         passwordStr.setBounds(20, 50, 100, 25);
         this.add(passwordStr);
-        //Takes Name
+
+        // Set Name
         JLabel nameStr = new JLabel(padLeft("NAME:",15,' '));
         nameStr.setBounds(20, 75, 100, 25);
         this.add(nameStr);
-        //Takes Gender
+
+        // Set Gender
         JLabel genderStr = new JLabel(padLeft("GENDER:",15,' '));
         genderStr.setBounds(20, 100, 100, 25);
         this.add(genderStr);
-        //Takes Age
+
+        // Set age
         JLabel ageStr = new JLabel(padLeft("AGE:",15,' '));
         ageStr.setBounds(20, 125, 100, 30);
         this.add(ageStr);
-        //Takes Height
+
+        // Set height
         JLabel heightStr = new JLabel(padLeft("HEIGHT:",15,' '));
         heightStr.setBounds(20, 150, 100, 30);
         this.add(heightStr);
-        //Takes Program
+
+        // Set program
         JLabel programOfStudyStr = new JLabel(padLeft("PROGRAM:",15,' '));
         programOfStudyStr.setBounds(20, 175, 100, 30);
         this.add(programOfStudyStr);
-        //Takes Hobby
+
+        // Set hobby
         JLabel hobbyStr = new JLabel(padLeft("HOBBY:",15,' '));
         hobbyStr.setBounds(20, 200, 100, 30);
         this.add(hobbyStr);
-        //Takes Interests
+
+        // Set interests
         JLabel interestedInStr = new JLabel(padLeft("INTERESTS:",15,' '));
         interestedInStr.setBounds(20, 225, 100, 30);
         this.add(interestedInStr);
-        //Takes Self-Introduction
-        JLabel selfIntroStr = new JLabel(padLeft("Intro:",15,' '));
+
+        // Set introduction
+        JLabel selfIntroStr = new JLabel(padLeft("INTRO:",15,' '));
         selfIntroStr.setBounds(20, 250, 100, 30);
         this.add(selfIntroStr);
 
-        //Add Email in frame
+        //----------------------------------
+        // Add email
         JTextField eMail = new JTextField();
         eMail.setBounds(140, 25, 180, 25);
         this.add(eMail);
 
-        //Add Password
+        // Add password
         JTextField password = new JPasswordField();
         password.setBounds(140, 50, 180, 25);
         this.add(password);
 
-        //Add Name
+        // Add name
         JTextField name = new JTextField();
         name.setBounds(140, 75, 180, 25);
         this.add(name);
 
-        //Add Gender
+        // Add gender (Male)
         JTextField genderText= new JTextField();
         genderText.setText(Gender.MALE.toString());
         JRadioButton mrb=new JRadioButton(Gender.MALE.toString(),true);
@@ -89,6 +98,7 @@ public class UserRegUITemplate extends JPanel{
                 genderText.setText(mrb.getText().toString());
             }
         });
+        // Add gender (Female)
         JRadioButton frb=new JRadioButton(Gender.FEMALE.toString(),false);
         frb.setBounds(210,100,90,30);
         this.add(frb);
@@ -102,25 +112,25 @@ public class UserRegUITemplate extends JPanel{
         genderBg.add(mrb);
         genderBg.add(frb);
 
-        // Add Age
+        // Add age
         JTextField age = new JTextField();
         age.setBounds(140, 130, 180, 25);
         this.add(age);
 
-        //Add height
+        // Add height
         JTextField height = new JTextField();
         height.setBounds(140, 155, 180, 25);
         this.add(height);
 
-        //Add program
+        // Add program
         JTextField programOfStudy = new JTextField();
         programOfStudy.setBounds(140, 180, 180, 25);
         this.add(programOfStudy);
 
-        // Add hobby
+        // Add hobbies
         JComboBox hobby=new JComboBox();
-        //Create Sub
-        hobby.addItem("----SELECT----");
+        //Add sub-button (select)
+        hobby.addItem("--select--");
         for (Hobbies hb : Hobbies.values()){
             hobby.addItem(hb);
 
@@ -153,16 +163,15 @@ public class UserRegUITemplate extends JPanel{
         genderBg1.add(mrb1);
         genderBg1.add(frb1);
 
-        //Add self-introduction
         JTextArea selfIntro = new JTextArea(12,34);
         selfIntro.setBounds(140, 260, 180, 125);
         this.add(selfIntro);
+
         // Set submit button
-        JButton buttonregister = new JButton("Submit");
+        JButton buttonregister = new JButton("submit");
         buttonregister.setBounds(160, 450, 100, 25);
         this.add(buttonregister);
-
-        //Set register button and process further action including passing data to UserRegUIController.
+        // Set register button and process further action including passing data to UserRegUIController.
         buttonregister.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -192,8 +201,8 @@ public class UserRegUITemplate extends JPanel{
                     JOptionPane.showMessageDialog(null,"email existed");
                 }else{
 
-                    // For future connection
-                    JOptionPane.showMessageDialog(null,"Success registered");
+                    // UI page for future connection
+                    JOptionPane.showMessageDialog(null,"Success Register");
 
                 }
             }

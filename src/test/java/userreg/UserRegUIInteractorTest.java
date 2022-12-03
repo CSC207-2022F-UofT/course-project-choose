@@ -31,13 +31,11 @@ class UserRegUIInteractorTest {
     void testCreateSuccess(){
 
         // user info
-        User user = new User("David22", Gender.MALE, 18,
-                174, "Computer Science", Hobbies.FOOD,
-                "\"Hello, This is David \"", Gender.FEMALE);
-        UserAccount userAccount = new UserAccount("56789@mail.utoronto.ca",
-                "david.david", user);
 
-        UserRegUIRequestModel requestModel=new UserRegUIRequestModel(userAccount);
+        UserRegUIRequestModel requestModel=new UserRegUIRequestModel("david2@mail.utoronto.ca",
+                "david.david","David22", 18,
+                174,Gender.MALE,  Hobbies.FOOD,"Computer Science",
+                "\"Hello, This is David \"", Gender.FEMALE);
         UserRegUIResponseModel urrm=interactor.create(requestModel);
 
         assertEquals("SUCCESS",urrm.getRegMessage());
@@ -46,13 +44,10 @@ class UserRegUIInteractorTest {
     @Test
     void testCreateEmailInvalid() {
         // user info
-        User user = new User("David33", Gender.MALE, 18,
-                174, "Computer Science", Hobbies.FOOD,
+        UserRegUIRequestModel requestModel=new UserRegUIRequestModel("56789@mail2.utoronto.ca",
+                "david.david","David22", 18,
+                174,Gender.MALE,  Hobbies.FOOD,"Computer Science",
                 "\"Hello, This is David \"", Gender.FEMALE);
-        UserAccount userAccount = new UserAccount("david.david@hotmail.com",
-                "david.david", user);
-
-        UserRegUIRequestModel requestModel=new UserRegUIRequestModel(userAccount);
         UserRegUIResponseModel urrm=interactor.create(requestModel);
 
         assertEquals("ERR001",urrm.getRegMessage());
@@ -61,13 +56,10 @@ class UserRegUIInteractorTest {
     @Test
     void testCreateEmailExisted() {
         // user info
-        User user = new User("David34", Gender.MALE, 18,
-                174, "Computer Science", Hobbies.FOOD,
+        UserRegUIRequestModel requestModel=new UserRegUIRequestModel("56789@mail.utoronto.ca",
+                "david.david","David22", 18,
+                174,Gender.MALE,  Hobbies.FOOD,"Computer Science",
                 "\"Hello, This is David \"", Gender.FEMALE);
-        UserAccount userAccount = new UserAccount("34356@mail.utoronto.ca",
-                "david.david", user);
-
-        UserRegUIRequestModel requestModel=new UserRegUIRequestModel(userAccount);
         UserRegUIResponseModel urrm=interactor.create(requestModel);
 
         assertEquals("ERR002",urrm.getRegMessage());
