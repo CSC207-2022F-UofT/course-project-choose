@@ -5,7 +5,7 @@ import email_request.EmailConnPresenter;
 import email_request.EmailConnController;
 import email_request.EmailConnResponseModel;
 import upgrade.UpgradeController;
-import upgrade.UpgradePresenter;
+import upgrade.UpgradeOutputBoundary;
 import upgrade.UpgradeUI;
 
 import javax.swing.*;
@@ -26,7 +26,7 @@ public class MatchResultsUI extends JPanel implements ActionListener {
     /** A controller responsible for upgrading requesting */
     UpgradeController upgradeController;
     /** A presenter that is responsible for preparing the view for upgrading requesting */
-    UpgradePresenter upgradePresenter;
+    UpgradeOutputBoundary upgradePresenter;
 
     /** The email address of the user who requests to see the match results. */
     private String requesterEmail;
@@ -46,9 +46,9 @@ public class MatchResultsUI extends JPanel implements ActionListener {
      * @param matchUIPresenter the presenter that stores matchedRespondModel
      * */
     public MatchResultsUI(EmailConnController emailConnController,
-                          UpgradeController upgradeController, UpgradePresenter upgradePresenter,
+                          UpgradeController upgradeController, UpgradeOutputBoundary upgradePresenter,
                           String requesterEmail,
-                          MatchUIPresenter matchUIPresenter){
+                          MatchOutputBoundary matchUIPresenter){
 
         this.emailConnController = emailConnController;
         this.upgradeController = upgradeController;
@@ -148,6 +148,7 @@ public class MatchResultsUI extends JPanel implements ActionListener {
             } else {
                 // If requested email is not available, pop up the upgrade UI and asks whether the
                 // user-at-keyboard would like to upgrade his account for unlimited email requests.
+                upgradePresenter.setCurrentEmail(requesterEmail);
                 UpgradeUI upgradeUI = new UpgradeUI(requesterEmail, upgradeController, upgradePresenter);
                 this.addUpgradeFrame(upgradeUI);
                 upgradeFrame.setVisible(true);

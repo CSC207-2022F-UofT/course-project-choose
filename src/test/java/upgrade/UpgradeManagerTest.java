@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * This class tests methods in UpgradeManager
@@ -20,6 +21,16 @@ public class UpgradeManagerTest {
         @Override
         public void onUpgrade(UpgradeResponseModel responseModel) {
             receivedEmail = responseModel.getEmail();
+        }
+
+        @Override
+        public void setCurrentEmail(String currentEmail) {
+            // please fill this in
+        }
+
+        @Override
+        public UpgradePresenterViewModel prepareView() {
+            return null;
         }
     }
 
@@ -56,6 +67,6 @@ public class UpgradeManagerTest {
 
         upgradeManager.upgrade(new UpgradeRequestModel(mockEmail));
         assertEquals(outputBoundary.receivedEmail, mockEmail);
-        assertEquals(true, mockUsers.getUserAccount("terry.tan@mail.utoronto.ca").getUserAccount().getSubStatus());
+        assertTrue(mockUsers.getUserAccount("terry.tan@mail.utoronto.ca").getUserAccount().getSubStatus());
     }
 }

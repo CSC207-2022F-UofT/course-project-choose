@@ -18,7 +18,7 @@ public class LoginResponseModelTest {
         File csvFile = new File("src/main/resources/matchingSystemTest.csv");
         UserRepoManager repo = new UserRepo(csvFile);
         user = repo.getUserAccount("b@hotmail.com").getUserAccount().getUser();
-        loginResponseModel = new LoginResponseModel(user);
+        loginResponseModel = new LoginResponseModel(user, "b@hotmail.com");
     }
 
     @Test

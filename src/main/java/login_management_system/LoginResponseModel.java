@@ -8,8 +8,11 @@ public class LoginResponseModel {
     final User user;
     boolean loginStatus;
 
-    public LoginResponseModel(User user) {
+    private String email;
+
+    public LoginResponseModel(User user, String email) {
         this.user = user;
+        this.email = email;
     }
 
     public User getUser() {
@@ -17,5 +20,9 @@ public class LoginResponseModel {
     }
     public Boolean getLoginStatus(){return this.loginStatus;}
     public void setLoginStatus() {this.loginStatus = true; }
+
+    public String getEmail(){
+        return this.email;
+    }
 
 }

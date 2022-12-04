@@ -18,7 +18,8 @@ public class UpgradePresenterTest {
     void testUpgradeSuccess() {
 
         String mockEmail = "terry.tan@mail.utoronto.ca";
-        UpgradePresenter upgradePresenter = new UpgradePresenter(mockEmail);
+        UpgradePresenter upgradePresenter = new UpgradePresenter();
+        upgradePresenter.setCurrentEmail(mockEmail);
         upgradePresenter.onUpgrade(new UpgradeResponseModel(""));
         UpgradePresenterViewModel viewModel = upgradePresenter.prepareView();
 
