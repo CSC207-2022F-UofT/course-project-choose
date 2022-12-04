@@ -41,8 +41,9 @@ This project implements the following 7 features. The code of each feature is wr
 
 We are still waiting to connect individual features implemented by each team member. Up to Milestone 4, two feature implementations "match recommendations" and "email request" are reviewed and merged to the main branch. Please run the java class MatchingSystemMain.java under Package matching_system to see a demo for these two features working simultanously. 
 
-- After running MatchingSystemMain.java, the following window will pop up. 
-<img width="629" alt="Screen Shot 2022-11-21 at 6 32 39 PM" src="https://user-images.githubusercontent.com/113075282/203194624-abaa5728-f35f-4177-a77c-9a8b2dc74fa1.png">
+- Start by running Main.java 
+- After running Main.java, the following window will pop up. 
+<img width="458" alt="Screen Shot 2022-12-04 at 10 31 22 AM" src="https://user-images.githubusercontent.com/113075282/205499642-79a5ffd3-7806-435b-a458-9800c24033c6.png">
 
 - Click on "Request Email". If the user can see the requested email, then a window with the requested email address will pop up. Click "OK" to close the message window. Please notice that this action of requesting email address will update the csv file "matchingSystemTest.csv". The demo user has an email address of a@mail.utoronto.ca. Her number of email requests, the numOfEmailRequest column in "matchingSystemTest.csv", will be incremented by 1 for each email request. 
 <img width="636" alt="Screen Shot 2022-11-21 at 6 35 18 PM" src="https://user-images.githubusercontent.com/113075282/203179277-02d24072-5a63-44b2-a3fe-fce978103fe3.png">
