@@ -1,5 +1,6 @@
 package userreg;
 
+import User_Register_System.*;
 import data_access_storage.UserRepo;
 import data_access_storage.UserRepoManager;
 import entities.Gender;

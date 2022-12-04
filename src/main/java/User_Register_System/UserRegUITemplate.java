@@ -11,13 +11,16 @@ import java.awt.event.ActionEvent;
 public class UserRegUITemplate extends JPanel{
     UserRegUIController userRegUIController;
 
+    /**
+     * This method will add space (" ") when the length is too short.
+     * */
     public static String padLeft(String origin, int length, char ch) {
         while (origin.length() < length) {
             origin = ch + origin;
         }
         return origin;
     }
-    public UserRegUITemplate( UserRepoManager users,UserRegUIController userRegUIController){
+    public UserRegUITemplate(UserRepoManager users,UserRegUIController userRegUIController){
         this.userRegUIController=userRegUIController;
         // Set email
         this.setLayout(null);
@@ -175,11 +178,11 @@ public class UserRegUITemplate extends JPanel{
         buttonregister.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                // Get data input from user
                 String name_v=name.getText();
                 String eMail_v = new String(eMail.getText());
                 String password_v = new String(password.getText());
-//                System.out.println(genderText.getText());
+                //System.out.println(genderText.getText());
                 Gender gender= Gender.valueOf(genderText.getText());
                 int age_v=Integer.valueOf(("".equals(age.getText())?"0":age.getText()));
                 float height_v=Float.valueOf("".equals(height.getText())?"0":height.getText());
@@ -188,17 +191,17 @@ public class UserRegUITemplate extends JPanel{
                 String selfIntro_v=selfIntro.getText();
                 Gender interestedIn_v=Gender.valueOf(interestedIn.getText());
 
-                UserRegUIOutputBoundary presenter = new UserRegUIPresenter();
-                UserRegUIInputBoundary interactor = new UserRegUIInteractor(presenter, users);
-                UserRegUIController userRegUIController=new UserRegUIController(interactor);
-                UserRegUIResponseModel userRegUIResponseModel=userRegUIController.userProfileCreate(eMail_v,password_v,name_v, gender, age_v, height_v, programOfStudy_v,
-                        hobby_v, selfIntro_v, interestedIn_v);
-                UserRegUIResponseModel  prepareView=presenter.prepareView(userRegUIResponseModel);
 
+                UserRegUIResponseModel userRegUIResponseModel=userRegUIController.userProfileCreate(
+                        eMail_v,password_v,name_v, gender, age_v, height_v, programOfStudy_v,
+                        hobby_v, selfIntro_v, interestedIn_v);
+                UserRegUIOutputBoundary presenter = new UserRegUIPresenter();
+                UserRegUIResponseModel  prepareView=presenter.prepareView(userRegUIResponseModel);
+                // Check the error code
                 if ("ERR001".equals(prepareView.getRegMessage())){
-                    JOptionPane.showMessageDialog(null,"email invalid");
+                    JOptionPane.showMessageDialog(null,"Email Invalid");
                 }else if("ERR002".equals(prepareView.getRegMessage())){
-                    JOptionPane.showMessageDialog(null,"email existed");
+                    JOptionPane.showMessageDialog(null,"Email Existed");
                 }else{
 
                     // UI page for future connection

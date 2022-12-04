@@ -25,14 +25,14 @@ public class UserRegMain {
         // create Controller
         UserRegUIOutputBoundary presenter1 = new UserRegUIPresenter();
         UserRegUIInputBoundary interactor = new UserRegUIInteractor(presenter1, users);
-        UserRegUIController userRegerUIController = new UserRegUIController(interactor);
+        UserRegUIController userRegUIController = new UserRegUIController(interactor);
 
-        UserRegUITemplate userRegerUiTemplate = new UserRegUITemplate(users,userRegerUIController);
+        UserRegUITemplate userRegUiTemplate = new UserRegUITemplate(users,userRegUIController);
 
         application.setBounds(500,100,400,550);
         application.setLayout(null);
-        userRegerUiTemplate.setBounds(0,0,400,550);
-        application.add(userRegerUiTemplate);
+        userRegUiTemplate.setBounds(0,0,400,550);
+        application.add(userRegUiTemplate);
         // application.pack();
         application.setVisible(true);
     }
