@@ -1,16 +1,13 @@
 package userreg;
 
 
-import User_Register_System.*;
+import user_register_system.*;
 import data_access_storage.UserRepo;
 import data_access_storage.UserRepoManager;
 import entities.Gender;
 import entities.Hobbies;
-import entities.User;
-import entities.UserAccount;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import userreg.*;
 
 import java.io.File;
 import java.io.IOException;

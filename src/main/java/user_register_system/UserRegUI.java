@@ -1,6 +1,7 @@
-package User_Register_System;
+package user_register_system;
 
-import data_access_storage.UserRepoManager;
+import controller_presenter.BigController;
+import controller_presenter.BigPresenter;
 import entities.*;
 
 import javax.swing.*;
@@ -8,8 +9,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 
-public class UserRegUITemplate extends JPanel{
-    UserRegUIController userRegUIController;
+public class UserRegUI extends JPanel{
+    protected BigController controllers;
+    protected BigPresenter presenters;
 
     /**
      * 此函数实现如果字段名称长度不够前面补空格。
@@ -20,8 +22,13 @@ public class UserRegUITemplate extends JPanel{
         }
         return origin;
     }
-    public UserRegUITemplate(UserRegUIController userRegUIController){
-        this.userRegUIController=userRegUIController;
+    public UserRegUI(BigController controllers, BigPresenter presenters) {
+        this.controllers = controllers;
+        this.presenters = presenters;
+
+        // set the panel size
+        this.setSize(500, 600);
+
         // Set email
         this.setLayout(null);
         JLabel eMailStr = new JLabel(padLeft("EMAIL:",15,' '));
@@ -98,7 +105,7 @@ public class UserRegUITemplate extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                genderText.setText(mrb.getText().toString());
+                genderText.setText(mrb.getText());
             }
         });
         // Add gender (Female)
@@ -108,7 +115,7 @@ public class UserRegUITemplate extends JPanel{
         frb.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                genderText.setText(frb.getText().toString());
+                genderText.setText(frb.getText());
             }
         });
         ButtonGroup genderBg=new ButtonGroup();
@@ -150,7 +157,7 @@ public class UserRegUITemplate extends JPanel{
         mrb1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                interestedIn.setText(mrb1.getText().toString());
+                interestedIn.setText(mrb1.getText());
             }
         });
         JRadioButton frb1=new JRadioButton(Gender.FEMALE.toString(),false);
@@ -159,7 +166,7 @@ public class UserRegUITemplate extends JPanel{
         frb.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                interestedIn.setText(frb1.getText().toString());
+                interestedIn.setText(frb1.getText());
             }
         });
         ButtonGroup genderBg1=new ButtonGroup();
@@ -180,8 +187,8 @@ public class UserRegUITemplate extends JPanel{
             public void actionPerformed(ActionEvent e) {
                 // 获取窗口元素输入的值
                 String name_v=name.getText();
-                String eMail_v = new String(eMail.getText());
-                String password_v = new String(password.getText());
+                String eMail_v = eMail.getText();
+                String password_v = password.getText();
                 //System.out.println(genderText.getText());
                 Gender gender= Gender.valueOf(genderText.getText());
                 int age_v=Integer.valueOf(("".equals(age.getText())?"0":age.getText()));
@@ -191,22 +198,21 @@ public class UserRegUITemplate extends JPanel{
                 String selfIntro_v=selfIntro.getText();
                 Gender interestedIn_v=Gender.valueOf(interestedIn.getText());
 
-
-                UserRegUIResponseModel userRegUIResponseModel=userRegUIController.userProfileCreate(
+                UserRegUIResponseModel userRegUIResponseModel=  controllers.getUserRegUIController().userProfileCreate(
                         eMail_v,password_v,name_v, gender, age_v, height_v, programOfStudy_v,
                         hobby_v, selfIntro_v, interestedIn_v);
-                UserRegUIOutputBoundary presenter = new UserRegUIPresenter();
+                UserRegUIOutputBoundary presenter = presenters.getUserRegUIPresenter();
                 UserRegUIResponseModel  prepareView=presenter.prepareView(userRegUIResponseModel);
                 // Check error code.
                 if ("ERR001".equals(prepareView.getRegMessage())){
-                    JOptionPane.showMessageDialog(null,"Email Invalid");
+                    JOptionPane.showMessageDialog(null,"Invalid Email!");
                 }else if("ERR002".equals(prepareView.getRegMessage())){
-                    JOptionPane.showMessageDialog(null,"Email Existed");
+                    JOptionPane.showMessageDialog(null,
+                            "The provided email already registered!");
                 }else{
-
                     // UI page for future connection
-                    JOptionPane.showMessageDialog(null,"Success Register");
-
+                    JOptionPane.showMessageDialog(null,
+                            "Thank you! You're successfully registered! Please sign in your account.");
                 }
             }
         });

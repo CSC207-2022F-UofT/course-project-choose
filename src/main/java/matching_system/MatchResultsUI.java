@@ -75,7 +75,7 @@ public class MatchResultsUI extends JPanel implements ActionListener {
             // create a JPanel
             JPanel panel = new JPanel();
             panel.setPreferredSize(new Dimension(500, 500));
-            panel.setLayout(null);
+            panel.setLayout(new BoxLayout(panel,BoxLayout.PAGE_AXIS));
             // add text and buttons to JPanel
             panel.add(text);
             text.setLocation(20, 20);
