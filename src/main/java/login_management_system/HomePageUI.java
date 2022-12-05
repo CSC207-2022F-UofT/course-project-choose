@@ -1,11 +1,24 @@
 package login_management_system;
 
+import controller_presenter.BigController;
+import controller_presenter.BigPresenter;
+import matching_system.MatchResponseModel;
+import matching_system.MatchResultsUI;
+
 import javax.swing.*;
 import java.awt.*;
-public class HomePageUI extends JFrame {
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class HomePageUI extends JPanel implements ActionListener {
     LoginResponseModel profile_info;
-    public HomePageUI(LoginResponseModel profile_info){
+    private BigController controllers;
+    private BigPresenter presenters;
+    public HomePageUI(LoginResponseModel profile_info, BigController controllers,
+                      BigPresenter presenters){
         this.profile_info = profile_info;
+        this.controllers = controllers;
+        this.presenters = presenters;
 
         // Frame
         JFrame frame = new JFrame();
@@ -59,6 +72,8 @@ public class HomePageUI extends JFrame {
         // Match Button
         JButton matchingButton = new JButton("Match");
         matchingButton.setBounds(250, 300, 100, 25);
+        matchingButton.setActionCommand("match");
+        matchingButton.addActionListener(this);
         panel.add(matchingButton);
 
         // Search Box
@@ -69,6 +84,8 @@ public class HomePageUI extends JFrame {
 
         // Search Button
         JButton searchingButton = new JButton("Search");
+        searchingButton.setActionCommand("search");
+        searchingButton.addActionListener(this);
         searchingButton.setBounds(250, 350, 100, 25);
         panel.add(searchingButton);
 
@@ -81,4 +98,20 @@ public class HomePageUI extends JFrame {
         frame.setVisible(true);
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        // if the match button is clicked, let MatchController take care of the request.
+        if(e.getActionCommand().startsWith("m")){
+            JFrame application = new JFrame("Matching results");
+            MatchResponseModel matchResponseModel =  this.controllers.getMatchController().create(profile_info.getEmail());
+            this.presenters.getMatchUIPresenter().setMatchResponseModel(matchResponseModel);
+            MatchResultsUI matcherResultsUI = new MatchResultsUI(this.controllers.getEmailConnController(),
+                    this.controllers.getUpgradeController(), this.presenters.getUpgradePresenter(),
+                    profile_info.getEmail(), this.presenters.getMatchUIPresenter());
+            // Display match results to users.
+            application.add(matcherResultsUI);
+            application.pack();
+            application.setVisible(true);
+        }
+    }
 }

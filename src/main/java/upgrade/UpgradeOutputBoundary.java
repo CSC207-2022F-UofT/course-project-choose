@@ -11,5 +11,9 @@ public interface UpgradeOutputBoundary {
      * @param responseModel the upgrade status that is prepared for viewing
      */
     void onUpgrade(UpgradeResponseModel responseModel);
+
+    void setCurrentEmail(String currentEmail);
+
+    UpgradePresenterViewModel prepareView();
 }
 

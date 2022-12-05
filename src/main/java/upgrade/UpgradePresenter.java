@@ -1,5 +1,7 @@
 package upgrade;
 
+import java.util.Objects;
+
 /**
  * This class handles the upgrading request by passing email address
  * and prepare the upgrade subscription status for viewing purpose
@@ -10,12 +12,15 @@ public class UpgradePresenter implements UpgradeOutputBoundary {
     private String currentEmail;
     private boolean finishSubscribed;
 
+    public UpgradePresenter() {
+        this.finishSubscribed = false;
+    }
+
     /**
      * @param currentEmail bundle upgrade request by passing email
      */
-    public UpgradePresenter(String currentEmail) {
+    public void setCurrentEmail(String currentEmail){
         this.currentEmail = currentEmail;
-        this.finishSubscribed = false;
     }
 
     /**
@@ -24,8 +29,9 @@ public class UpgradePresenter implements UpgradeOutputBoundary {
      */
     @Override
     public void onUpgrade(UpgradeResponseModel responseModel) {
-        if (responseModel.getEmail() == currentEmail)
+        if (Objects.equals(responseModel.getEmail(), currentEmail)) {
             finishSubscribed = true;
+        }
     }
 
     /**
@@ -33,7 +39,7 @@ public class UpgradePresenter implements UpgradeOutputBoundary {
      * @return the upgrade subscription status that iis prepared for viewing
      */
     public UpgradePresenterViewModel prepareView() {
-        String hint = "";
+        String hint;
         if (finishSubscribed) {
             hint = "You now have unlimited access to email addresses.";
         } else {

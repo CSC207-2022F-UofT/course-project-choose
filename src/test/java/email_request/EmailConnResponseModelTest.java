@@ -6,24 +6,24 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * This class tests methods in MatcherUIResponseModel.
+ * This class tests methods in EmailConnResponseModel.
  */
-class MatcherUIResponseModelTest {
+class EmailConnResponseModelTest {
 
-    private MatcherUIResponseModel matcherUIResponseModel;
+    private EmailConnResponseModel emailConnResponseModel;
 
     /**
-     * Set up matcherUIResponseModel for each test.
+     * Set up emailConnResponseModel for each test.
      */
     @BeforeEach
     void setUp(){
-        matcherUIResponseModel  = new MatcherUIResponseModel("david.david@hotmail.com");
+        emailConnResponseModel = new EmailConnResponseModel("david.david@hotmail.com");
     }
 
     /** Test to make sure getRequestedEmailAddress returns the requested email address */
     @Test
     void getRequestedEmailAddress() {
         assertEquals("david.david@hotmail.com",
-                matcherUIResponseModel.getRequestedEmailAddress());
+                emailConnResponseModel.getRequestedEmailAddress());
     }
 }

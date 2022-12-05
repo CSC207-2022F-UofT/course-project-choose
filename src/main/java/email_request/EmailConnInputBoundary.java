@@ -4,7 +4,7 @@ package email_request;
  * This class allows us to decouple MatcherUIcontroller and MactherUIInteractor.
  * Layer: Use Case Layer
  */
-public interface MatcherUIInputBoundary {
+public interface EmailConnInputBoundary {
 
     /**
      * Take the email request from users and decide whether
@@ -13,5 +13,5 @@ public interface MatcherUIInputBoundary {
      * @param requestModel a data model for the email request
      * @return a data model for showing the requested email or empty string.
      */
-    MatcherUIResponseModel create(MatcherUIRequestModel requestModel);
+    EmailConnResponseModel create(EmailConnRequestModel requestModel);
 }

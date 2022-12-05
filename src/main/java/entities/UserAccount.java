@@ -191,7 +191,7 @@ public class UserAccount {
      */
     public boolean seeRequestedEmail(){
         boolean cond1 = this.user.getGender().equals(Gender.FEMALE);
-        boolean cond2 = this.numOfEmailRequest <= UserAccount.MAX_REQUEST;
+        boolean cond2 = this.numOfEmailRequest < UserAccount.MAX_REQUEST;
         return cond1 | cond2 | this.subStatus;
     }
 

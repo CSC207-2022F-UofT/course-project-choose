@@ -16,11 +16,11 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * This class test methods in MatcherUIController.
+ * This class test methods in EmailConnController.
  */
-class MatcherUIControllerTest {
+class EmailConnControllerTest {
 
-    private MatcherUIController controller;
+    private EmailConnController controller;
     private UserRepoManager userRepoManager;
 
     /**
@@ -36,9 +36,9 @@ class MatcherUIControllerTest {
 
         File csvFile = new File("src/main/resources/interactorTestFile.csv");
         userRepoManager = new UserRepo(csvFile);
-        MatcherUIOutputBoundary output = new MatcherUIPresenter();
-        MatcherUIInputBoundary matcherUIInputBoundary = new MatcherUIInteractor(output, userRepoManager);
-        controller = new MatcherUIController(matcherUIInputBoundary);
+        EmailConnOutputBoundary output = new EmailConnPresenter();
+        EmailConnInputBoundary emailConnInputBoundary = new EmailConnInteractor(output, userRepoManager);
+        controller = new EmailConnController(emailConnInputBoundary);
     }
 
     /**
@@ -48,7 +48,7 @@ class MatcherUIControllerTest {
      */
     @Test
     void testCreateSuccess() {
-        MatcherUIResponseModel rm = controller.create("david.david@hotmail.com",
+        EmailConnResponseModel rm = controller.create("david.david@hotmail.com",
                 "emma.emma@mail.utoronto.ca");
         assertEquals("emma.emma@mail.utoronto.ca", rm.getRequestedEmailAddress());
 
@@ -72,7 +72,7 @@ class MatcherUIControllerTest {
      */
     @Test
     void testCreateFailure(){
-        MatcherUIResponseModel rm = controller.create("jimmy.jimmy@hotmail.com",
+        EmailConnResponseModel rm = controller.create("jimmy.jimmy@hotmail.com",
                 "emma.emma@mail.utoronto.ca");
         assertEquals("", rm.getRequestedEmailAddress());
     }

@@ -1,5 +1,6 @@
 package entities;
 
+import email_verifier_strategy_pattern.UofTStudentEmailVerifier;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -11,7 +11,7 @@ public class UpgradeUI extends JFrame {
     private JButton backButton;
     private JLabel titleLabel;
     private JLabel hintLabel;
-    private UpgradePresenter upgradePresenter;
+    private UpgradeOutputBoundary upgradePresenter;
     private UpgradeController upgradeController;
     private String currentEmail;
 
@@ -23,15 +23,15 @@ public class UpgradeUI extends JFrame {
      * @param upgradePresenter prepare the upgrade subscription status for viewing purpose
      */
     public UpgradeUI(String email,
-                    UpgradeController upgradeController,
-                    UpgradePresenter upgradePresenter) {
+                     UpgradeController upgradeController,
+                     UpgradeOutputBoundary upgradePresenter) {
         this.currentEmail = email;
         this.setSize(500, 420);
         this.setLayout(null);
 
         titleLabel = new JLabel();
         titleLabel.setBounds(50,40,380, 40);
-        titleLabel.setFont(new Font("Dialog", 1, 15));
+        titleLabel.setFont(new Font("Dialog", Font.BOLD, 15));
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
         this.add(titleLabel);
 
