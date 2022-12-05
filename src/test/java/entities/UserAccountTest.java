@@ -28,10 +28,10 @@ public class UserAccountTest {
         User userB = new User("David", Gender.MALE, 18,
                 174, "Computer Science", Hobbies.FOOD,
                 "Hello, This is Emma", Gender.FEMALE);
-        List<String> blockedAccounts = new ArrayList<>();
-        userAccountB = new UserAccount("david.david@hotmail.com",
+       List<String> blockedAccounts = new ArrayList<>();
+       userAccountB = new UserAccount("david.david@hotmail.com",
                 "david.david", userB, true, true,
-                0, blockedAccounts,7);
+               0, blockedAccounts,7);
     }
 
     /**
@@ -39,8 +39,8 @@ public class UserAccountTest {
      */
     @Test
     void testGetEmail() {
-        String email = userAccountA.getEmail();
-        assertEquals(email, "emma.emma@mail.utoronto.ca");
+       String email = userAccountA.getEmail();
+       assertEquals(email, "emma.emma@mail.utoronto.ca");
     }
 
     /**
@@ -141,6 +141,21 @@ public class UserAccountTest {
     /**
      * Test to make sure that seeRequestedEmail returns true with a free male user whose number of email
      * requests is equal to the maximum number of email requests.
+     */
+    @Test
+    void testFreeMaleEmailRequestSuccess(){
+        User userC = new User("Jimmy", Gender.MALE, 18,
+                174, "Computer Science", Hobbies.FOOD,
+                "Hello, This is Jimmy", Gender.FEMALE);
+        List<String> blockedAccountsC = new ArrayList<>();
+        UserAccount userAccountC = new UserAccount("jimmy.jimmy@hotmail.com",
+                "jimmy.jimmy", userC, true, false,
+                0, blockedAccountsC,4);
+        assertTrue(userAccountC.seeRequestedEmail());
+    }
+
+    /**
+     * Test to make sure seeRequestedEmail returns true with a female user.
      */
     @Test
     void testFemaleRequestEmail(){
