@@ -25,7 +25,7 @@ public class UpgradeManagerTest {
 
         @Override
         public void setCurrentEmail(String currentEmail) {
-            // please fill this in
+            receivedEmail = currentEmail;
         }
 
         @Override
