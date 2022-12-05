@@ -74,26 +74,13 @@ public class MatchResultsUI extends JPanel implements ActionListener {
 
             // create a JPanel
             JPanel panel = new JPanel();
-            panel.setPreferredSize(new Dimension(500, 500));
-            panel.setLayout(null);
+            panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+
             // add text and buttons to JPanel
             panel.add(text);
-            text.setLocation(20, 20);
-            text.setSize(text.getPreferredSize());
-
-            requestEmail.setSize(requestEmail.getPreferredSize());
-            requestEmail.setLocation(400, 20);
             panel.add(requestEmail);
-
-            report.setSize(report.getPreferredSize());
-            report.setLocation(400, 50);
             panel.add(report);
-
-
-            block.setSize(block.getPreferredSize());
-            block.setLocation(400, 80);
             panel.add(block);
-            setSize(600, 500);
             requestEmail.addActionListener(this);
             report.addActionListener(this);
             block.addActionListener(this);
