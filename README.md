@@ -60,7 +60,7 @@ Up to Milestone 4, the test classes for Package data_access_storate and email_re
 <img width="1162" alt="Screen Shot 2022-11-21 at 6 48 25 PM" src="https://user-images.githubusercontent.com/113075282/203180810-18feaac0-8aa1-4e23-810e-6ab3f03b2179.png">
 <img width="1157" alt="Screen Shot 2022-11-21 at 6 48 14 PM" src="https://user-images.githubusercontent.com/113075282/203188069-02c31f7b-894a-40cf-bb0f-f999a19a2e90.png">
 
-We do not have test classes for all UI elements. However, we test those UI elements by running the program and make sure that all information are displayed. 
+We do not have test classes for all UI elements. However, we test those UI elements by running the program and make sure that all desired information are displayed, and displayed correctly. 
 
 ## Our Design
 We have implemented our feature following clean architecture. To help visiualize our code structure, please check out an illustration diagram that we prepare with 
