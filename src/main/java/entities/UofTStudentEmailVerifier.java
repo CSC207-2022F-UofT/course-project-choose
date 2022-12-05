@@ -1,4 +1,5 @@
-package entities;
+package email_verifier_strategy_pattern;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -11,11 +12,11 @@ public class UofTStudentEmailVerifier implements EmailVerifier {
      */
     private static String regex = "^[A-Za-z0-9+.]+@mail.utoronto.ca$";
 
-    @Override
     /**
      * Verify whether email is a @mail.utoronto.ca email account for U of T students.
      * @return Return true if email is a U of T student email account, and false otherwise.
      */
+    @Override
     public boolean verify(String email) {
         Pattern pattern = Pattern.compile(UofTStudentEmailVerifier.regex);
         Matcher matcher = pattern.matcher(email);
