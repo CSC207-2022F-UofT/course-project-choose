@@ -143,21 +143,6 @@ public class UserAccountTest {
      * requests is equal to the maximum number of email requests.
      */
     @Test
-    void testFreeMaleEmailRequestSuccess(){
-        User userC = new User("Jimmy", Gender.MALE, 18,
-                174, "Computer Science", Hobbies.FOOD,
-                "Hello, This is Jimmy", Gender.FEMALE);
-        List<String> blockedAccountsC = new ArrayList<>();
-        UserAccount userAccountC = new UserAccount("jimmy.jimmy@hotmail.com",
-                "jimmy.jimmy", userC, true, false,
-                0, blockedAccountsC,5);
-        assertTrue(userAccountC.seeRequestedEmail());
-    }
-
-    /**
-     * Test to make sure seeRequestedEmail returns true with a female user.
-     */
-    @Test
     void testFemaleRequestEmail(){
         assertTrue(userAccountA.seeRequestedEmail());
     }
