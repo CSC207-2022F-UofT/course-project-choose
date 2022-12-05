@@ -27,7 +27,7 @@ public class UserRegMain {
         UserRegUIInputBoundary interactor = new UserRegUIInteractor(presenter1, users);
         UserRegUIController userRegUIController = new UserRegUIController(interactor);
 
-        UserRegUITemplate userRegUiTemplate = new UserRegUITemplate(users,userRegUIController);
+        UserRegUITemplate userRegUiTemplate = new UserRegUITemplate(userRegUIController);
 
         application.setBounds(500,100,400,550);
         application.setLayout(null);

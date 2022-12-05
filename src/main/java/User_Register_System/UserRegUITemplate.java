@@ -12,7 +12,7 @@ public class UserRegUITemplate extends JPanel{
     UserRegUIController userRegUIController;
 
     /**
-     * This method will add space (" ") when the length is too short.
+     * 此函数实现如果字段名称长度不够前面补空格。
      * */
     public static String padLeft(String origin, int length, char ch) {
         while (origin.length() < length) {
@@ -20,7 +20,7 @@ public class UserRegUITemplate extends JPanel{
         }
         return origin;
     }
-    public UserRegUITemplate(UserRepoManager users,UserRegUIController userRegUIController){
+    public UserRegUITemplate(UserRegUIController userRegUIController){
         this.userRegUIController=userRegUIController;
         // Set email
         this.setLayout(null);
@@ -178,7 +178,7 @@ public class UserRegUITemplate extends JPanel{
         buttonregister.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Get data input from user
+                // 获取窗口元素输入的值
                 String name_v=name.getText();
                 String eMail_v = new String(eMail.getText());
                 String password_v = new String(password.getText());
@@ -197,7 +197,7 @@ public class UserRegUITemplate extends JPanel{
                         hobby_v, selfIntro_v, interestedIn_v);
                 UserRegUIOutputBoundary presenter = new UserRegUIPresenter();
                 UserRegUIResponseModel  prepareView=presenter.prepareView(userRegUIResponseModel);
-                // Check the error code
+                // Check error code.
                 if ("ERR001".equals(prepareView.getRegMessage())){
                     JOptionPane.showMessageDialog(null,"Email Invalid");
                 }else if("ERR002".equals(prepareView.getRegMessage())){
