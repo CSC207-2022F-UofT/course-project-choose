@@ -1,19 +1,28 @@
 package login_management_system;
 
-
 import data_access_storage.UserRepoManager;
 import entities.User;
 
+/**
+ * This class is responsible to take the inputs/request from users, to fulfill the
+ * login request and prepare output for users.
+ * Layer: Use Case Layer
+ */
+
+
 public class LoginInteractor implements LoginInputBoundary {
 
+    /** This is an instance of userRepoManager so that we can access UserRepo, our database*/
     final UserRepoManager userRepoManager;
+
+    /** This is an instance of loginOutputBoundary so that we can pass out result, loginResponseModel, out*/
     final LoginOutputBoundary loginOutputBoundary;
 
     /**
      * Construct a MatcherUIInteractor object.
      * @param loginOutputBoundary a interface that allows LoginInteractor to call
-     *                                LoginPrensenter without knowing its existence.
-     * @param userRepoManager a data access interface
+     * LoginPrensenter without knowing its existence.
+     * @param userRepoManager a data access interface.
      */
 
     public LoginInteractor(UserRepoManager userRepoManager, LoginOutputBoundary loginOutputBoundary) {
@@ -24,9 +33,9 @@ public class LoginInteractor implements LoginInputBoundary {
     /**
      * Take the email and password from users and check whether the user exist in the database
      * and whether the input password matches the record in the database.
-     * If so, return successful login message and direct the user to HomePageUI, and return error message otherwise.
+     * If so, return a data model containing the user, return error message otherwise.
      * @param requestModel a data model that combines user's input data.
-     * @return a data model for showing the successful login message and direct the user to HomePageUI,
+     * @return a data model containing user's information if the login is successful,
      * and display error message otherwise.
      */
 

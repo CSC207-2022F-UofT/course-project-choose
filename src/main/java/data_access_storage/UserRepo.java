@@ -151,12 +151,14 @@ public class UserRepo implements UserRepoManager {
     }
 
     /**
-     * Check if the entering password matches user's password in record
-     * @return return true if password matches and false otherwise
+     * Check if the input password matches input email's recorded password.
+     * @param email the email address that a user enters.
+     * @param password the password that a user enters
+     * @return true if the password matches and false otherwise.
      */
     @Override
-    public boolean matchingPassword(String username, String password) {
-        UserAccount userAccount = accounts.get(username).getUserAccount();
+    public boolean matchingPassword(String email, String password) {
+        UserAccount userAccount = accounts.get(email).getUserAccount();
         String password_on_record = userAccount.getPassword();
         return password.equals(password_on_record);
     }

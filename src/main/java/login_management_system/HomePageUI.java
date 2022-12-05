@@ -10,10 +10,20 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Layer: User interface layer
+ */
 public class HomePageUI extends JPanel implements ActionListener {
     LoginResponseModel profile_info;
     private BigController controllers;
     private BigPresenter presenters;
+
+    /**
+     * A window that shows the homepage UI panel
+     * @param profile_info a data model that contains the user who logins successfully.
+     * @param controllers the controller for all UI pages.
+     * @param presenters the presenter for all UI pages.
+     */
     public HomePageUI(LoginResponseModel profile_info, BigController controllers,
                       BigPresenter presenters){
         this.profile_info = profile_info;

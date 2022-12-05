@@ -6,13 +6,22 @@ import controller_presenter.BigPresenter;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
+/**
+ * Layer: User interface layer
+ */
+
 public class LoginUI extends JPanel {
 
     private final JTextField userInput;
     private final JPasswordField passwordInput;
     BigPresenter bigPresenter;
-
     BigController bigController;
+
+    /**
+     * A window that shows the Login UI panel
+     * @param bigController the controller for all UI pages.
+     * @param bigPresenter the presenter for all UI pages.
+     */
 
     public LoginUI(BigController bigController, BigPresenter bigPresenter) {
         this.bigController = bigController;
@@ -47,8 +56,7 @@ public class LoginUI extends JPanel {
         loginButton.addActionListener((ActionEvent e) -> {
             try{
                 this.bigController.getLoginController().checkValidLogin(userInput.getText(), String.valueOf(passwordInput.getPassword()));
-                // If with no Exception, should direct to HomePageUI (have username as input)
-                // HomePageUI
+                // If with no Exception, should direct to HomePageUI
                 LoginResponseModel profile_info = this.bigController.getLoginController().checkValidLogin(userInput.getText(),
                         String.valueOf(passwordInput.getPassword()));
                 frame.dispose();
