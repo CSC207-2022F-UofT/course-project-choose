@@ -27,6 +27,9 @@ This project implements the following 7 features. The code of each feature is wr
   * Implement upgrading feature to allow male users request unlimited number of emails as they upgrade accounts as paid users (package upgrade).
   * Implement UpgradeUI and link to MatcherUI.
 - [ ] Chao Ma
+  * Implement Register System: Create user profile and save in date base by using the date from new user.
+  * Implement RegisterUI Page: Provide UI page that allow new user inputs their information.
+  * Implement Register Features: Check whether users' inputs are valid or not, and return messages or warnings.
 - [ ] Shuhao Lin
   * Implement Login System
   * Implement HomePageUI
