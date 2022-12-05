@@ -9,10 +9,17 @@ import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * This class test methods in LoginController.
+ */
 public class LoginControllerTest {
     private LoginController controller;
     private UserRepoManager userRepoManager;
 
+    /**
+     * Set up data access and controller for each test
+     * @throws IOException throws IOException when the csv file path or the inquired user data is not found.
+     */
     @BeforeEach
     void setUp() throws IOException {
 
@@ -23,6 +30,10 @@ public class LoginControllerTest {
         controller = new LoginController(input);
     }
 
+    /**
+     * A user who enters correct email and password.
+     * The controller should have return the data model containing the user.
+     */
     @Test
     void testLoginSuccess() {
         LoginResponseModel rm = controller.checkValidLogin("h@hotmail.com",
@@ -31,19 +42,23 @@ public class LoginControllerTest {
         assertEquals(rm.getUser(), userRepoManager.getUserAccount("h@hotmail.com").getUserAccount().getUser());
     }
 
+    /**
+     * A user who enters a username that doesn't exist.
+     * The controller should have thrown an exception with the message "You have entered an invalid username".
+     */
     @Test
     void testLoginFailure_UserNotExist(){
         String actualMessage = null;
-        try{
-            controller.checkValidLogin("h.com",
-                    "david");
-        } catch (LoginFailedException ex){
-            actualMessage = ex.getMessage();
-        }
+        Exception loginException = assertThrows(LoginFailedException.class, () -> controller.
+                checkValidLogin("h.com", "david"));
         String expectedMessage = "You have entered an invalid username.";
-        assertEquals(expectedMessage, actualMessage);
+        assertEquals(expectedMessage, loginException.getMessage());
     }
 
+    /**
+     * A user who enters a username that doesn't exist.
+     * The controller should have thrown an exception with the message "You have entered an invalid password.".
+     */
     @Test
     void testLoginFailure_UnmatchedPassword(){
         String actualMessage = null;
