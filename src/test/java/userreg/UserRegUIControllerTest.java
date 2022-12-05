@@ -1,13 +1,12 @@
 package userreg;
 
-import User_Register_System.*;
+import user_register_system.*;
 import data_access_storage.UserRepo;
 import data_access_storage.UserRepoManager;
 import entities.Gender;
 import entities.Hobbies;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import userreg.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -36,7 +35,7 @@ class UserRegUIControllerTest {
                 174, "Computer Science", Hobbies.FOOD,
                 "\"Hello, This is David \"", Gender.FEMALE);
 
-        assertTrue("SUCCESS".equals(rm.getRegMessage()));
+        assertEquals("SUCCESS", rm.getRegMessage());
     }
     @Test
     void testEmailInvalid() {
@@ -44,7 +43,7 @@ class UserRegUIControllerTest {
         UserRegUIResponseModel rm = controller.userProfileCreate("343567@mail2.utoronto.ca","123","David1", Gender.MALE, 18,
                 174, "Computer Science", Hobbies.FOOD,
                 "\"Hello, This is David \"", Gender.FEMALE);
-        assertTrue("ERR001".equals(rm.getRegMessage()));
+        assertEquals("ERR001", rm.getRegMessage());
 
     }
 
@@ -57,6 +56,6 @@ class UserRegUIControllerTest {
         UserRegUIResponseModel rm = controller.userProfileCreate("jim.jim@mail.utoronto.ca","123","David1", Gender.MALE, 18,
                 174, "Computer Science", Hobbies.FOOD,
                 "\"Hello, This is David \"", Gender.FEMALE);
-        assertTrue("ERR002".equals(rm.getRegMessage()));
+        assertEquals("ERR002", rm.getRegMessage());
     }
 }

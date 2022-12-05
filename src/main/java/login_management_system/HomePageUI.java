@@ -86,24 +86,25 @@ public class HomePageUI extends JPanel implements ActionListener {
         matchingButton.addActionListener(this);
         panel.add(matchingButton);
 
-        // Search Box
-        JTextField searchInput = new JTextField(20);
-        searchInput.setBounds(130, 350, 120, 25);
-        panel.add(searchInput);
-
-
-        // Search Button
-        JButton searchingButton = new JButton("Search");
-        searchingButton.setActionCommand("search");
-        searchingButton.addActionListener(this);
-        searchingButton.setBounds(250, 350, 100, 25);
-        panel.add(searchingButton);
-
-        // Search Choice Box
-        String[] s = { "Default", "Program of Study" };
-        JComboBox<String> searchBox = new JComboBox<>(s);
-        searchBox.setBounds(350, 350, 100, 25);
-        panel.add(searchBox);
+        // This part of code is commented out because the team member Aria Hu
+//        // Search Box
+//        JTextField searchInput = new JTextField(20);
+//        searchInput.setBounds(130, 350, 120, 25);
+//        panel.add(searchInput);
+//
+//
+//        // Search Button
+//        JButton searchingButton = new JButton("Search");
+//        searchingButton.setActionCommand("search");
+//        searchingButton.addActionListener(this);
+//        searchingButton.setBounds(250, 350, 100, 25);
+//        panel.add(searchingButton);
+//
+//        // Search Choice Box
+//        String[] s = { "Default", "Program of Study" };
+//        JComboBox<String> searchBox = new JComboBox<>(s);
+//        searchBox.setBounds(350, 350, 100, 25);
+//        panel.add(searchBox);
 
         frame.setVisible(true);
     }

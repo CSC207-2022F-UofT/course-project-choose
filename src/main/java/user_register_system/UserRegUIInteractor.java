@@ -1,4 +1,4 @@
-package User_Register_System;
+package user_register_system;
 
 import data_access_storage.RequestModel;
 import data_access_storage.UserRepoManager;
@@ -35,7 +35,7 @@ public class UserRegUIInteractor implements UserRegUIInputBoundary{
 
     @Override
     public UserRegUIResponseModel create(UserRegUIRequestModel requestModel) {
-        UserRegUIResponseModel userRegUIResponseModel=null;
+        UserRegUIResponseModel userRegUIResponseModel;
 
         User user=new User(requestModel.getName(),requestModel.getGender(),requestModel.getAge(),requestModel.getHeight(),requestModel.getProgramOfStudy(),requestModel.getHobbies(),requestModel.getSelfIntro(),requestModel.getInterestedIn());
 

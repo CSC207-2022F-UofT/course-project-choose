@@ -1,9 +1,9 @@
 package userreg;
 
-import User_Register_System.UserRegUIResponseModel;
+import org.junit.jupiter.api.Assertions;
+import user_register_system.UserRegUIResponseModel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import userreg.*;
 
 import static org.junit.Assert.assertEquals;
 
@@ -18,7 +18,6 @@ class UserRegUIResponseModelTest {
 
     @Test
     void getRegMessage() {
-        assertEquals("ERR001",
-                this.userRegUIResponseModel.getRegMessage());
+        Assertions.assertEquals("ERR001", this.userRegUIResponseModel.getRegMessage());
     }
 }

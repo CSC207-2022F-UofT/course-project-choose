@@ -9,16 +9,14 @@ import upgrade.UpgradeController;
 import upgrade.UpgradeManager;
 import upgrade.UpgradeOutputBoundary;
 import upgrade.UpgradePresenter;
+import user_register_system.*;
 
-import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 
 public class Main {
 
     public static void main(String[] args) {
-        // Build the main program window, link UpgradeUI and MatcherUI
-        JFrame application = new JFrame("Matching results");
 
         // Create the parts to plug into the Use Case+Entities engine
         UserRepoManager users;
@@ -34,7 +32,8 @@ public class Main {
         EmailConnOutputBoundary emailConnPresenter = new EmailConnPresenter();
         UpgradeOutputBoundary upgradePresenter = new UpgradePresenter();
         LoginOutputBoundary loginPresenter = new LoginPresenter();
-        BigPresenter presenters = new BigPresenter(loginPresenter, matchUIPresenter,
+        UserRegUIOutputBoundary userRegUIPresenter = new UserRegUIPresenter();
+        BigPresenter presenters = new BigPresenter(userRegUIPresenter, loginPresenter, matchUIPresenter,
                 emailConnPresenter,
                 upgradePresenter);
 
@@ -54,14 +53,16 @@ public class Main {
         LoginInputBoundary loginInputBoundary = new LoginInteractor(users,loginPresenter);
         LoginController loginController = new LoginController(loginInputBoundary);
 
+        // create user registration controller
+        UserRegUIInputBoundary userRegUIInteractor = new UserRegUIInteractor(userRegUIPresenter, users);
+        UserRegUIController userRegUIController = new UserRegUIController(userRegUIInteractor);
 
-        BigController controllers = new BigController(loginController, matchController,
+
+        BigController controllers = new BigController(userRegUIController,
+                loginController, matchController,
                 emailConnController, upgradeController);
 
         LoginUI loginUI = new LoginUI(controllers,presenters);
-
-        application.add(loginUI);
-        application.pack();
-        application.setVisible(true);
+        loginUI.setVisible(true);
     }
 }
