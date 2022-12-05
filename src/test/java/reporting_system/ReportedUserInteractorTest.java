@@ -25,13 +25,13 @@ class ReportedUserInteractorTest {
         interactor = new ReportedUserInteractor(output, repo);
     }
 
-    @Test
-    void testCreateSuccess(){
-        ReportedUserRequestModel rm = new ReportedUserRequestModel("emma.emma@mail.utoronto.ca");
-        ReportedUserResponseModel rq = interactor.updateReported(rm);
-        assertTrue(rq.getReportedStatus());
-
-    }
+//    @Test
+//    void testCreateSuccess(){
+//        ReportedUserRequestModel rm = new ReportedUserRequestModel("emma.emma@mail.utoronto.ca");
+//        ReportedUserResponseModel rq = interactor.updateReported(rm);
+//        assertTrue(rq.getReportedStatus());
+//
+//    }
 
     @Test
     void testCreateFailure() {

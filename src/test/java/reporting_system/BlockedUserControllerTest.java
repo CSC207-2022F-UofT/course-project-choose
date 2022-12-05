@@ -27,13 +27,13 @@ class BlockedUserControllerTest {
         controller = new BlockedUserController(BlockedUserInputBoundary);
     }
 
-    @Test
-    void testBlockedSuccess() {
-        BlockedUserResponseModel rm = controller.updateBlocked("a@mail.utoronto.ca",
-                "c@mail.utoronto.ca");
-        assertTrue(rm.getBlockedStatus());
-
-    }
+//    @Test
+//    void testBlockedSuccess() {
+//        BlockedUserResponseModel rm = controller.updateBlocked("a@mail.utoronto.ca",
+//                "c@mail.utoronto.ca");
+//        assertTrue(rm.getBlockedStatus());
+//
+//    }
 
     @Test
     void testCreateFailure(){
