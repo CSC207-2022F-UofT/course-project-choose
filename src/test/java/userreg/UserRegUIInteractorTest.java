@@ -26,6 +26,8 @@ class UserRegUIInteractorTest {
         UserRepoManager repo = new UserRepo(csvFile);
         UserRegUIOutputBoundary output = new UserRegUIPresenter();
         interactor = new UserRegUIInteractor(output, repo);
+        repo.delete("david2@mail.utoronto.ca");
+        repo.delete("56789@mail.utoronto.ca");
     }
 
     @Test
@@ -56,11 +58,14 @@ class UserRegUIInteractorTest {
 
     @Test
     void testCreateEmailExisted() {
+
+
         // user info
         UserRegUIRequestModel requestModel=new UserRegUIRequestModel("56789@mail.utoronto.ca",
                 "david.david","David22", 18,
                 174,Gender.MALE,  Hobbies.FOOD,"Computer Science",
                 "\"Hello, This is David \"", Gender.FEMALE);
+        UserRegUIResponseModel urrm0=interactor.create(requestModel);
         UserRegUIResponseModel urrm=interactor.create(requestModel);
 
         assertEquals("ERR002",urrm.getRegMessage());

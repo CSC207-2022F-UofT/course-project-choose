@@ -31,9 +31,11 @@ class UserRegUIControllerTest {
     }
     @Test
     void testCreatSucess(){
+        this.userRepoManager.delete("jim.jim@mail.utoronto.ca");
         UserRegUIResponseModel rm = controller.userProfileCreate("jim.jim@mail.utoronto.ca","123","David1", Gender.MALE, 18,
                 174, "Computer Science", Hobbies.FOOD,
                 "\"Hello, This is David \"", Gender.FEMALE);
+
         assertTrue("SUCCESS".equals(rm.getRegMessage()));
     }
     @Test
@@ -48,7 +50,11 @@ class UserRegUIControllerTest {
 
     @Test
     void testEmailExisted(){
-        UserRegUIResponseModel rm = controller.userProfileCreate("343567@mail.utoronto.ca","123","David1", Gender.MALE, 18,
+        this.userRepoManager.delete("jim.jim@mail.utoronto.ca");
+        UserRegUIResponseModel rm0 = controller.userProfileCreate("jim.jim@mail.utoronto.ca","123","David1", Gender.MALE, 18,
+                174, "Computer Science", Hobbies.FOOD,
+                "\"Hello, This is David \"", Gender.FEMALE);
+        UserRegUIResponseModel rm = controller.userProfileCreate("jim.jim@mail.utoronto.ca","123","David1", Gender.MALE, 18,
                 174, "Computer Science", Hobbies.FOOD,
                 "\"Hello, This is David \"", Gender.FEMALE);
         assertTrue("ERR002".equals(rm.getRegMessage()));
