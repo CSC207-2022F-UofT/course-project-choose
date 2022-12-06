@@ -47,15 +47,13 @@ Except the search feature, the rest 6 features are reviewed and merged to the ma
 
 Regarding the search feature, Aria Hu who is responsbile for implementing this feature chooses not to continue working on this project for personal reasons. Thus, its implementation is incomplete. You can see its partial implementation listed as one of the open pull requests. 
 
-Other than the search feature, please run the java class Main.java to see a demo for other six features working simultanously. 
+Other than the search feature, click [A Program Demo](https://youtu.be/QmanzhtLo7Y) to see other six features working simultanously. 
 
+To run our program, please run the java class Main.java.
 - Start by running Main.java 
-- After running Main.java, the following window will pop up. 
+- After running Main.java, the following window will pop up. Click on "Register" to start your personal journey on our program. 
  
   <img width="458" alt="Screen Shot 2022-12-04 at 10 31 22 AM" src="https://user-images.githubusercontent.com/113075282/205499642-79a5ffd3-7806-435b-a458-9800c24033c6.png">
-
-- Click on "Register" to start creating a new account. 
-
 
 ## Test Coverage 
 Up to Milestone 4, the test classes for Package data_access_storate and email_request are ready. Please see the test coverage below. Please notice that Main.java and MatcherUITemplate.java in Package email_request are created termporarily for checking features and will be removed. 
