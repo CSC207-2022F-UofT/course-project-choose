@@ -19,6 +19,8 @@ This project implements the following 7 features. The code of each feature is wr
   * Implement entities package including User and UserAccount classes.
   * Implement the email request feature that allows a user to request other users' email address (pacakge email_request). 
   * Implement a data access system that allows the program to save information and load the information later (package data_access_storage).
+  * Implement BigController and BigPresenter that holding all controllers and presenters in our dating program, respectively (pacakge controller_presenter). 
+  * Implment strategy pattern for email verifier (package email_verifier_strategy_pattern).
 - [ ] James Wang
   * Implement entities package including Matcher.
   * Implement matching_system package to complete the action from requesting match to return match results.
