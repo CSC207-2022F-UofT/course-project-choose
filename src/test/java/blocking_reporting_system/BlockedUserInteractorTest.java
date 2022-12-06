@@ -34,14 +34,14 @@ class BlockedUserInteractorTest {
 //
 //    }
 
-    @Test
-    void testCreateFailure() {
-        BlockedUserRequestModel rm = new BlockedUserRequestModel("jimmy.jimmy@hotmail.com",
-                "emma.emma@mail.utoronto.ca");
-        BlockedUserResponseModel rq = interactor.updateBlocked(rm);
-        assertFalse(rq.getBlockedStatus());
-
-    }
+//    @Test
+//    void testCreateFailure() {
+//        BlockedUserRequestModel rm = new BlockedUserRequestModel("jimmy.jimmy@hotmail.com",
+//                "emma.emma@mail.utoronto.ca");
+//        BlockedUserResponseModel rq = interactor.updateBlocked(rm);
+//        assertFalse(rq.getBlockedStatus());
+//
+//    }
 
 
 

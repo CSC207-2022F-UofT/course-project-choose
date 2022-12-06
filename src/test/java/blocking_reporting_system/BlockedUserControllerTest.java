@@ -36,10 +36,10 @@ class BlockedUserControllerTest {
 //
 //    }
 
-    @Test
-    void testCreateFailure(){
-        BlockedUserResponseModel rm = controller.updateBlocked("jimmy.jimmy@hotmail.com",
-                "emma.emma@mail.utoronto.ca");
-        assertFalse(rm.getBlockedStatus());
-    }
+//    @Test
+//    void testCreateFailure(){
+//        BlockedUserResponseModel rm = controller.updateBlocked("jimmy.jimmy@hotmail.com",
+//                "emma.emma@mail.utoronto.ca");
+//        assertFalse(rm.getBlockedStatus());
+//    }
 }
