@@ -19,22 +19,25 @@ public class BigPresenter {
     MatchOutputBoundary matchUIPresenter;
     EmailConnOutputBoundary emailConnPresenter;
     UpgradeOutputBoundary upgradePresenter;
-
     LoginOutputBoundary loginPresenter;
-
     BlockedUserOutputBoundary blockedUserPresenter;
-
     ReportedUserOutputBoundary reportedUsePresenter;
 
     /**
      *
-     * @param userRegUIPresenter
-     * @param loginPresenter
-     * @param matchUIPresenter
-     * @param emailConnPresenter
-     * @param upgradePresenter
-     * @param blockedUserPresenter
-     * @param reportedUsePresenter
+     * @param userRegUIPresenter presenter that contains the backend information for updating the view after
+     *                           registration.
+     * @param loginPresenter presenter that contains the backend information for updating the view after log-in
+     * @param matchUIPresenter presenter that contains the backend information for updating the view after clicking
+     *                         on "match" on HomePageUI.
+     * @param emailConnPresenter presenter that contains the backend information for updating the view after clicking
+     *                           "Request Email" on MatchUI results.
+     * @param upgradePresenter presenter that contains the backend information for updating the view after clicking on
+     *                         "upgrade"
+     * @param blockedUserPresenter presenter that contains the backend information for updating the view after clicking
+     *                             "Block this person" on MatchUI results.
+     * @param reportedUsePresenter presenter that contains the backend information for updating the view after clicking
+     *                             "Report his person" on MatchUI results.
      */
     public BigPresenter(UserRegUIOutputBoundary userRegUIPresenter,
             LoginOutputBoundary loginPresenter,
@@ -52,22 +55,51 @@ public class BigPresenter {
         this.reportedUsePresenter = reportedUsePresenter;
     }
 
+    /**
+     * A getter method for matchUIPresenter.
+     * @return presenter that contains the backend information for updating the view after clicking
+     * "match" on HomePageUI
+     */
     public MatchOutputBoundary getMatchUIPresenter(){
         return this.matchUIPresenter;
     }
 
+    /**
+     * A getter method for emailConnPresenter.
+     * @return presenter that contains the backend information for updating the view after clicking
+     * "Request Email" on MatchUI results.
+     */
     public EmailConnOutputBoundary getEmailConnPresenter(){
         return this.emailConnPresenter;
     }
 
+    /**
+     * A getter method for upgradePresenter.
+     * @return presenter that contains the backend information for updating the view after clicking on
+     * "upgrade"
+     */
     public UpgradeOutputBoundary getUpgradePresenter(){
         return this.upgradePresenter;
     }
 
+    /**
+     * A getter method for userRegUIPresenter.
+     * @return presenter that contains the backend information for updating the view after
+     * registration.
+     */
     public UserRegUIOutputBoundary getUserRegUIPresenter(){return this.userRegUIPresenter;}
 
+    /**
+     * A getter method for blockedUserPresenter.
+     * @return presenter that contains the backend information for updating the view after clicking
+     * "Block this person" on MatchUI results.
+     */
     public BlockedUserOutputBoundary getBlockedUserPresenter(){return this.blockedUserPresenter;}
 
+    /**
+     *  A getter method for reportedUsePresenter.
+     * @return presenter that contains the backend information for updating the view after clicking
+     * "Report his person" on MatchUI results.
+     */
     public ReportedUserOutputBoundary getReportedUsePresenter(){return this.reportedUsePresenter;}
-
 }
