@@ -68,7 +68,7 @@ class EmailConnControllerTest {
     /**
      * A free male user whose number of email requests is more than the request limit should fail to
      * request the email address.
-     * The controller should return the empty string.
+     * The controller should return an empty string.
      */
     @Test
     void testCreateFailure(){
