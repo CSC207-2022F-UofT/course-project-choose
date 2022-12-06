@@ -1,4 +1,4 @@
-package reporting_system;
+package blocking_reporting_system.blocking_system;
 
 
 /**
@@ -8,12 +8,12 @@ package reporting_system;
  */
 public class BlockedUserPresenter implements BlockedUserOutputBoundary {
 
-    @Override
     /**
      * Prepare the returned requested email address for viewing
-     * @param requestedEmail the requested email address
+     * @param blockStatus the requested email address
      * @return the requested email address that is prepared for viewing
      */
+    @Override
     public BlockedUserResponseModel prepareView(BlockedUserResponseModel blockStatus) {
         return blockStatus;
     }

@@ -1,4 +1,4 @@
-package reporting_system;
+package blocking_reporting_system.reporting_system;
 
 /**
  * This class is responsible to response to button clicks on
@@ -24,7 +24,7 @@ public class ReportedUserController {
      * @param reportedEmail the email address of the user whose email address is requested.
      * @return a data model for showing the requested email or empty string.
      */
-    ReportedUserResponseModel updateReported(String reportedEmail){
+    public ReportedUserResponseModel updateReported(String reportedEmail){
         ReportedUserRequestModel reportedUserRequestModel = new ReportedUserRequestModel(reportedEmail);
         return ReportedUserInput.updateReported(reportedUserRequestModel);
     }

@@ -5,6 +5,7 @@ import controller_presenter.BigPresenter;
 import user_register_system.UserRegUI;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 
 /**
@@ -15,8 +16,8 @@ public class LoginUI extends JPanel {
 
     private final JTextField userInput;
     private final JPasswordField passwordInput;
-    private BigPresenter bigPresenter;
-    private BigController bigController;
+    private final BigPresenter bigPresenter;
+    private final BigController bigController;
 
     /**
      * A window that shows the Login UI panel
@@ -73,11 +74,17 @@ public class LoginUI extends JPanel {
         registerButton.addActionListener((ActionEvent e) -> {
             // Turn to RegisterUI
             UserRegUI userRegUi = new UserRegUI(this.bigController, this.bigPresenter);
-            JFrame application = new JFrame("User Register");
-            application.add(userRegUi);
-            application.setVisible(true);
+            userRegUi.setPreferredSize(new Dimension(500, 600));
+            userRegUi.pack();
+            userRegUi.setVisible(true);
+//            JFrame application = new JFrame("User Register");
+//            application.setPreferredSize(new Dimension(500, 600));
+//            application.add(userRegUi);
+//            application.pack();
+//            application.setVisible(true);
         });
         panel.add(registerButton);
+        frame.setPreferredSize(new Dimension(500, 600));
         frame.setVisible(true);
     }
 

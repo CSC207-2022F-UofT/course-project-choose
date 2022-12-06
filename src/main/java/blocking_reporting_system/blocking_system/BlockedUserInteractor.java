@@ -1,10 +1,11 @@
-package reporting_system;
+package blocking_reporting_system.blocking_system;
 
 
 import data_access_storage.RequestModel;
 import data_access_storage.UserRepoManager;
 import entities.UserAccount;
 
+import javax.sound.midi.SysexMessage;
 import java.util.List;
 import java.util.Map;
 
@@ -35,32 +36,19 @@ public class BlockedUserInteractor implements BlockedUserInputBoundary {
      * Take the email request from users and decide whether
      * the requesters can see the requested email address.
      * If so, return the requested email address, and empty string otherwise.
-     * @param requestModel a data model for the email request
+     * @param blockedUserRequestModel a data model for the email request
      * @return a data model for showing the requested email or empty string.
      */
 
     @Override
-    public BlockedUserResponseModel updateBlocked(BlockedUserRequestModel requestModel) {
-
+    public BlockedUserResponseModel updateBlocked(BlockedUserRequestModel blockedUserRequestModel) {
         boolean blockedStatus=false;
-        String email=requestModel.getEmail();
-        String blockedEmail= requestModel.getBlockedEmail();
-        RequestModel requestModel2;
-        Map<String, RequestModel> allUserAccount = this.userRepoManager.getAllUserAccount();
-        for (String s : allUserAccount.keySet()) {
-            requestModel2 = allUserAccount.get(s);
-            if(requestModel2!=null && requestModel2.getUserAccount()!=null){
-                UserAccount userAccount = requestModel2.getUserAccount();
-                String email1 = userAccount.getEmail();
-                if(email1.equals(email)){
-                    List<String> blockedAccounts = userAccount.getBlockedAccounts();
-                    blockedAccounts.add(blockedEmail);
-                    this.userRepoManager.save(requestModel2);
-                    blockedStatus = true;
-                }
-            }
-
-        }
+        String email=blockedUserRequestModel.getEmail();
+        String blockedEmail= blockedUserRequestModel.getBlockedEmail();
+        RequestModel requestModel = this.userRepoManager.getUserAccount(email);
+        requestModel.getUserAccount().block(blockedUserRequestModel.getBlockedEmail());
+        this.userRepoManager.update(requestModel.getUserAccount().getEmail(), requestModel);
+        blockedStatus = true;
         // prepare the resulted email address to show to users.
         BlockedUserResponseModel BlockedUserResponseModel = new BlockedUserResponseModel(blockedStatus);
         return BlockedUserOutputBoundary.prepareView(BlockedUserResponseModel);

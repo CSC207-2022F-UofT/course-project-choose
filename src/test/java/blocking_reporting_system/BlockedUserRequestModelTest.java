@@ -1,5 +1,6 @@
-package reporting_system;
+package blocking_reporting_system;
 
+import blocking_reporting_system.blocking_system.BlockedUserRequestModel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -7,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BlockedUserRequestModelTest {
 
-    private BlockedUserRequestModel BlockedUserRequestModel;
+    private blocking_reporting_system.blocking_system.BlockedUserRequestModel BlockedUserRequestModel;
 
     @BeforeEach
     void setUp(){

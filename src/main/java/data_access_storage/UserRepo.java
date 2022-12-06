@@ -188,6 +188,9 @@ public class UserRepo implements UserRepoManager {
                 // a list of email address of blocked users.
                 List<String> blocks = userAccount.getBlockedAccounts();
                 String blocksString = String.join("|", blocks);
+                if(blocksString.startsWith("|")){
+                    blocksString = blocksString.substring(1);
+                }
                 String line = String.join(",", userAccount.getEmail(),
                         userAccount.getPassword(), String.valueOf(userAccount.getValidEmail()),
                         String.valueOf(userAccount.getSubStatus()), String.valueOf(userAccount.getNumOfReport()),

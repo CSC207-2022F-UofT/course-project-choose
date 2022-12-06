@@ -1,3 +1,5 @@
+package controller_presenter;
+
 import blocking_reporting_system.blocking_system.BlockedUserController;
 import blocking_reporting_system.blocking_system.BlockedUserInteractor;
 import blocking_reporting_system.blocking_system.BlockedUserOutputBoundary;
@@ -6,13 +8,16 @@ import blocking_reporting_system.reporting_system.ReportedUserController;
 import blocking_reporting_system.reporting_system.ReportedUserInteractor;
 import blocking_reporting_system.reporting_system.ReportedUserOutputBoundary;
 import blocking_reporting_system.reporting_system.ReportedUserPresenter;
-import controller_presenter.BigController;
-import controller_presenter.BigPresenter;
 import data_access_storage.UserRepo;
 import data_access_storage.UserRepoManager;
 import email_request.*;
 import login_management_system.*;
-import matching_system.*;
+import matching_system.MatchController;
+import matching_system.MatchManager;
+import matching_system.MatchOutputBoundary;
+import matching_system.MatchUIPresenter;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import upgrade.UpgradeController;
 import upgrade.UpgradeManager;
 import upgrade.UpgradeOutputBoundary;
@@ -22,24 +27,30 @@ import user_register_system.*;
 import java.io.File;
 import java.io.IOException;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 /**
- * This class runs the program.
+ * This class tests the methods in BigController.
  */
-public class Main {
+class BigControllerTest {
 
-    public static void main(String[] args) {
+    /** The big controller for this test class. */
+    private static BigController controllers;
 
-        // Create the parts to plug into the program running engine.
+    /** Set up the big controller of holding controllers in this program before running any tests. */
+    @BeforeAll
+    static void setUp(){
+
         // data access
         UserRepoManager users;
         try{
-            File csvFile = new File("src/main/resources/group46_data.csv");
+            File csvFile = new File("src/main/resources/emptyTestFile.csv");
             users = new UserRepo(csvFile);
         }catch (IOException e) {
             throw new RuntimeException("Could not create file.");
         }
 
-        // Create presenters for all UI elements and store them in a big presenter
+        // Create presenters for creating controllers
         MatchOutputBoundary matchUIPresenter = new MatchUIPresenter();
         EmailConnOutputBoundary emailConnPresenter = new EmailConnPresenter();
         UpgradeOutputBoundary upgradePresenter = new UpgradePresenter();
@@ -47,21 +58,15 @@ public class Main {
         UserRegUIOutputBoundary userRegUIPresenter = new UserRegUIPresenter();
         BlockedUserOutputBoundary blockedUserPresenter = new BlockedUserPresenter();
         ReportedUserOutputBoundary reportedUserPresenter= new ReportedUserPresenter();
-        BigPresenter presenters = new BigPresenter(userRegUIPresenter,
-                loginPresenter, matchUIPresenter,
-                emailConnPresenter,
-                upgradePresenter,
-                blockedUserPresenter,
-                reportedUserPresenter);
 
         // Create controllers for all UI elements and store them in a big controller
-        MatchManager matchManager = new MatchManager(presenters.getMatchUIPresenter(), users);
+        MatchManager matchManager = new MatchManager(matchUIPresenter, users);
         MatchController matchController = new MatchController(matchManager);
 
-        UpgradeManager upgradeManager = new UpgradeManager(users, presenters.getUpgradePresenter());
+        UpgradeManager upgradeManager = new UpgradeManager(users, upgradePresenter);
         UpgradeController upgradeController = new UpgradeController(upgradeManager);
 
-        EmailConnInputBoundary interactor = new EmailConnInteractor(presenters.getEmailConnPresenter(),
+        EmailConnInputBoundary interactor = new EmailConnInteractor(emailConnPresenter,
                 users);
         EmailConnController emailConnController = new EmailConnController(interactor);
 
@@ -77,13 +82,65 @@ public class Main {
         ReportedUserInteractor reportedUserInteractor = new ReportedUserInteractor(reportedUserPresenter, users);
         ReportedUserController reportedUserController = new ReportedUserController(reportedUserInteractor);
 
-        BigController controllers = new BigController(userRegUIController,
+        controllers = new BigController(userRegUIController,
                 loginController, matchController,
                 emailConnController, upgradeController,
                 blockedUserController, reportedUserController);
+    }
 
-        // pass all controllers and presenters to our home page, and start running the program.
-        LoginUI loginUI = new LoginUI(controllers,presenters);
-        loginUI.setVisible(true);
+    /**
+     * Test to make sure an object of type MatchController is returned.
+     */
+    @Test
+    void getMatchController() {
+        assertNotNull(controllers.getMatchController());
+    }
+
+    /**
+     * Test to make sure an object of type EmailConnController is returned.
+     */
+    @Test
+    void getEmailConnController() {
+        assertNotNull(controllers.getEmailConnController());
+    }
+
+    /**
+     * Test to make sure an object of type UpgradeController is returned.
+     */
+    @Test
+    void getUpgradeController() {
+        assertNotNull(controllers.getUpgradeController());
+    }
+
+    /**
+     * Test to make sure an object of type LoginController is returned.
+     */
+    @Test
+    void getLoginController() {
+        assertNotNull(controllers.getLoginController());
+    }
+
+    /**
+     * Test to make sure an object of type UserRegUIController is returned.
+     */
+    @Test
+    void getUserRegUIController() {
+        assertNotNull(controllers.getUserRegUIController());
+    }
+
+    /**
+     * Test to make sure an object of type BlockedUserController is returned.
+     */
+    @Test
+    void getBlockedUserController() {
+        assertNotNull(controllers.getBlockedUserController());
+    }
+
+    /**
+     * Test to make sure an object of type ReportedUserController is returned.
+     */
+    @Test
+    void getReportedUserController() {
+        assertNotNull(controllers.getReportedUserController());
     }
 }

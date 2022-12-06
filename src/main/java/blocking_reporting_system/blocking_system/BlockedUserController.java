@@ -1,4 +1,4 @@
-package reporting_system;
+package blocking_reporting_system.blocking_system;
 
 /**
  * This class is responsible to response to button clicks on
@@ -24,7 +24,7 @@ public class BlockedUserController {
      * @param blockedEmail the email address of the user whose email address is requested.
      * @return a data model for showing the requested email or empty string.
      */
-    BlockedUserResponseModel updateBlocked(String mail, String blockedEmail){
+    public BlockedUserResponseModel updateBlocked(String mail, String blockedEmail){
         BlockedUserRequestModel blockedUserRequestModel = new BlockedUserRequestModel(mail, blockedEmail);
         return blockedUserInput.updateBlocked(blockedUserRequestModel);
     }

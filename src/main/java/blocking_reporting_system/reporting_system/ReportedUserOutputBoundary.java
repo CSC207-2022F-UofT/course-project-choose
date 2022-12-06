@@ -1,4 +1,4 @@
-package reporting_system;
+package blocking_reporting_system.reporting_system;
 
 /**
  * This class is the abstraction that allows MatcherUIInteractor to pass

@@ -1,4 +1,4 @@
-package reporting_system;
+package blocking_reporting_system.reporting_system;
 
 
 /**

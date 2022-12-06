@@ -1,10 +1,10 @@
-package reporting_system;
+package blocking_reporting_system.reporting_system;
 
 /**
  * This class allows us to decouple BlockUsercontroller and MactherUIInteractor.
  * Layer: Use Case Layer
  */
-public interface BlockedUserInputBoundary {
+public interface ReportedUserInputBoundary {
 
     /**
      * Take the email request from users and decide whether
@@ -13,5 +13,5 @@ public interface BlockedUserInputBoundary {
      * @param requestModel a data model for the email request
      * @return a data model for showing the requested email or empty string.
      */
-    BlockedUserResponseModel updateBlocked(BlockedUserRequestModel requestModel);
+    ReportedUserResponseModel updateReported(ReportedUserRequestModel requestModel);
 }

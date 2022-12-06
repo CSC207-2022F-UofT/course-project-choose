@@ -1,5 +1,6 @@
-package reporting_system;
+package blocking_reporting_system;
 
+import blocking_reporting_system.reporting_system.*;
 import data_access_storage.UserRepo;
 import data_access_storage.UserRepoManager;
 import org.junit.jupiter.api.BeforeEach;

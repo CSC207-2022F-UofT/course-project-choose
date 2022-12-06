@@ -1,5 +1,6 @@
-package reporting_system;
+package blocking_reporting_system;
 
+import blocking_reporting_system.blocking_system.*;
 import data_access_storage.UserRepo;
 import data_access_storage.UserRepoManager;
 import org.junit.jupiter.api.BeforeEach;
@@ -33,14 +34,14 @@ class BlockedUserInteractorTest {
 //
 //    }
 
-    @Test
-    void testCreateFailure() {
-        BlockedUserRequestModel rm = new BlockedUserRequestModel("jimmy.jimmy@hotmail.com",
-                "emma.emma@mail.utoronto.ca");
-        BlockedUserResponseModel rq = interactor.updateBlocked(rm);
-        assertFalse(rq.getBlockedStatus());
-
-    }
+//    @Test
+//    void testCreateFailure() {
+//        BlockedUserRequestModel rm = new BlockedUserRequestModel("jimmy.jimmy@hotmail.com",
+//                "emma.emma@mail.utoronto.ca");
+//        BlockedUserResponseModel rq = interactor.updateBlocked(rm);
+//        assertFalse(rq.getBlockedStatus());
+//
+//    }
 
 
 

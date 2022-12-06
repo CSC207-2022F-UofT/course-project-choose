@@ -1,11 +1,13 @@
-package reporting_system;
+package blocking_reporting_system;
 
+import blocking_reporting_system.blocking_system.BlockedUserPresenter;
+import blocking_reporting_system.blocking_system.BlockedUserResponseModel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class BlockedUserPresenterTest {
+class ReportedUserPresenterTest {
 
     private BlockedUserPresenter mp;
 

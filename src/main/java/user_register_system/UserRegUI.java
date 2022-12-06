@@ -5,13 +5,15 @@ import controller_presenter.BigPresenter;
 import entities.*;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 
-public class UserRegUI extends JPanel{
+public class UserRegUI extends JFrame{
     protected BigController controllers;
     protected BigPresenter presenters;
+
 
     /**
      * 此函数实现如果字段名称长度不够前面补空格。
@@ -27,7 +29,7 @@ public class UserRegUI extends JPanel{
         this.presenters = presenters;
 
         // set the panel size
-        this.setSize(500, 600);
+        this.setPreferredSize(new Dimension(600, 600));
 
         // Set email
         this.setLayout(null);
@@ -213,6 +215,8 @@ public class UserRegUI extends JPanel{
                     // UI page for future connection
                     JOptionPane.showMessageDialog(null,
                             "Thank you! You're successfully registered! Please sign in your account.");
+                    UserRegUI.super.dispose();
+
                 }
             }
         });
