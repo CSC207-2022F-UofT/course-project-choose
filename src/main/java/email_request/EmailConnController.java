@@ -24,9 +24,10 @@ public class EmailConnController {
      * @param targetUserEmail the email address of the user whose email address is requested.
      * @return a data model for showing the requested email or empty string.
      */
-    public EmailConnResponseModel create(String requesterEmail, String targetUserEmail){
+    public EmailConnResponseModel request(String requesterEmail, String targetUserEmail){
         EmailConnRequestModel emailConnRequestModel = new EmailConnRequestModel(requesterEmail, targetUserEmail);
-        return userInput.create(emailConnRequestModel);
+        return userInput.request(emailConnRequestModel);
     }
+
 
 }
