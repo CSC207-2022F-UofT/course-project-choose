@@ -13,5 +13,5 @@ public interface EmailConnInputBoundary {
      * @param requestModel a data model for the email request
      * @return a data model for showing the requested email or empty string.
      */
-    EmailConnResponseModel create(EmailConnRequestModel requestModel);
+    EmailConnResponseModel request(EmailConnRequestModel requestModel);
 }

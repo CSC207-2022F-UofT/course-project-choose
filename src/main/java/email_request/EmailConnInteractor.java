@@ -36,7 +36,7 @@ public class EmailConnInteractor implements EmailConnInputBoundary {
      */
 
     @Override
-    public EmailConnResponseModel create(EmailConnRequestModel requestModel) {
+    public EmailConnResponseModel request(EmailConnRequestModel requestModel) {
 
         // get information from database in order to determine whether the requested email can be shown.
         RequestModel userAccount = this.userRepoManager.getUserAccount(requestModel.getRequester());

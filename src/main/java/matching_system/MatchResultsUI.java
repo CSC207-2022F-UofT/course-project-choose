@@ -30,7 +30,7 @@ public class MatchResultsUI extends JPanel implements ActionListener {
     BigPresenter presenters;
 
     /** The email address of the user who requests to see the match results. */
-    private String requesterEmail;
+    private final String requesterEmail;
 
     /** A list of email addresses of the matched users */
     private Map<Integer, String> targetUserEmails = new HashMap<>();
@@ -132,7 +132,7 @@ public class MatchResultsUI extends JPanel implements ActionListener {
         // If a request email button is clicked, then process the email request.
         if(evt.getActionCommand().startsWith("request")) {
             // Process email request
-            EmailConnResponseModel rm = this.controllers.getEmailConnController().create(requesterEmail, targetUserEmail);
+            EmailConnResponseModel rm = this.controllers.getEmailConnController().request(requesterEmail, targetUserEmail);
             EmailConnResponseModel prepareView = this.presenters.getEmailConnPresenter().prepareView(rm);
             // display the result for email request
             if (!prepareView.getRequestedEmailAddress().equals("")) {

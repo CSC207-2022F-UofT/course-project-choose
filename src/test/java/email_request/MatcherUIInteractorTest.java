@@ -54,7 +54,7 @@ class MatcherUIInteractorTest {
     void testCreateSuccess(){
         EmailConnRequestModel rm = new EmailConnRequestModel("david.david@hotmail.com",
                 "emma.emma@mail.utoronto.ca");
-        EmailConnResponseModel rq = interactor.create(rm);
+        EmailConnResponseModel rq = interactor.request(rm);
         assertEquals( "emma.emma@mail.utoronto.ca",
                 rq.getRequestedEmailAddress());
         assertEquals(DavidNumRequest + 1,
@@ -83,7 +83,7 @@ class MatcherUIInteractorTest {
     void testCreateFailure() {
         EmailConnRequestModel rm = new EmailConnRequestModel("jimmy.jimmy@hotmail.com",
                 "emma.emma@mail.utoronto.ca");
-        EmailConnResponseModel rq = interactor.create(rm);
+        EmailConnResponseModel rq = interactor.request(rm);
         assertEquals( "",
                 rq.getRequestedEmailAddress());
         assertEquals(jimmyNumRequest,
