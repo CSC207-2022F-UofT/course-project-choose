@@ -48,7 +48,7 @@ class EmailConnControllerTest {
      */
     @Test
     void testCreateSuccess() {
-        EmailConnResponseModel rm = controller.create("david.david@hotmail.com",
+        EmailConnResponseModel rm = controller.request("david.david@hotmail.com",
                 "emma.emma@mail.utoronto.ca");
         assertEquals("emma.emma@mail.utoronto.ca", rm.getRequestedEmailAddress());
 
@@ -72,7 +72,7 @@ class EmailConnControllerTest {
      */
     @Test
     void testCreateFailure(){
-        EmailConnResponseModel rm = controller.create("jimmy.jimmy@hotmail.com",
+        EmailConnResponseModel rm = controller.request("jimmy.jimmy@hotmail.com",
                 "emma.emma@mail.utoronto.ca");
         assertEquals("", rm.getRequestedEmailAddress());
     }
