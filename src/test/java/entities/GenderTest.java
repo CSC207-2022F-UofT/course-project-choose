@@ -6,15 +6,19 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class GenderTest {
 
+    /**
+     * Make sure the String value of Gender.Male is "Male".
+     */
     @Test
-    void getGender() {
+    void getMaleGender() {
+        assertEquals("Male", Gender.MALE.getGender());
     }
 
+    /**
+     * Make sure the String value of Gender.Female is "Female".
+     */
     @Test
-    void values() {
-    }
-
-    @Test
-    void valueOf() {
+    void getFemaleGender() {
+        assertEquals("Female", Gender.FEMALE.getGender());
     }
 }
