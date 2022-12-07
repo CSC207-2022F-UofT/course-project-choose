@@ -51,8 +51,7 @@ Other than the search feature, click [A Program Demo](https://youtu.be/QmanzhtLo
 
 To run our program, please run the java class Main.java.
 - Start by running Main.java 
-- After running Main.java, the following window will pop up. Click on "Register" to start your personal journey on our program. 
- 
+- After running Main.java, the following window will pop up. Click on "Register" to create your account. Then, using the registered email and password to log into your account.  
   <img width="458" alt="Screen Shot 2022-12-04 at 10 31 22 AM" src="https://user-images.githubusercontent.com/113075282/205499642-79a5ffd3-7806-435b-a458-9800c24033c6.png">
 
 ## Test Coverage 
