@@ -55,11 +55,9 @@ To run our program, please run the java class Main.java.
   <img width="458" alt="Screen Shot 2022-12-04 at 10 31 22 AM" src="https://user-images.githubusercontent.com/113075282/205499642-79a5ffd3-7806-435b-a458-9800c24033c6.png">
 
 ## Test Coverage 
-Up to Milestone 4, the test classes for Package data_access_storate and email_request are ready. Please see the test coverage below. Please notice that Main.java and MatcherUITemplate.java in Package email_request are created termporarily for checking features and will be removed. 
-<img width="1162" alt="Screen Shot 2022-11-21 at 6 48 25 PM" src="https://user-images.githubusercontent.com/113075282/203180810-18feaac0-8aa1-4e23-810e-6ab3f03b2179.png">
-<img width="1157" alt="Screen Shot 2022-11-21 at 6 48 14 PM" src="https://user-images.githubusercontent.com/113075282/203188069-02c31f7b-894a-40cf-bb0f-f999a19a2e90.png">
+We do not have test classes for all UI elements. However, we test those UI elements by running the program and make sure that all desired information are displayed, and displayed correctly.  
+<img width="1222" alt="Screen Shot 2022-12-07 at 3 43 43 PM" src="https://user-images.githubusercontent.com/113075282/206291768-f231d0aa-f422-4213-bc87-0604c8ac469c.png">
 
-We do not have test classes for all UI elements. However, we test those UI elements by running the program and make sure that all desired information are displayed, and displayed correctly. 
 
 ## Our Design
 We have implemented our feature following clean architecture. To help visiualize our code structure, please check out an illustration diagram that we prepare with 
