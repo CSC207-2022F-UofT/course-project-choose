@@ -1,10 +1,10 @@
-package email_request;
+package blocking_reporting_system.blocking_system;
 
 /**
- * This class allows us to decouple MatcherUIcontroller and MactherUIInteractor.
+ * This class allows us to decouple BlockUsercontroller and MactherUIInteractor.
  * Layer: Use Case Layer
  */
-public interface EmailConnInputBoundary {
+public interface BlockedUserInputBoundary {
 
     /**
      * Take the email request from users and decide whether
@@ -13,5 +13,5 @@ public interface EmailConnInputBoundary {
      * @param requestModel a data model for the email request
      * @return a data model for showing the requested email or empty string.
      */
-    EmailConnResponseModel request(EmailConnRequestModel requestModel);
+    BlockedUserResponseModel updateBlocked(BlockedUserRequestModel requestModel);
 }

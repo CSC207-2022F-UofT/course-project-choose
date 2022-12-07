@@ -1,6 +1,10 @@
 package matching_system;
 
 
+import blocking_reporting_system.blocking_system.BlockedUserResponseModel;
+import blocking_reporting_system.reporting_system.ReportedUserResponseModel;
+import controller_presenter.BigController;
+import controller_presenter.BigPresenter;
 import email_request.EmailConnPresenter;
 import email_request.EmailConnController;
 import email_request.EmailConnResponseModel;
@@ -21,15 +25,12 @@ import java.util.Map;
 public class MatchResultsUI extends JPanel implements ActionListener {
 
     /** A controller responsible for email requesting */
-    EmailConnController emailConnController;
+    BigController controllers;
 
-    /** A controller responsible for upgrading requesting */
-    UpgradeController upgradeController;
-    /** A presenter that is responsible for preparing the view for upgrading requesting */
-    UpgradeOutputBoundary upgradePresenter;
+    BigPresenter presenters;
 
     /** The email address of the user who requests to see the match results. */
-    private String requesterEmail;
+    private final String requesterEmail;
 
     /** A list of email addresses of the matched users */
     private Map<Integer, String> targetUserEmails = new HashMap<>();
@@ -39,23 +40,17 @@ public class MatchResultsUI extends JPanel implements ActionListener {
 
 
     /** A preset of UI panel that display 5 user info which are included in the matchResponseModel
-     * @param emailConnController Controller that is responsible to process email request.
-     * @param upgradeController  Controller that is responsible to process upgrading request.
-     * @param upgradePresenter Presenter that is responsible to preparing the view for upgrading request
      * @param requesterEmail email of the requester
-     * @param matchUIPresenter the presenter that stores matchedRespondModel
      * */
-    public MatchResultsUI(EmailConnController emailConnController,
-                          UpgradeController upgradeController, UpgradeOutputBoundary upgradePresenter,
-                          String requesterEmail,
-                          MatchOutputBoundary matchUIPresenter){
+    public MatchResultsUI(BigController controllers,
+                          BigPresenter presenters,
+                          String requesterEmail){
 
-        this.emailConnController = emailConnController;
-        this.upgradeController = upgradeController;
-        this.upgradePresenter = upgradePresenter;
+        this.controllers = controllers;
+        this.presenters = presenters;
         this.requesterEmail = requesterEmail;
         int count = 0;
-        for(UserData user: matchUIPresenter.prepareView().getMatchedData()){
+        for(UserData user: this.presenters.getMatchUIPresenter().prepareView().getMatchedData()){
             // profile information to display
             String userIntro = "<html>Name: " + user.name + "<br>Gender: " +
                     user.gender.getGender() + " age: " + user.age + " height: "
@@ -108,26 +103,24 @@ public class MatchResultsUI extends JPanel implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent evt) {
+        String targetUserEmail = "";
+        if (evt.getActionCommand().endsWith("0")) {
+            targetUserEmail = targetUserEmails.get(0);
+        } else if (evt.getActionCommand().endsWith("1")) {
+            targetUserEmail = targetUserEmails.get(1);
+        } else if (evt.getActionCommand().endsWith("2")) {
+            targetUserEmail = targetUserEmails.get(2);
+        } else if (evt.getActionCommand().endsWith("3")) {
+            targetUserEmail = targetUserEmails.get(3);
+        } else if (evt.getActionCommand().endsWith("4")) {
+            targetUserEmail = targetUserEmails.get(4);
+        }
+
         // If a request email button is clicked, then process the email request.
-        if(evt.getActionCommand().startsWith("r")) {
-            // targetUserEmail is the email that requester wants to see
-            // we update targetUserEmail based on which button the requester clicks.
-            String targetUserEmail = "";
-            if (evt.getActionCommand().equals("request0")) {
-                targetUserEmail = targetUserEmails.get(0);
-            } else if (evt.getActionCommand().equals("request1")) {
-                targetUserEmail = targetUserEmails.get(1);
-            } else if (evt.getActionCommand().equals("request2")) {
-                targetUserEmail = targetUserEmails.get(2);
-            } else if (evt.getActionCommand().equals("request3")) {
-                targetUserEmail = targetUserEmails.get(3);
-            } else if (evt.getActionCommand().equals("request4")) {
-                targetUserEmail = targetUserEmails.get(4);
-            }
+        if(evt.getActionCommand().startsWith("request")) {
             // Process email request
-            EmailConnResponseModel rm = emailConnController.create(requesterEmail, targetUserEmail);
-            EmailConnPresenter rp = new EmailConnPresenter();
-            EmailConnResponseModel prepareView = rp.prepareView(rm);
+            EmailConnResponseModel rm = this.controllers.getEmailConnController().request(requesterEmail, targetUserEmail);
+            EmailConnResponseModel prepareView = this.presenters.getEmailConnPresenter().prepareView(rm);
             // display the result for email request
             if (!prepareView.getRequestedEmailAddress().equals("")) {
                 JOptionPane.showMessageDialog(this,
@@ -135,17 +128,41 @@ public class MatchResultsUI extends JPanel implements ActionListener {
             } else {
                 // If requested email is not available, pop up the upgrade UI and asks whether the
                 // user-at-keyboard would like to upgrade his account for unlimited email requests.
-                upgradePresenter.setCurrentEmail(requesterEmail);
-                UpgradeUI upgradeUI = new UpgradeUI(requesterEmail, upgradeController, upgradePresenter);
+                this.presenters.getUpgradePresenter().setCurrentEmail(requesterEmail);
+                UpgradeUI upgradeUI = new UpgradeUI(requesterEmail, this.controllers.getUpgradeController(),
+                        this.presenters.getUpgradePresenter());
                 this.addUpgradeFrame(upgradeUI);
                 upgradeFrame.setVisible(true);
             }
-        }
+        } // end of email request
 
-        // if a report button is clicked,
+        // if a block user button is clicked, process the block request.
+        if(evt.getActionCommand().startsWith("block")) {
+            BlockedUserResponseModel burm = this.controllers.getBlockedUserController().updateBlocked(requesterEmail,targetUserEmail);
+            BlockedUserResponseModel prepareView = this.presenters.getBlockedUserPresenter().prepareView(burm);
+            boolean blockFlag=prepareView.getBlockedStatus();
+            if(blockFlag){
+                JOptionPane.showMessageDialog(null, "block success!");
+            }else{
+                JOptionPane.showMessageDialog(null, "block fail!");
+            }
+        } // end of block request
 
-        // if a block button is clicked,
+        // if a report user button is clicked, process the report request.
+        if(evt.getActionCommand().startsWith("report")) {
+            ReportedUserResponseModel rurm = this.controllers.getReportedUserController().updateReported(targetUserEmail);
+            ReportedUserResponseModel prepareView = this.presenters.getReportedUsePresenter().prepareView(rurm);
+            boolean reportFlag=prepareView.getReportedStatus();
+            if(reportFlag){
+                JOptionPane.showMessageDialog(null, "report success!");
+            }else{
+                JOptionPane.showMessageDialog(null, "report fail!");
+            }
+        } // end of report request
 
     } // end of the actionPerformed method
+
+
+
 }
 

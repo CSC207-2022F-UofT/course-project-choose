@@ -18,6 +18,8 @@ public class HomePageUI extends JPanel implements ActionListener {
     private BigController controllers;
     private BigPresenter presenters;
 
+    private JFrame frame;
+
     /**
      * A window that shows the homepage UI panel
      * @param profile_info a data model that contains the user who logins successfully.
@@ -31,7 +33,7 @@ public class HomePageUI extends JPanel implements ActionListener {
         this.presenters = presenters;
 
         // Frame
-        JFrame frame = new JFrame();
+        frame = new JFrame();
         JPanel panel = new JPanel();
         frame.setSize(600, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -86,25 +88,12 @@ public class HomePageUI extends JPanel implements ActionListener {
         matchingButton.addActionListener(this);
         panel.add(matchingButton);
 
-        // Search Box
-        JTextField searchInput = new JTextField(20);
-        searchInput.setBounds(130, 350, 120, 25);
-        panel.add(searchInput);
-
-
-        // Search Button
-        JButton searchingButton = new JButton("Search");
-        searchingButton.setActionCommand("search");
-        searchingButton.addActionListener(this);
-        searchingButton.setBounds(250, 350, 100, 25);
-        panel.add(searchingButton);
-
-        // Search Choice Box
-        String[] s = { "Default", "Program of Study" };
-        JComboBox<String> searchBox = new JComboBox<>(s);
-        searchBox.setBounds(350, 350, 100, 25);
-        panel.add(searchBox);
-
+        // Log-out Button
+        JButton logoutButton = new JButton("Logout");
+        logoutButton.setBounds(250, 350, 100, 25);
+        logoutButton.setActionCommand("logout");
+        logoutButton.addActionListener(this);
+        panel.add(logoutButton);
         frame.setVisible(true);
     }
 
@@ -115,13 +104,18 @@ public class HomePageUI extends JPanel implements ActionListener {
             JFrame application = new JFrame("Matching results");
             MatchResponseModel matchResponseModel =  this.controllers.getMatchController().create(profile_info.getEmail());
             this.presenters.getMatchUIPresenter().setMatchResponseModel(matchResponseModel);
-            MatchResultsUI matcherResultsUI = new MatchResultsUI(this.controllers.getEmailConnController(),
-                    this.controllers.getUpgradeController(), this.presenters.getUpgradePresenter(),
-                    profile_info.getEmail(), this.presenters.getMatchUIPresenter());
+            MatchResultsUI matcherResultsUI = new MatchResultsUI(this.controllers,
+                    this.presenters, profile_info.getEmail());
             // Display match results to users.
             application.add(matcherResultsUI);
             application.pack();
             application.setVisible(true);
+        }
+
+        if(e.getActionCommand().equals("logout")){
+               frame.dispose();
+               LoginUI loginUI = new LoginUI(controllers,presenters);
+               loginUI.setVisible(true);
         }
     }
 }

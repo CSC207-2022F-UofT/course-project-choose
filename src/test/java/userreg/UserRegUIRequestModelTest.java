@@ -1,15 +1,12 @@
 package userreg;
 
-import User_Register_System.UserRegUIRequestModel;
+import user_register_system.UserRegUIRequestModel;
 import entities.Gender;
 import entities.Hobbies;
-import entities.User;
-import entities.UserAccount;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
 
 class UserRegUIRequestModelTest {
 
