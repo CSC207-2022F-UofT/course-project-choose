@@ -39,9 +39,8 @@ This project implements the following 7 features. The code of each feature is wr
   * Implement entities package Searcher class.
   * Implement Searching System feature.
 - [ ] Nathan Zhu
-  *Implement Reporting System
-  *Implement entities package Reporting class
-
+  * Implement Reporting System
+  * Implement entities package Reporting class
  
 
 ## How to Run Our Program 
