@@ -1,0 +1,20 @@
+email,password,validEmail,subStatus,numOfReport,blockedAccounts,numOfEmailRequest,name,gender,age,height,programOfStudy,hobby,selfIntro,interestedIn
+olivia.scott@mail.utoronto.ca,oliva.scott,FALSE,FALSE,0,,0,Olivia,FEMALE,18,164,Computer Science,FOOD,I'm originally from a small city. I'm passionate about being active,MALE
+liam.harries@mail.utoronto.ca,liam.harries,FALSE,FALSE,0,,0,Liam,MALE,18,181,Statistics,SPORTS,I'm working to make this world a better place.,FEMALE
+noah.gates@mail.utoronto.ca,noah.gates,FALSE,FALSE,0,,0,Noah,MALE,18,182,Computer Science,MUSIC,I am sincere with a good sense of humor.,FEMALE
+james.yuan@mail.utoronto.ca,james.yuan,FALSE,FALSE,0,,0,James,MALE,18,178,Statistics,FOOD,I like to learn new things.,FEMALE
+emma.lynch@mail.utoronto.ca,emma.lynch,FALSE,FALSE,0,,0,Emma,FEMALE,18,168,Marketing,FOOD,I'm looking for a relationship that will bring out the very best in one another.,MALE
+sophia.walmsley@mail.utoronto.ca,sophia.walmsley,FALSE,FALSE,0,,0,Sophia,FEMALE,18,174,Computer Science,GAMES,I'm an outdoor person.,MALE
+mia.wen@mail.utoronto.ca,mia.wen,FALSE,FALSE,0,,0,Mia,FEMALE,18,160,Computer Science,FOOD,"I enjoy outdoors, travelling and resturants. ",MALE
+terry.tan@mail.utoronto.ca,terry.tan,FALSE,FALSE,0,,0,Terry,MALE,19,175,Math,MUSIC,I am awesome,FEMALE
+benjamin.brewer@mail.utoronto.ca,benjamin.brewer,FALSE,FALSE,0,,0,Benjamin,MALE,18,172,Computer Science,FOOD,I enjoy learning computer science. ,FEMALE
+ken.merz@mail.utoronto.ca,ken.merz,FALSE,FALSE,0,,0,Ken,MALE,18,185,Computer Science,FOOD,I love food truck. ,FEMALE
+charlie.winfrey@mail.utoronto.ca,charlie.winfrey,FALSE,FALSE,0,,0,Charlie,MALE,18,174,Statistics,GAMES,Robarts library is the best library.,FEMALE
+ava.boudreaux@mail.utoronto.ca,ava.boudreaux,FALSE,FALSE,0,,0,Ava,FEMALE,18,170,Computer Science,GAMES,I love studying in U of T. ,MALE
+charlotte.widyawati@mail.utoronto.ca,charlotte.widyawati,FALSE,FALSE,0,,0,Charlotte,FEMALE,18,167,Computer Science,FOOD,I am into learning and giving back. ,MALE
+lucas.liu@mail.utoronto.ca,lucas.liu,FALSE,FALSE,0,,0,Lucas,MALE,19,177,Math,MUSIC,I am a frequent studier. ,FEMALE
+william.ching@mail.utoronto.ca,william.ching,FALSE,FALSE,0,,0,William,MALE,18,183,Marketing,FOOD,I am working a lot. ,FEMALE
+amelia.friedman@mail.utoronto.ca,amelia.friedman,FALSE,FALSE,0,,0,Amelia,FEMALE,18,174,Computer Science,FOOD,I like being in nature. ,MALE
+evelyn.walden@mail.utoronto.ca,evelyn.walden,FALSE,FALSE,0,,0,Evelyn,FEMALE,18,174,Statistics,GAMES,I love studying in U of T. ,MALE
+luna.green@mail.utoronto.ca,luna.green,FALSE,FALSE,0,,0,Luna,FEMALE,18,174,Computer Science,MUSIC,I love studying in U of T. ,MALE
+lina.abudu@mail.utoronto.ca,lina.abudu,FALSE,FALSE,0,,0,Lina,FEMALE,18,174,Statistics,GAMES,I love studying in U of T. ,MALE
