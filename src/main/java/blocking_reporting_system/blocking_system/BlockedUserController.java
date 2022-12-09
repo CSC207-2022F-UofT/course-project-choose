@@ -2,7 +2,7 @@ package blocking_reporting_system.blocking_system;
 
 /**
  * This class is responsible to response to button clicks on
- * matching results and bundle the request data.
+ * reporting results and bundle the request data.
  * Layer: Interface Adapters
  */
 public class BlockedUserController {
@@ -18,8 +18,6 @@ public class BlockedUserController {
     }
 
     /**
-     * Check whether the user whose email address is requesterEmail can request the email address targetUserEmail.
-     * If so, return the requested email address (targetUserEmail), and empty string otherwise.
      * @param mail  the email address of the user who requests to see the email address (targetUserEmail).
      * @param blockedEmail the email address of the user whose email address is requested.
      * @return a data model for showing the requested email or empty string.
